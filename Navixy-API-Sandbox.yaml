@@ -1,0 +1,3353 @@
+openapi: 3.0.0
+info:
+  title: Navixy API Sandbox
+  description: >-
+    [Navixy](https://www.navixy.com/) is a GPS tracking platform developed by
+    [SquareGPS](https://squaregps.com/) company.
+
+
+    This is the Navixy API sandbox, where you can try different API calls, learn
+    how they work, and see how they respond with real information based on your
+    trackers or the demo trackers.
+
+
+    All calls and methods will allow you to develop an application that pulls
+    all the necessary information from the platform. By combining and processing
+    the information you receive, you will be able to code a script or a program
+    to cover the needs of your customers and partners by providing them with a
+    customized app. A more personalized solution can attract more customers and
+    increase their loyalty.
+
+
+    Here you can find full API documentation:
+    [https://developers.navixy.com/general/getting-started/](https://developers.navixy.com/general/getting-started/)
+
+
+    At the moment, the API sandbox will be presented within the Backend APIs.
+    However, we will continue to expand it with more and more API calls and
+    stories that can be solved with the Navixy platform.
+
+
+    The main purpose is to give you more practice with our APIs so that you can
+    easily find the necessary information based on the real data from your
+    trackers.
+
+
+    The API sandbox will be presented in several sections, each responsible for
+    its own part of the Navixy platform:
+
+
+    - `User Interface API`: describes all calls for working with information
+    presented to users or sub-users in the UI, including tracking, reports,
+    tasks, and more.
+        
+    - `Panel API`: describes all calls for working with information presented to
+    administrators in the admin panel, including information about devices,
+    tariff plans, users, and more.
+        
+
+    You can switch between sections, which are represented as folders, and API
+    calls using the menu on the left. Each section contains a description of the
+    API calls listed within it.
+
+
+    Additionally we will add detailed description of all parameters, response
+    fields and error details. To get them click overview under the API request
+    or click three dots near the section name to see all APIs and their
+    descriptions:
+
+
+    <img
+    src="https://content.pstmn.io/652a3cbd-1aa9-44f6-af82-92b5a0e1ee99/aW1hZ2UucG5n"
+    width="606" height="472">
+
+
+    And choose view documentation in the dropdown:
+
+
+    <img
+    src="https://content.pstmn.io/773d4541-b83f-48de-b2ba-b89441f8e72e/aW1hZ2UucG5n"
+    width="1443" height="895">
+
+
+    To maintain the stability of the system for all users, the platform has a
+    limit of 50 requests per second per user and per IP address.
+  version: 1.0.0
+servers:
+  - url: http://{{base url}}
+  - url: http://{{base url}}tracker
+tags:
+  - name: How to work with API Sandbox
+    description: >-
+      To use the Navixy API Sandbox, you'll need to sign in to your Postman
+      account or create a new one for free. This is necessary for any workspace.
+
+
+      Our documentation is publicly available for anyone who wants to start
+      working with our APIs. That's why, if you try to send an API request
+      directly from the documentation, Postman will prompt you to take an
+      additional step before proceeding.
+
+
+      <img
+      src="https://content.pstmn.io/0c639be8-4459-409a-b7cf-d4ac1153b232/YnJvd3Nlcl90aXdCTzNQQjd6LnBuZw=="
+      width="330" height="276">
+
+
+      To start sending API requests, you'll need to create your own fork of our
+      workspace. To do this, click the 'Create a fork' button as shown in the
+      screenshot above.  
+
+      Next, provide all the necessary information about your fork:
+
+
+      - **Fork label:** This is how it will be named in your workspace.
+          
+      - **Workspace:** Choose the workspace to which it should be added. This is
+      only necessary if you have multiple workspaces for different purposes.
+          
+      - **Environments:** Choose which environments should be added to your fork
+      from our collection. You can select all of them or only the necessary
+      ones.
+          
+
+      <img
+      src="https://content.pstmn.io/89debe1a-df07-405e-aa08-65099ae2ec63/aW1hZ2UucG5n"
+      width="1030" height="803">
+
+
+      Finally, make sure to leave notifications enabled and click the 'Fork
+      Collection' button.
+  - name: How to work with API Sandbox > Managing environments
+    description: >-
+      After creating your fork, it will automatically open. The next step is to
+      choose the necessary environment. You can find this in the upper
+      right-hand corner, under your account image:
+
+
+      <img
+      src="https://content.pstmn.io/0e89c965-60e2-4134-a751-01efc200b272/aW1hZ2UucG5n"
+      width="373" height="244">
+
+
+      Alternatively, you can choose from the list of environments on the
+      left-hand side. Find the necessary environment and click 'Set active'
+      here.
+
+
+      <img
+      src="https://content.pstmn.io/d52bd615-07bf-403a-8a28-de1327006fa6/TlZJRElBX1NoYXJlX0JkTTBoRUE4ZU8ucG5n"
+      width="397" height="265">
+
+
+      Use our demo environment for some API calls available in demo mode, such
+      as tracker list and most other read-only requests. If you want to work
+      with your own trackers and their data, choose EU, US, or Your_domain. This
+      is easy when you are familiar with our UI and know your panel_id, at least
+      one user_id or tracker_id. If they have less than 7 digits, it is the EU
+      environment. If they have 8 digits starting with 1, it is the US
+      environment.
+
+
+      Your data is secure, so to obtain any information about your trackers and
+      users, you'll need to get a user session hash or an API key. You can get
+      an API key [via the user's web
+      interface](https://www.navixy.com/docs/user/web-interface-docs/user-account/api-keys/)
+      or using 'User authentication' section. An API key can be used in your
+      future calls within the workspace as the hash variable of an environment.
+      However, we have described in detail how to use a session hash in the
+      'User authentication and API keys' section.
+
+
+      ### Restoring variables to default
+
+
+      What if you accidentally removed the demo hash or any base URL? In this
+      case, open the environment from the left menu and click the three dots on
+      the right side after the necessary variable and choose 'reset.'
+
+
+      <img
+      src="https://content.pstmn.io/260adcbe-5270-42ce-b387-b53d6227da02/aW1hZ2UucG5n"
+      width="1873" height="333">
+
+
+      Now you will use the default variables.
+
+
+      ### Working with variables
+
+
+      This tip will save you a lot of time.
+
+
+      You can create a new variable for any parameter. For example, if you need
+      to create a `tracker_id` variable that will be used in your future
+      requests, get the ID and add it to the environment as a new variable. Fill
+      in both the initial and current value with the ID.
+
+
+      <img
+      src="https://content.pstmn.io/1124e5b1-299d-41bf-b7c2-04a49351b453/aW1hZ2UucG5n"
+      width="1439" height="272">
+
+
+      Don't forget to save the environment afterwards, or this variable won't be
+      available.
+
+
+      Once it is added and saved, you can use this variable in any API requests:
+
+
+      <img
+      src="https://content.pstmn.io/7e77bfdc-3353-4aff-979a-71ff1c6627c3/aW1hZ2UucG5n"
+      width="1446" height="514">
+  - name: How to work with API Sandbox > Standard workflow (example)
+    description: >-
+      Let's describe the standard workflow for an API developer using a very
+      simple and common example: requesting the last known state data for one
+      tracker.
+
+
+      Choose the necessary environment you will work with.
+
+
+      If it is not the Demo environment, follow the instructions on [user
+      authentication](https://www.postman.com/navixyapisandbox/workspace/navixy-api-sandbox/folder/8534541-7c925681-4618-40ca-a70d-22bac7ee1131?action=share&source=copy-link&creator=8534541&ctx=documentation).
+
+
+      After that, open the trackers section and locate the tracker list API
+      request.
+
+
+      <img
+      src="https://content.pstmn.io/7c7ae2c4-49f3-4432-a10f-86a052aea218/UG9zdG1hbl9BNzdFQlZMUmtTLnBuZw=="
+      width="308" height="168">
+
+
+      Check all possible API parameters, response field parameters, and errors
+      with the 'view documentation' option:
+
+
+      <img
+      src="https://content.pstmn.io/3f1d638e-d957-4f0a-ac84-f37391956fa5/aW1hZ2UucG5n"
+      width="308" height="311">
+
+
+      Send the request and locate the necessary `tracker_id` in the response. In
+      the `tracker/list` response, this is the `id` that appears before the
+      `label`.
+
+
+      The next step is to locate [the last known GPS location API
+      request](https://www.postman.com/navixyapisandbox/workspace/navixy-api-sandbox/request/8534541-49088d41-cf76-4d84-842a-d99785e02405?action=share&source=copy-link&creator=8534541&ctx=documentation),
+      enter your `tracker_id` or variable with it into the parameter field, and
+      retrieve the necessary information.
+  - name: User Interface API
+    description: >-
+      All API calls documented in this collection are associated with the user
+      account and all the entities within it. In other words, everything you can
+      find in the web user interface is described below.
+
+
+      Each API resource is semantically linked to a specific entity, such as
+      geofences, rules, objects, and so on. The API calls for CRUD (Create,
+      Read, Update, and Delete) operations, as well as other operations with
+      these entities, have similar names regardless of the resource being used.
+      These names include "list", "read", "create", "update", and "delete".
+  - name: User Interface API > User authentication and API keys management
+    description: >-
+      We recommend using API keys as {{hash}} variables to gain access to all
+      API calls for your user account. [You can manage API
+      keys](https://www.navixy.com/docs/user/web-interface-docs/user-account/api-keys/)
+      in the user web interface to simplify the process.
+
+
+      Additionally, we will add user authentication as the first request if you
+      want to work only in Postman. You need to specify the user's login and
+      password in the parameters and send the request. If the login and password
+      are correct, the platform will reply with the status "success" and a
+      session hash.
+
+
+      You need to highlight the hash value, right-click, and choose "Set for
+      environment" and "Set as variable - Hash" in the menu.
+
+
+      <img
+      src="https://content.pstmn.io/cbf645bc-5459-4481-9cd7-5c64b23c875f/aW1hZ2UucG5n"
+      width="700" height="382">
+
+
+      Additionally, you can simply copy the hash from the reply and paste it
+      into the {{hash}} variable in the environment.
+
+
+      <img
+      src="https://content.pstmn.io/ca91de61-76ac-4e8f-ba6a-6013cfa53444/aW1hZ2UucG5n"
+      width="616" height="99">
+
+
+      Additionally, you can use our demo hash to try some APIs within the demo
+      account. The demo account has certain restrictions on actions. If the API
+      call is not available in demo mode, the platform will notify you about it
+      in the answer.
+
+
+      Next, you will find API calls to obtain the user session hash and manage
+      API keys on the platform. For security reasons, API keys cannot be used to
+      obtain a list of API keys or for their creation and deletion. Instead,
+      utilize the user session hash to manage API keys.
+
+
+      A user account may have a maximum of 20 keys.
+
+
+      You can find more information about API keys in our
+      [documentation](https://developers.navixy.com/backend-api/resources/commons/api-keys/#list).
+  - name: User Interface API > Device registration
+    description: >-
+      The first step for a user in their account is device registration. In this
+      section, we will describe the process of registering a device on the
+      platform step by step.
+
+
+      It is possible to activate any GPS tracking device listed in our supported
+      models list. Each model will be displayed with all integrated input types,
+      available rule types, and other necessary information. To register the
+      device on the platform follow several steps.
+
+
+      Step 1. Check if the platform supports your device model using the
+      `list_models` request. It is the first in section below. You can search
+      for the necessary model in the results using Ctrl+F.
+
+
+      <img
+      src="https://content.pstmn.io/979d448f-2284-4398-b16a-5aa21abf548d/aW1hZ2UucG5n"
+      width="468" height="192">
+
+
+      Here, you can find information about the supported inputs and alerts for
+      this tracker model, as well as other relevant information. Use the model
+      name from the `code` into `tracker/register` request.
+
+
+      Step 2. Check all plugins available for the user with the `plugin/list`
+      request. The platform will reply to you with a list of plugins activated
+      for your user account. To search among all plugins, simply use the search
+      function in the results (Ctrl + F).
+
+
+      We are interested in the following plugin IDs that are used for
+      registration:
+
+
+      - 44 - device registration with optional activation code.
+          
+      - 37 - device registration with mandatory activation code.
+          
+      - 35 - mobile app registration with optional activation code.
+          
+      - 68 - mobile app registration with mandatory activation code.
+          
+
+      Note: Do not use plugins if they are not available for your user.
+
+
+      Full information about activation codes and their purposes can be found
+      [here](https://www.navixy.com/docs/admin-panel-docs/plans/activation-codes/).
+
+
+      Step 3. (Optional) If you want to register your device into an already
+      existing group in the user account, it will make it easier to find or
+      operate with devices of a particular group in future requests. Utilize the
+      `group/list` request to get the group IDs. Insert the necessary group ID
+      into the `tracker/register` request. If you don't need to use groups, set
+      0 instead of the group ID.
+
+
+      Step 4. Register the device using the `tracker/register` action with the
+      appropriate plugin. For example, if you need to register a GPS tracker and
+      the user has plugin 44, use that plugin.
+
+
+      To find full information about every request parameter and response field,
+      follow [our
+      documentation](https://developers.navixy.com/backend-api/how-to/how-to-register-a-device/).
+  - name: User Interface API > Trackers
+    description: >-
+      Here, you will find various API calls to work with trackers that are
+      registered under a user account.
+  - name: User Interface API > Trackers > Tracker object data
+    description: >-
+      These API calls are necessary to receive tracker object data. Let's
+      describe the tracker object here:
+
+
+      ## Tracker object structure
+
+
+      ``` json
+
+      {
+        "id": 123456,
+        "label": "tracker label",
+        "clone": false,
+        "group_id": 167,
+        "avatar_file_name" : "file name",
+        "source": {
+          "id": 234567,
+          "device_id": 9999999988888,
+          "model": "telfmb920",
+          "blocked": false,
+          "tariff_id": 345678,
+          "status_listing_id": null,
+          "creation_date": "2011-09-21",
+          "tariff_end_date": "2016-03-24",
+          "phone": "71234567890"
+        },
+        "tag_bindings": [{
+          "tag_id": 456789,
+          "ordinal": 4
+        }]
+      }
+
+       ```
+
+      Where:
+
+
+      - **id:** integer. It is the tracker_id or object_id in other requests.
+          
+      - **label:** string. The tracker label.
+          
+      - **clone:** boolean. `true` if this tracker is a
+      [clone](https://docs.navixy.com/admin-panel/tracker-clones) and `false` if
+      it is an original tracker.
+          
+      - **group_id:** integer. The tracker group ID, 0 when no group, and the
+      tracker will be marked in the Main group in the user web interface.
+          
+      - **avatar_file_name:** optional string. The file name saved on the
+      platform as an avatar of the tracker. It is passed only if present. This
+      avatar is visible only in the web UI.
+          
+      - **source:** object. The source represents your tracker in real life. The
+      source will be the same for original trackers and for clones.
+          
+          - **id:** integer. The source ID.
+              
+          - **device_id:** string. The device id or IMEI. The information you used to register a tracker.
+              
+          - **model:** string. The tracker model name from the model list API call.
+              
+          - **blocked:** boolean. `true` if tracker is blocked due to the tariff end. Most of the actions won't be available for blocked trackers. To unblock it, the user account must have enough balance to charge according to a tracker's tariff plan.
+              
+          - **tariff_id:** integer. An ID of a tracker plan from the admin panel. You can check the plan details within the admin panel or using panel APIs.
+              
+          - **status_listing_id:** int. An ID of the status listing associated with this tracker, or null.
+              
+          - **creation_date:** [date/time](https://developers.navixy.com/backend-api/getting-started/#data-types). A date when a tracker was registered on the platform.
+              
+          - **tariff_end_date:** [date/time](https://developers.navixy.com/backend-api/getting-started/#data-types). A date of the next tariff prolongation, or null.
+              
+          - **phone:** string. Phone of the device. Can be null or empty if a device has no GSM module.
+              
+      - **tag_binding:** object. List of attached tags. Appears only for the
+      [tracker/list](https://developers.navixy.com/backend-api/resources/tracking/tracker/#list)
+      call.
+          
+          - **tag_id:** integer. An ID of a tag.
+              
+          - **ordinal:** integer. The number that can be used as ordinal or kind of tag. The max value is 5.
+              
+
+      The next API calls we added to this section:
+
+
+      -
+      [tracker/read](https://navixyapisandbox.postman.co/workspace/Navixy-API-Sandbox~88daa7aa-f426-4ac1-be59-10bb3877bd1b/request/8534541-e08d1e72-272c-4b93-9368-9350b286c360?action=share&source=copy-link&creator=8534541&ctx=documentation)
+      - will provide you with tracker object information for a specific tracker.
+          
+      -
+      [tracker/list](https://navixyapisandbox.postman.co/workspace/Navixy-API-Sandbox~88daa7aa-f426-4ac1-be59-10bb3877bd1b/request/8534541-96d2c4c8-517f-46e1-9fa0-79f2bc499716?action=share&source=copy-link&creator=8534541&ctx=documentation)
+      - will provide you with tracker object information from all objects
+      registered under the user account.
+  - name: User Interface API > Trackers > Last location and state info
+    description: >-
+      This section will present API calls to get the last location and status
+      information of your trackers which may be used in different dashboards
+      representing the current object location related information.
+
+
+      - `tracker/get_last_gps_point` - will provide you with only the
+      information about the last GPS data received by the platform from a
+      tracker. If your device provides data from its buffer (history), this API
+      call will give you the most relevant GPS point received.
+          
+      - `tracker/get_state` - will provide you with the last received location
+      and status information of a specific tracker. Here, you can get movement
+      status, last GPS and GSM update, last speed, altitude and heading, outputs
+      and inputs status, current connection status, and so on.
+          
+      - `tracker/get_states` - will provide you with all the same as `get_state`
+      request, but for all listed `tracker_ids` in the trackers parameter.
+  - name: User Interface API > Trackers > Counters
+    description: >-
+      There are two types of counters:
+
+
+      - Odometer - the odometer allows you to monitor a vehicle's mileage in
+      real-time. The mileage readings can be based on the data received from a
+      GPS tracking device or CAN bus.  
+          Usually odometer counter can be used to pay drivers or charge shared objects for covered distance.
+          
+      - Engine hours - this counter allows owners of vehicles and special
+      machinery to monitor the engine's running time and schedule maintenance
+      work based on this data.
+          
+
+      The platform will begin counting the information after you create a new
+      counter.
+  - name: User Interface API > Trackers > Counters > Create counter
+    description: >-
+      Let's start with counter creation.
+
+
+      To create an odometer counter, you need to use the `tracker/list` API call
+      to get the `tracker_ids` from its response and choose one of the counter
+      types.
+
+
+      For the counter, you can set a specific mileage measurement sensor. The
+      counter will add the delta between the last received value and the new one
+      to the counter value. So, the counter doesn't read the value itself; it
+      just takes the delta. For example, if the last mileage reading was 100 km,
+      and the new one is 120 km, the counter will add 20 km to its last value,
+      not just show 120 km.
+
+
+      Engine hours can have only CAN:Engine hours sensor as a source.
+
+
+      The counter creation process consists of two API calls:
+
+
+      1. Step 1. Use the `counter/value/set` API call to set up the counter
+      initially or update values for the existing one. Here, you need to use the
+      `tracker_id` and one of types: `odometer` or `engine_hours`. Additionally,
+      you need to add the starting value. The counter will add the counted delta
+      of the source to this value.
+          
+      2. Step 2. Use the `counter/update` API call to set additional counter
+      parameters like multiplier, and `source_sensor_id`.
+          
+          1. If `source_id` is `null` for the odometer - it will count mileage based on GPS provided by a tracker.
+              
+          2. If `source_id` is `null` for engine hours - it will count engine hours from the ignition source.
+  - name: User Interface API > Trackers > Counters > Reading counters data
+    description: >-
+      Once the odometer and engine hours are created, they can be received as
+      values in your apps and dashboards.
+
+
+      Odometer readings are updated no more frequently than once every three
+      minutes, and the engine hours counter readings are updated every three
+      hours.
+
+
+      There are several ways to receive values:
+
+
+      - To receive the last values from both the odometer and engine hours, you
+      can use the `counter/get_counters` request.
+          
+      - In case you need the last information of a particular counter on one
+      tracker, you can use the `counter/value/get request`.
+          
+      - In case you need the last information of a particular counter on a list
+      of trackers, utilize the `counter/value/list` call.
+          
+      - If you create a report about odometer or engine hours values with
+      timestamps, the `counters/data/list` request will be helpful for you.
+          
+      - Additionally, if you need counted information per some period, which is
+      useful for reports as total or dashboards with timespan, use the
+      `stats/mileage` or `stats/engine_hours` requests.
+  - name: User Interface API > Trackers > Sensors
+    description: >-
+      The ability to connect sensors, as well as their number, may vary
+      depending on the device model. Some sensors are automatically created by
+      the platform. The list of these sensors depends on the device model and
+      the information received from them. Some sensors, such as the board
+      voltage, will be added automatically during the registration process, but
+      most of other sensors should be created manually.
+
+
+      Full sensor creation has several steps:
+
+
+      1. Data sending from the sensor should be configured on the device's side,
+      and it should be received by the platform. To check which sensor is
+      received by the platform, we recommend using [the air console in the admin
+      panel](https://docs.navixy.com/admin-panel/air-console) in the admin panel
+      as the fastest way with a GUI.  
+          It is also possible to connect via [websockets to console](https://developers.navixy.com/panel-api/resources/tracker/#consoleconnect), but it requires additional websocket configuration on your side.
+          
+      2. After checking the air console, we know which sensor sends data to the
+      platform (the right console part) and can choose one of them to
+      [create](https://developers.navixy.com/backend-api/resources/tracking/tracker/sensor/#create).
+          
+      3. The sensor should be additionally
+      [calibrated](https://developers.navixy.com/backend-api/resources/tracking/tracker/sensor/calibration_data/)
+      in case it sends data in an uncalibrated form. For example, analog
+      temperature or LLS fuel level sensors.
+          
+
+      There are several different sensor sub-types:
+
+
+      - Metering sensors - are sensors that may provide valuable readings, such
+      as temperature, mileage, and fuel level. They can also be aggregation
+      (composite) sensors that sum or average readings from sensors of the same
+      type.
+          
+      - Discrete inputs - are digital inputs which can get on/off states from
+      wires.
+          
+      - Virtual sensor - the additional sensor which can get information from
+      real sensors, but you're able to define your values for the standard
+      readings. For example, if it gets data from a fuel level sensor, you can
+      set the values - "need to refill" or "enough fuel".
+          
+
+      We will describe them all further and provide examples for creating and
+      updating them.
+  - name: User Interface API > Trackers > Sensors > Creating sensors
+    description: Here you will learn how to create and update different types of sensors.
+  - name: >-
+      User Interface API > Trackers > Sensors > Creating sensors > Metering
+      sensors
+    description: >-
+      Metering sensors are sensors that may provide valuable readings, such as
+      temperature, mileage, fuel level, and so on. The metering sensor has the
+      following object structure:
+
+
+      ``` json
+
+      {
+          "type": "metering",
+          "id": 860250,
+          "sensor_type": "temperature",
+          "name": "OBD Coolant temperature",
+          "input_name": "obd_coolant_t",
+          "multiplier": 1.0,
+          "divider": 1.0,
+          "accuracy": 0.0,
+          "units": "",
+          "units_type": "celsius",
+          "parameters": {
+            "parent_ids": [123042, 123566],
+            "volume": 0.7,
+            "min": 0.0,
+            "max": 12.0,
+            "max_lowering_by_time": 120.0,
+            "max_lowering_by_mileage": 120.0,
+            "ignore_drains_in_move": true,
+            "ignore_refuels_in_move": false,
+            "refuel_gap_minutes": 11
+          }
+      }
+
+       ```
+
+      Field definitions:
+
+
+      - `type` - string. Always `metering` for metering sensors.
+          
+      - `id` - integer. A sensor id.
+          
+      - `sensor_type` - string. Type of a metering sensor. Listed below.
+          
+      - `name` - string. A name of a sensor.
+          
+      - `input_name` - string. The input name. Don't mix it up with the
+      `sensor_type`. The `input_name` is where the platform receives the
+      readings. You can see `input_names` on the right part of the Air console.
+      Also, you can get the list of all supported `input_types` by the platform
+      [here](https://developers.navixy.com/backend-api/resources/tracking/tracker/sensor/input_name/#response).  
+          Should be `composite` for aggregation sensors. Will be described additionally.
+          
+      - `divider` - double. Divider is used to divide the incoming values from
+      the sensor. For example, if your sensor sends 120, and with a divider of
+      10, the platform will save 12 into the sensor's data.
+          
+      - `accuracy` - integer. The sensor's accuracy in percentages. It is used
+      for the fuel sensor type only. For others, you may set 0. It is necessary
+      to count the possible absolute error to define refills or drains of fuel.
+      We have described it in detail in the [Eco Fleet docs
+      section](https://docs.navixy.com/eco-fleet/sensors-setup-and-configuration).
+      The minimum=0.0, maximum=100.0 with a step of 0.25.
+          
+      - `units` - string. What units should be shown on the platform. Should be
+      used with `units_type` `custom` only. For other types, it should be empty.
+          
+      - `units_type` - string. Units type. May be `custom` for all
+      `sensor_type`. Other available unit types are listed below.
+          
+      - `parameters` - object. Optional object with additional parameters.
+          
+          - `parent_ids` - optional array of parent_ids for `composite` `input_type`.
+              
+          - `volume` - double. Max volume of a composite sensor, applicable for `composite` `input_type` only.
+              
+          - `min` - double. The platform will ignore raw data from this sensor less than this value.
+              
+          - `max` - double. The platform will ignore raw data from this sensor more than this value.
+              
+          - `max_lowering_by_time` - integer. The maximum allowable flow rate is measured in units per hour. When calculating the fuel change speed over time, the platform compares the fuel level change between points. If it is not set, the default value is 120 units per hour. It means the fuel level should change faster than 120 per hour (equal to 20 L per 10 minutes or 2 L per minute) to determine the drain in a report. This value should be set a few percentage points higher than the likely consumption rate during heavy loads or when the vehicle is ascending uphill. Parameter is applicable for `sensor_type` `fuel` only.
+              
+          - `max_lowering_by_mileage` - integer. The maximum allowable fuel level change speed is measured in units per 100 km. For example, if we set 100 L per 100 km, it means the fuel level should change faster than 100 L per 100 km (equal to 10 L per 10 km or 1 L per km) to determine the drain in a report. We recommend conducting tests and verifying the actual fuel consumption rate recorded in the reports, then set the necessary values accordingly for maximum accuracy. Parameter is applicable for `sensor_type` `fuel` only.
+              
+          - `ignore_drains_in_move` - boolean. Drains in movement will be excluded. Parameter is applicable for `sensor_type` `fuel` only.
+              
+          - `ignore_refuels_in_move` - boolean. Refills in movement will be filtered. Parameter is applicable for `sensor_type` `fuel` only.
+              
+          - `refuel_gap_minutes` - integer. This setting is required when the Ignore feature is enabled. It determines the timeout period in minutes that will be used to shorten the driving intervals for fuel filtering. This option can be helpful if the fuel level stabilizes only after some time has passed since refueling, and the vehicle has already started moving. This is more commonly seen in vehicles with large fuel tanks. The default setting for this feature is 5 minutes. Parameter is applicable for `sensor_type` `fuel` only.
+              
+
+      Metering sensor types with available for them `units_type`:
+
+
+      - `fuel`
+          
+          - `litres`
+              
+          - `gallon_imp` - gallon (UK).
+              
+          - `gallon_us` - gallon (US).
+              
+          - `percent`
+              
+          - `custom`
+              
+      - `temperature`
+          
+          - `celsius`
+              
+          - `fahrenheit`
+              
+          - `custom`
+              
+      - `rpm`
+          
+          - `custom`
+              
+      - `custom`
+          
+          - `pascal`
+              
+          - `kilopascal`
+              
+          - `percent`
+              
+          - `kilometre`
+              
+          - `mile`
+              
+          - `nautical_mile`
+              
+          - `metre`
+              
+          - `yard`
+              
+          - `feet`
+              
+          - `volt`
+              
+          - `week`
+              
+          - `day`
+              
+          - `hour`
+              
+          - `minute`
+              
+          - `second`
+              
+          - `custom`
+              
+      - `fuel_consumption`
+          
+          - `lp100km` - liters per 100 km.
+              
+          - `mpg_imp` - miles per gallon (UK).
+              
+          - `mpg_us` - miles per gallon (US).
+              
+          - `kml` - kilometers per liter.
+              
+          - `gp100mile_imp` - gallons (UK) per 100 miles.
+              
+          - `gp100mile_us` - gallons (US) per 100 miles.
+              
+          - `kmpg_us` - kilometers per gallons (US).
+              
+          - `gp100km_imp` - gallons (UK) per 100 km.
+              
+          - `gp100km_us` - gallons (US) per 100 km.
+              
+          - `lph` - liters per hour.
+              
+          - `litre_per_nmi` - liters per nautical mile.
+              
+          - `gph_imp` - gallons (UK) per hour.
+              
+          - `gph_us` - gallons (US) per hour.
+              
+          - `custom`
+              
+      - `instant_consumption`
+          
+          - `lp100km` - liters per 100 km.
+              
+          - `mpg_imp` - miles per gallon (UK).
+              
+          - `mpg_us` - miles per gallon (US).
+              
+          - `kml` - kilometers per liter.
+              
+          - `gp100mile_imp` - gallons (UK) per 100 miles.
+              
+          - `gp100mile_us` - gallons (US) per 100 miles.
+              
+          - `kmpg_us` - kilometers per gallons (US).
+              
+          - `gp100km_imp` - gallons (UK) per 100 km.
+              
+          - `gp100km_us` - gallons (US) per 100 km.
+              
+          - `lph` - liters per hour.
+              
+          - `litre_per_nmi` - liters per nautical mile.
+              
+          - `gph_imp` - gallons (UK) per hour.
+              
+          - `gph_us` - gallons (US) per hour.
+              
+          - `custom`
+              
+      - `power`
+          
+          - `volt`
+              
+          - `custom`
+              
+      - `speed`
+          
+          - `kmh` - kilometers per hour.
+              
+          - `mph` - miles per hour.
+              
+          - `knot`
+              
+      - `flow_meter`
+          
+          - `litres`
+              
+          - `gallon_imp` - gallon (UK).
+              
+          - `gallon_us` - gallon (US).
+              
+      - `acceleration`
+          
+          - `ms2` - meters per second squared.
+              
+          - `foot_per_second_squared`
+              
+          - `g` - acceleration of free fall.
+              
+
+      Further we will describe most common sensor types with examples.
+  - name: >-
+      User Interface API > Trackers > Sensors > Creating sensors > Metering
+      sensors > Fuel level sensor
+    description: >-
+      To create a fuel level sensor, you need to follow two steps:
+
+
+      1. Create a sensor and define its parameters. The platform will provide
+      the `sensor_id`, which should be used in step 2.
+          
+      2. Update the sensor's calibration table. This is necessary if your sensor
+      sends voltage data. It is also required if your sensor sends data in
+      percentages, but you need to display it in liters.
+          
+      In our example, we will create a CAN fuel level sensor that sends data in
+      percentages. The fuel tank's full capacity is 60 liters. We will display
+      this in the calibration table within the highest value. The calibration
+      will be done in 10 percent increments.
+  - name: >-
+      User Interface API > Trackers > Sensors > Creating sensors > Metering
+      sensors > Temperature sensor
+    description: >-
+      The temperature sensor is an example for all other sensor types as they
+      have a similar structure.
+  - name: >-
+      User Interface API > Trackers > Sensors > Creating sensors > Metering
+      sensors > Composite sensors
+    description: >-
+      Aggregation sensors are similar to metering sensors but are used to sum up
+      or average information from different sensors.
+
+
+      For example, you have a fuel tank with two fuel level sensors. In such a
+      case, the fuel level readings should be averaged to get the real and
+      accurate fuel level information in the tank.
+
+
+      Another example is that you have two fuel tanks with one fuel tank in
+      each. You need to know the overall fuel level in your car since analyzing
+      two different sensors is hard. You can create a summarizing aggregation
+      sensor that will get information from fuel sensors in tank 1 and tank 2.
+
+
+      Aggregation sensors have the same parameters as the metering sensor
+      object, but the `input_name` must be `composite`.
+
+
+      For this example, we will use a vehicle with two fuel level sensors
+      installed in two different tanks. The vehicle has a maximum fuel capacity
+      of 340 liters.
+
+
+      Create a sensor for fuel tank 1 and another for fuel tank 2. Take their
+      `sensor_ids` to use in the `parent_ids` parameter.
+
+
+      For the fuel composite sensor, we don't use parameters responsible for
+      fuel level change speed - `max_lowering_by_time` and
+      `max_lowering_by_mileage`. The platform will take the default
+      `max_lowering_by_time` = 120 L/h to determine drains in reports.
+
+
+      We should set the full tank value into the `volume` parameter, and
+      `parent_ids` must be from fuel level sensors in tank 1 and tank 2.
+  - name: >-
+      User Interface API > Trackers > Sensors > Creating sensors > Discrete
+      inputs
+    description: >-
+      Discrete inputs are device inputs where you can connect ignition state,
+      SOS button, door sensor, or something similar that may have only two
+      states - 1 or 0 - enabled/disabled, active/inactive.
+
+
+      Discrete input object:
+
+
+      ``` json
+
+      {
+        "type": "discrete",
+        "id": 888951,
+        "sensor_type": "ignition",
+        "name": "Ignition",
+        "input_number": 4
+      }
+
+       ```
+
+      - `type` - string. Always `discrete`.
+          
+      - `id` - integer. An ID of a sensor. In other requests should be used as
+      `sensor_id`.
+          
+      - `sensor_type` - enum string. Discrete sensor type.
+          - `ignition`
+              
+          - `sos_button`
+              
+          - `power`
+              
+          - `engine`
+              
+          - `car_alarm`
+              
+          - `door`
+              
+          - `charge`
+              
+          - `detach`
+              
+          - `custom`
+              
+      - `name`\- string. Sensor name. Max size 100 symbols.
+          
+      - `input_number` - int. Available from 1 to 8. To which input number of
+      your device this sensor is assigned.
+  - name: >-
+      User Interface API > Trackers > Sensors > Creating sensors > Virtual
+      sensors
+    description: >-
+      Virtual sensors may be used to represent standard sensor readings with
+      your definitions. For example, you can use "cold" or "hot" for temperature
+      sensors, "need refueling" and "enough fuel" for fuel level sensors, and so
+      on.
+
+
+      There are three calculation methods for virtual sensors:
+
+
+      - Value in range where can set a specific range for your definitions. For
+      example, more than 20 L is "enough fuel," and less than 20 L is "need
+      refueling."
+          
+      - Specific value where you can set definitions to any specific values from
+      your sensor. For example, you receive only several values from the sensor
+      and define them as "danger," "normal," or "perfect."
+          
+      - Bit index where you can get the value of a specific bit from a field
+      that comes in the packet. For example, the device provides different
+      states (1/0) in one field: ignition, movement, door state, hood state, and
+      so on. The platform receives 1010101 in one field, so getting a specific
+      state is not possible using measurement sensors. We need only one bit
+      responsible for the movement state. We should set this bit index virtual
+      sensor and can get information about the movement state only.
+          
+
+      Additional plus - one virtual sensor per tracker may be used as an
+      ignition state. The platform will then calculate all engine hours and
+      parking detection with considering ignition based on this sensor state.
+      For example, you can set up ignition by the board voltage, movement, and
+      anything else you think is more suitable for getting the ignition state in
+      your business case instead of discrete input 1.
+
+
+      ### **Virtual sensor object**
+
+
+      ``` json
+
+      {
+        "type": "virtual",
+        "id": 1700049,
+        "sensor_type": "virtual_ignition",
+        "name": "Virtual Ignition",
+        "input_name": "board_voltage",
+        "parameters": {
+          "calc_method": "in_range",
+          "range_from": 13.4,
+          "value_titles": [{
+              "value": "0",
+              "title": "Off"
+          }, {
+              "value": "1",
+              "title": "On"
+          }]
+        }
+      }
+
+       ```
+
+      Where:
+
+
+      - `type` - string. Always "virtual" for virtual sensors.
+          
+      - `id` - integer. Sensor's id.
+          
+      - `sensor_type` - string. Virtual sensor type. Type of the sensor.
+      "virtual_ignition" for virtual ignition or "state" for others.
+          
+      - `name` - string. A name of sensor. Max size 100 symbols.
+          
+      - `input_name` - string. A source input field name (identifier). Max size
+      64 symbols.
+          
+      - `parameters` - an object with additional parameters.
+          
+          - `calc_method` - string. A method of sensor value calculation. One of this: "in_range", "identity", "bit_index".
+              
+          - `range_from` - double. Low bound of range. It is used only with "in_range" calc method.
+              
+          - `range_to` - double. High bound of range. It is used only with "in_range" calc method.
+              
+          - `bit_index` - integer. A bit index in input field source value. It is used only with "bit_index" calc method.
+              
+          - `value_titles` - mapping for bind special titles for sensor values, if it is necessary.
+              
+              - `value` - string. Sensor value - what the sensor provides to the platform. Max size 64 symbols.
+                  
+              - `title` - string. Title for the sensor value - what will you see in widgets. Max size 64 symbols.
+                  
+
+      ### Some requirements
+
+
+      - There can only be one virtual sensor with the type `virtual_ignition`
+      for a tracker.
+          
+      - One or both fields `range_from` and `range_to` must be present for the
+      calculation method `in_range`.
+          
+      - Field `bit_index` must be present for the calc method `bit_index`.
+          
+      - There can be no more than 100 value titles.
+          
+      - All values must be unique within `value_titles`. There can't be one
+      value with two definitions.
+
+
+      We described work with virtual sensors and different cases of use in our
+      [instructions](https://developers.navixy.com/backend-api/how-to/virtual-sensors/).
+
+
+      In our example, we will add and update a virtual ignition by board
+      voltage.
+  - name: User Interface API > Trackers > Sensors > Reading sensors data
+    description: >-
+      Once you have created sensors on the platform and your device has provided
+      this data to the platform, you can request readings from sensors.
+
+
+      There are several ways to get sensor data:
+
+
+      1\. If you need data from a particular type of sensors:
+
+
+      -
+      [get_diagnostics](https://developers.navixy.com/backend-api/resources/tracking/tracker/#get_diagnostics)
+      - to get last readings from CAN and OBD sensors .
+          
+      -
+      [get_fuel](https://developers.navixy.com/backend-api/resources/tracking/tracker/#get_fuel)
+      - to get last updated data from fuel sensors.
+          
+      - [get_inputs
+      ](https://developers.navixy.com/backend-api/resources/tracking/tracker/#get_inputs)
+      \- to request input states.
+          
+
+      2\. If you need data from all tracker sensors
+
+
+      -
+      [readings/list](https://developers.navixy.com/backend-api/resources/tracking/tracker/readings/#list)
+      - to request the last readings from all sensors of one tracker
+          
+      -
+      [readings/batch_list](https://developers.navixy.com/backend-api/resources/tracking/tracker/readings/#batch_list)
+      - to request the last readings from all sensors of different sensors.
+          
+
+      3\. In case you need historical data from specific sensor for a specified
+      period use
+      [sensor/data/read](https://developers.navixy.com/backend-api/resources/tracking/tracker/sensor/#dataread)
+      API request.
+
+
+      We will share all these requests further.
+paths:
+  /user/auth:
+    post:
+      tags:
+        - User Interface API > User authentication and API keys management
+      summary: User Authentication
+      description: >-
+        An API call to get the user session hash within the user login and
+        password. If you get an error instead of a hash, check that you are
+        using the correct environment, base URL, login, and password. Other
+        errors will be described further.
+
+
+        #### Request parameters
+
+
+        - **login**: string. User email as login.
+            
+        - **password**: string. User password.
+            
+        - **dealer_id**: optional integer. If specified, API will check that the
+        user belongs to this dealer, and if not, error 102 will be returned.
+            
+
+        #### Response parameters
+
+
+        - **hash**: user session hash which can be used in all backend API
+        requests.
+            
+
+        #### Possible errors
+
+
+        - **11:** **Access denied.** It will be returned if the panel is blocked
+        after the 15th day of the month.
+            
+        - **102:** **Wrong login, password or this user doesn't belong to the
+        specified dealer_id.**
+            
+        - **103: User is not activated.** It means the user should confirm their
+        email or be activated manually in the admin panel.
+            
+        - **104: Logins limit exceeded.** It means the number of active sessions
+        is 20. Please check if some of your programs request a lot of user/auth.
+        Instead, they should reuse existing sessions (see also
+        [user/session/renew](https://developers.navixy.com/backend-api/resources/commons/user/session/#renew)).
+            
+        - **105:** **Login attempts limit exceeded, try again later.** The
+        platform's security algorithms won't let hackers brute-force the
+        password.
+      requestBody:
+        content: {}
+      parameters:
+        - name: login
+          in: query
+          schema:
+            type: string
+          example: user_account@email
+        - name: password
+          in: query
+          schema:
+            type: integer
+          example: '123456'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/key/create:
+    post:
+      tags:
+        - User Interface API > User authentication and API keys management
+      summary: API key creation
+      description: >-
+        This call is available only to the master user and only with a standard
+        session hash obtained using a login and password within user/auth.  
+
+        Maximum 20 API keys may be created under one user account.
+
+
+        #### Request parameters
+
+
+        - **hash:** user session hash obtained using a login and password within
+        user/auth request.
+            
+        - **title:** string. Name of an API key you create. It should contain
+        only printable characters. The maximum length is 255 symbols.
+            
+
+        #### Response parameters
+
+
+        - **value:** object with the new API key parameters.
+            
+            - **hash:** string. This is the API key which can be used in other requests.
+                
+            - **create_date:** string. The date and time when the parameter was created.
+                
+            - **title:** string. The assigned requested title.
+                
+
+        #### Possible errors
+
+
+        - **4: User or API key not found, or the session has ended.** This error
+        occurs if the user session (hash parameter) is invalid, or a
+        non-standard session is used, such as another API key.
+            
+        - **13:** **Operation not permitted.** This error occurs if a call was
+        made with a subuser's session hash.
+            
+        - **268:** **Over quota.** This error occurs if 20 keys have already
+        been created in the user's account.
+      requestBody:
+        content: {}
+      parameters:
+        - name: hash
+          in: query
+          schema:
+            type: string
+          example: '{{Hash}}'
+        - name: title
+          in: query
+          schema:
+            type: string
+          example: My_example
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/key/list:
+    post:
+      tags:
+        - User Interface API > User authentication and API keys management
+      summary: Get list of API keys
+      description: >-
+        Request to get list of all API keys existing under the user account. You
+        can take the necessary API key to add it into postman as hash variable
+        for your further work there.
+
+
+        #### Request parameters
+
+
+        **hash:** user session hash obtained using a login and password within
+        user/auth request.
+
+
+        #### Response parameters
+
+
+        **list:** the list of API key objects.
+
+
+        - **hash:** string. This is the API key which can be used in other
+        requests.
+            
+        - **create_date:** string. The date and time when the parameter was
+        created.
+            
+        - **title:** string. The API key title.
+            
+
+        #### Possible errors
+
+
+        - **4:** **User or API key not found, or the session has ended.** This
+        error occurs if the user session (hash parameter) is invalid, or a
+        non-standard session is used, such as another API key.
+            
+        - **13:** **Operation not permitted.** This error occurs if a call was
+        made with a subuser's session hash.
+      requestBody:
+        content: {}
+      parameters:
+        - name: hash
+          in: query
+          schema:
+            type: string
+          example: '{{Hash}}'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/key/delete:
+    post:
+      tags:
+        - User Interface API > User authentication and API keys management
+      summary: API key deletion
+      description: >-
+        Request to delete an API key. Will be useful just in case you have
+        created some unnecessary keys or need to refuse access to the platform
+        to someone with this key.
+
+
+        #### Request parameters
+
+
+        **hash:** user session hash obtained using a login and password within
+        user/auth request.
+
+
+        #### Response parameters
+
+
+        **list:** the list of API key objects.
+
+
+        - **hash:** string. This is the API key which can be used in other
+        requests.
+            
+        - **key:** string. The hash of the API key you want to delete.
+            
+
+        #### Possible errors
+
+
+        - **4: User or API key not found, or the session has ended**. This error
+        occurs if the user session (hash parameter) is invalid, or a
+        non-standard session is used, such as another API key.
+            
+        - **13:** **Operation not permitted.** This error occurs if a call was
+        made with a subuser's session hash.
+            
+        - **201:** **Not found in the database.** This error occurs if there is
+        no API key with specified API hash in the account. Check if you have
+        already deleted it or provided an incorrect hash there.
+      requestBody:
+        content: {}
+      parameters:
+        - name: hash
+          in: query
+          schema:
+            type: string
+          example: '{{Hash}}'
+        - name: key
+          in: query
+          schema:
+            type: string
+          example: the_key_hash
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /tracker/list_models:
+    get:
+      tags:
+        - User Interface API > Device registration
+      summary: Getting model list
+      description: >-
+        This request will provide you with all the tracker models integrated on
+        the platform. Here, you will get the model code and a lot of other
+        parameters, including the number of inputs integrated, available rules,
+        and so on.
+
+
+        It can be used not only to get the model code but also to find out if
+        your new tracker is already integrated on the platform or to find out
+        which models are more suitable for your business case.
+
+
+        #### Request parameters
+
+
+        **hash:** user session hash or an API key hash.
+
+
+        **compact_view:** is an optional boolean parameter that will provide you
+        with a compact view instead of full information about every tracker. We
+        use it in our request to optimize the work and cut off the unnecessary
+        info.
+
+
+        **compact_index:** is an optional boolean parameter that will provide
+        you with the last index per every input type instead of listing them all
+        one by one. For instance, it will respond with `[analog_1, analog_2]` if
+        `false` and with `analog_2` only if `true`, meaning there are analog 1
+        and 2 available for the model. It only works for `compact_view=false`.
+
+
+        **codes:** is an optional string array of model codes. It will provide
+        you with the model information for only the listed device models. It is
+        used internally in most cases, but if you have a website with available
+        models you sell for the clients in Navixy, or you want to write your own
+        activation app with only these models, it will be useful.
+
+
+        #### Response parameters
+
+
+        **list:** the list of integrated trackers.  
+
+        This is a list of parameters in the compact and full view.
+
+
+        - **id:** integer. The id of a model.
+            
+        - **vendor:** string. The company name that manufactured the tracker.
+            
+        - **code:** string. Platform-related name of this model, which can be
+        used in the registration request.
+            
+        - **parent_code:** string. Is `null` for original trackers and code of
+        the original model if this tracker is its clone or rebrand.
+            
+        - **type:** string. Type of a tracker. Can be one of `vehicle`,
+        `portable`, `personal`, or `logger`.
+            
+        - **name:** string. The model's full name.
+            
+        - **id_type:** string. What is used as an id for registration. Remember
+        the id_type since it will be necessary to find out what should be used
+        in `device_id` parameter when register a tracker.
+            
+            - **imei:** means the device uses IMEI as its identifier, e.g., "356938035643809". Pass only digits of IMEI, no spaces, minus signs, etc.
+                
+            - **meid:** means the device uses MEID consisting of 14 HEX digits as its identifier, e.g., "A10000009296F2".
+                
+            - **id,n:** means the device uses an n-digit identifier (factory ID with length N), for example, "id,7" means that you must pass a 7-digit number, for example, "1234567".
+                
+            - **n,m:** n-digit generated ID starting with M. This means that the device has a configurable ID, and our platform generates and configures it automatically. You don't need to pass any identifier during device registration in this case.
+                
+        - **has_phone:** is a boolean parameter that tells if the model has a
+        phone number, and it is mandatory to set it during registration.
+            
+        - **has_apn_settings:** is a boolean parameter that tells if the model
+        has APN settings, and it is mandatory to set them during registration.
+            
+        - **register:** is an internal boolean model parameter.
+            
+        - **check_bundle:** is an internal boolean model parameter.
+            
+        - **has_auto_registration:** is a boolean parameter that shows if the
+        model has automatic registration commands to be sent to the tracker.
+            
+        - **port:** integer. To what port the model should be configured to send
+        the data.
+            
+
+        Further, additional parameters will be listed if the compact view is
+        false:
+
+
+        - **battery:** will be null if a tracker doesn't have an internal
+        battery, or the platform doesn't read this information. It will be an
+        object in case the platform reads this data. Values will be in volts or
+        in percentages, depending on the tracker itself.
+            
+            - **min_charge:** float. The charge when the platform recognizes the battery level as 0%.
+                
+            - **low_charge:** float. The charge below which the platform triggers the low battery alert.
+                
+            - **max_charge:** float. The charge when the platform recognizes the battery level as 100%.
+                
+        - **altitude:** is a boolean that tells if a tracker provides altitude
+        information or not.
+            
+        - **satellites:** is a boolean that tells if a tracker provides the
+        amount of connected satellites to the platform.
+            
+        - **gsm_level:** is a boolean that tells if a tracker provides the GSM
+        signal strength to the platform.
+            
+        - **gsm_network:** is a boolean that tells if the device may provide the
+        GSM network name to the platform.
+            
+        - **gsm_roaming:** is a boolean that tells if the device may provide
+        information on whether it is working in roaming or in the home network.
+            
+        - **has_detach_button:** is a boolean that tells if a tracker has a
+        detach button and can notify the platform about detachment from the
+        tracked object.
+            
+        - **has_fuel_input:** is a boolean that tells if a tracker may provide
+        fuel information from at least one fuel level sensor type. This is the
+        fastest way to find the model that may provide fuel level information.
+            
+        - **analog_inputs:** integer. The amount of analog inputs available for
+        the tracker model.
+            
+        - **digital_inputs:** integer. The amount of digital inputs shown in the
+        digital inputs widget on the platform. It includes a virtual digital
+        input for models that have it and is supported.
+            
+        - **digital_outputs:** integer. The amount of digital outputs that can
+        be controlled using the output control widget or APIs.
+            
+        - **rs232_inputs:** integer. The amount of RS-232 inputs available for
+        this tracker model.
+            
+        - **track_control:** string. The name of the specific portlet available
+        in the devices and settings tab for this model.
+            
+        - **output_control:** string. Is responsible for the output control
+        type. It is useful to know which type is used when you write your own
+        app for output control.
+            
+            - **none:** in case the output control is not supported for this model.
+                
+            - **default:** if a tracker uses default output control only when the device is online, and you can switch on/off only one output there. For example, a tracker has 3 outputs, and a command to switch its state for every output. We should use the `tracker/output/set` API call for such an output control type.
+                
+            - **batch:** for this type, you should tell the tracker which new states of all its outputs should be in the result. For example, a tracker has 3 outputs with states 1 - on, 2 - off, 3 - on. You need to switch on output 2 only, and the command must be something that tells the device - I want the next result 1 - on, 2 - on, 3 - on. We should use the `tracker/output/setall` API call for such an output control type.
+                
+            - **stateless:** if a tracker doesn't provide the output state to the platform. In this case, the platform can't recognize which status was before the command and after it. This is marked with two states on/off always available in the output control widget when the device is online.
+                
+            - **async:** if it is available to control outputs even on offline trackers. The command may come into the queue for 4 days and will be sent once the device connects to the platform. We should use the `tracker/output/set` API call for such an output control type.
+                
+            - **batch_async:** it is a complex of batch and async controls.
+                
+            - **async_offline:** for such trackers, you can control outputs by SMS. So, even if your tracker is offline, the platform will try to send the SMS command to it to change the output state.
+                
+            - **batch_async_offline:** the same as batch_async, but the platform may send an SMS output control command to the tracker.
+                
+        - **special_control:** array of string. Contains the name of special
+        control portlets available for this tracker model in the devices and
+        settings tab. It is mostly used internally.
+            
+        - **rules:** an array of string with rule type names available for this
+        tracker model on the platform.
+            
+        - **inputs:** an array of string. Inputs available for this tracker
+        model on the platform.
+            
+        - **state_fields:** an array of string. inputs available for this
+        tracker model on the platform. State field will be shown in the widget
+        anytime the platform receives data from such input.
+            
+        - **special_settings:** array of string. Similar to special_control. It
+        is mostly used internally.
+            
+        - **sms_control:** an array of string. Shows what SMS control command
+        types are available for this model in the UI.
+            
+            - tracking: this type allows you to request the tracker's position, even if it is not connected to the platform, by SMS.
+                
+            - outputs: this type allows you to send output control commands by SMS.
+                
+        - **has_led_control:** is a boolean that tells if a tracker has the
+        possibility to switch on/off the LED state on it. It may be controlled
+        with the `tracker/led` API calls.
+            
+        - **has_location_request:** is a boolean that tells if a tracker has the
+        possibility to provide the last location by clicking the update location
+        button in the UI, in case it is offline, by SMS.
+            
+        - **has_gprs_location_request:** is a boolean that tells if a tracker
+        has the possibility to provide the last location by clicking the update
+        location button in the UI, in case it has a GPS not updated status.
+            
+        - **has_gsm_lbs_location_request:** is a boolean that tells if a tracker
+        has the possibility to provide the last position received by LBS after
+        clicking the update location button in the UI.
+            
+        - **has_chat:** is a boolean that tells if a tracker is able to send and
+        receive chat messages from the UI chat.
+            
+        - **has_odometer:** is a boolean that tells if a tracker has at least
+        one odometer input.
+            
+        - **has_lbs:** is a boolean that tells if a tracker is able to provide
+        the position received by LBS.
+            
+        - **has_motion_sensor:** is a boolean that tells if a tracker has a
+        motion sensor.
+            
+        - **has_hardware_key:** is a boolean that tells if a tracker is able to
+        read the driver's key from at least one source.
+            
+
+        #### Possible errors
+
+
+        There are no specific errors for this request. Only usual errors with
+        the connection to the server or session hash are possible.
+      parameters:
+        - name: hash
+          in: query
+          schema:
+            type: string
+          example: '{{Hash}}'
+        - name: compact_view
+          in: query
+          schema:
+            type: boolean
+          example: 'true'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /plugin/list:
+    get:
+      tags:
+        - User Interface API > Device registration
+      summary: Getting plugin list
+      description: >-
+        This request will provide you with a list of plugins available to the
+        user. The list of available plugins may vary from user to user,
+        depending on the platform settings and purchased features. Only the
+        plugins listed in the response can be used to register trackers,
+        generate reports, etc.
+
+
+        #### Request parameters
+
+
+        **hash:** user session hash obtained using a login and password within
+        the user/auth request.
+
+
+        #### Response parameters
+
+
+        **list:** an array with all available plugin objects for the user
+        account.
+
+
+        - **id:** integer. The ID of a plugin. We are interested in plugins 37
+        or 44 for registering usual GPS trackers and 35 or 68 for registering
+        mobile apps.
+            
+        - **type:** string. The plugin name.
+            
+        - **module:** string. Just the internal module name.
+            
+        - **ui_module:** string. The UI module to which it is related.
+            
+        - **filter:** an object with some additional options of this plugin.
+            
+            - **exclusion:** boolean. If it is `true`, the plugin is not enabled. This is for internal use mostly.
+                
+            - **values:** array of string with additional filtering parameters.
+                
+
+        #### Possible errors
+
+
+        There are no specific errors for this request. Only usual errors with
+        the connection to the server or session hash are possible.
+      parameters:
+        - name: hash
+          in: query
+          schema:
+            type: string
+          example: '{{Hash}}'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /tracker/group/list:
+    get:
+      tags:
+        - User Interface API > Device registration
+      summary: Getting group list
+      description: >-
+        This request will provide you with all existing user tracker groups.
+        There is always a "default" unnamed group with an ID of 0. It cannot be
+        modified, deleted, and is not returned by this API call. In case the
+        user account doesn't have any specific groups, the API call will return
+        an empty list. Therefore, this request is necessary in our scenario if
+        you want to register a tracker to a specific non-default group.
+
+
+        #### Request parameters
+
+
+        **hash:** user session hash obtained using a login and password within
+        the user/auth request.
+
+
+        #### Response parameters
+
+
+        **list:** an array with all existing tracker groups in the user account,
+        excluding the main group.
+
+
+        - **title:** string. Name of a group.
+            
+        - **color:** string. A 6-digit hex string that defines the color. The
+        first two digits are responsible for the intensity of red, the middle
+        two for green, and the last two for blue.
+            
+        - **id:** integer. The ID of a group.
+            
+
+        #### Possible errors
+
+
+        There are no specific errors for this request. Only usual errors with
+        the connection to the server or session hash are possible.
+      parameters:
+        - name: hash
+          in: query
+          schema:
+            type: string
+          example: '{{Hash}}'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /tracker/register:
+    post:
+      tags:
+        - User Interface API > Device registration
+      summary: Mobile app registration
+      description: >-
+        This API request allows you register a mobile application on the
+        platform. This one is much easier and you need only a group_id in case
+        you register your phone into a specific group and plugin_id from the
+        `plugins/list`. Model should be always `mobile_unknown_xgps`.
+
+
+        #### Request parameters
+
+
+        - **hash:** user session hash or an API key hash.
+            
+        - **label:** string. This is the name of your tracker, which will appear
+        in the object list of the user interface. It is not unique, so you can
+        have several devices with the same name.
+            
+        - **group_id:** integer. Use the `group_id` of an existing group in the
+        user account if you want to register a device into this group. In case
+        you don't need any specific group, set it to `0` and the device will be
+        registered into the main tracker group.
+            
+        - **plugin_id:** integer. A plugin which should be used for
+        registration. You can request the list with the `plugin/list` request.
+        Use one available for your user account. For mobile app registration 35
+        or 68.
+            
+        - **model:** string. For mobile app registration is always
+        `mobile_unknown_xgps`.
+            
+        - **notification_email:** optional string. An email address. The
+        platform will send an invite to the recipient who should start to use
+        the X-GPS app. It will contain the device ID and other instructions.
+            
+        - **notification_phone:** optional string. A phone number in
+        international format without `+` sign. The platform will send an invite
+        to the recipient to use X-GPS app. This invite will contain the device
+        ID that must be used in the app. An sms will be sent only in case the
+        user has the possibility to use sms by plan and if the dealer has the
+        sms gateway installed.
+            
+
+        #### Response parameters
+
+
+        value: is a tracker object parameter.
+
+
+        - **id:** integer. It is the `tracker_id` or `object_id` in other
+        requests.
+            
+        - **label:** string. The tracker label.
+            
+        - clone: boolean. `true` if this tracker is a
+        [clone](https://docs.navixy.com/admin-panel/tracker-clones) and `false`
+        if it is an original tracker.
+            
+        - **group_id:** integer. The tracker group ID, 0 when no group, and the
+        tracker will be marked in the Main group in the user web interface.
+            
+        - **avatar_file_name:** optional string. The file name saved on the
+        platform as an avatar of the tracker. It is passed only if present. This
+        avatar is visible only in the web UI.
+            
+        - **source:** object. The source represents your tracker in real life.
+        The source will be the same for original trackers and for clones.
+            
+            - **id:** integer. The source ID.
+                
+            - **device_id:** string. The device id or IMEI. The information you used to register a tracker.
+                
+            - **model:** string. The tracker model name from the model list API call.
+                
+            - **blocked:** boolean. `true` if tracker is blocked due to the tariff end. Most of the actions won't be available for blocked trackers. To unblock it, the user account must have enough balance to charge according to a tracker's tariff plan.
+                
+            - **tariff_id:** integer. An ID of a tracker plan from the admin panel. You can check the plan details within the admin panel or using panel APIs.
+                
+            - **status_listing_id:** integer. An ID of the status listing associated with this tracker, or null.
+                
+            - **creation_date:** [date/time](https://developers.navixy.com/backend-api/getting-started/#data-types). A date when a tracker was registered on the platform.
+                
+            - **tariff_end_date:** [date/time](https://developers.navixy.com/backend-api/getting-started/#data-types). A date of the next tariff prolongation, or null.
+                
+            - **phone:** phone you used for device's registration. Can be null only for trackers with has_phone=false.
+                
+
+        #### Possible errors
+
+
+        - **13: Operation not permitted:** if the user has insufficient rights.
+        For example, a subuser without the right to register devices.
+            
+        - **204: Entity not found:** if the specified `group_id` does not exist
+        under the user account. See
+        [group/list](https://developers.navixy.com/backend-api/resources/tracking/tracker/group/#list).
+            
+        - **220:** **Unknown device model:** if the specified model code is not
+        `mobile_unknown_xgps`. Use model `mobile_unknown_xgps`.
+            
+        - **221:** **Device limit exceeded:** if the device limit set by the
+        user's plan has been exceeded.
+            
+        - **222:** **Plugin not found:** if the specified plugin is not
+        available for the user account or is not supported by the device model.
+            
+        - **225:** **Not allowed for this legal type:** if the tariff of the new
+        device is not compatible with the user's legal type.
+            
+        - **227:** **Wrong activation code:** if the specified activation code
+        was not found, or another device was already activated with this code.
+      requestBody:
+        content: {}
+      parameters:
+        - name: hash
+          in: query
+          schema:
+            type: string
+          example: '{{Hash}}'
+        - name: label
+          in: query
+          schema:
+            type: string
+          example: new_device_label
+        - name: group_id
+          in: query
+          schema:
+            type: string
+          example: group_id
+        - name: plugin_id
+          in: query
+          schema:
+            type: string
+          example: plugin_id_35_or_68
+        - name: model
+          in: query
+          schema:
+            type: string
+          example: mobile_unknown_xgps
+        - name: notification_phone
+          in: query
+          schema:
+            type: string
+          example: where_to_send_device_id_phone_with_country_code_without_+_sign
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /tracker/list:
+    get:
+      tags:
+        - User Interface API > Trackers > Tracker object data
+      summary: Getting tracker list
+      description: >-
+        Gets a list of all tracker objects registered under this user account.
+        It is one of the most popular API calls since you can get the list of
+        `tracker_ids` under a user. After it, you can use them in other API
+        calls.
+
+
+        #### Request parameters
+
+
+        **hash:** user session hash or an API key hash.
+
+
+        #### Response parameters
+
+
+        list: an array of tracker objects described in the [Tracker object data
+        section](https://navixyapisandbox.postman.co/workspace/Navixy-API-Sandbox~88daa7aa-f426-4ac1-be59-10bb3877bd1b/folder/8534541-ae3c38de-30cd-4d8c-8024-5410c12efca5?action=share&source=copy-link&creator=8534541&ctx=documentation).
+
+
+        #### Possible errors
+
+
+        - **201: Not found in the database**. This error occurs when the
+        specified `tracker_id` does not exist in the user account or on the
+        platform. For example, this can happen if you use a `hash` from another
+        account or if you enter the `tracker_id` with a mistake.
+      parameters:
+        - name: hash
+          in: query
+          schema:
+            type: string
+          example: '{{Hash}}'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /tracker/read:
+    get:
+      tags:
+        - User Interface API > Trackers > Tracker object data
+      summary: Reading info about specific tracker
+      description: >-
+        Gets a tracker object information about a specific device. May be useful
+        for applications which work with output control or automatic command
+        sending to get the model code or in cases where you need to get attached
+        tags or status listing available for a specific tracker.
+
+
+        #### Request parameters
+
+
+        **hash:** user session hash or an API key hash.
+
+
+        **tracker_id:** an ID of a tracker for which you want to get the
+        information.
+
+
+        #### Response parameters
+
+
+        All fields listed in the tracker object structure in the [Tracker object
+        data section
+        description](https://navixyapisandbox.postman.co/workspace/Navixy-API-Sandbox~88daa7aa-f426-4ac1-be59-10bb3877bd1b/folder/8534541-ae3c38de-30cd-4d8c-8024-5410c12efca5?action=share&source=copy-link&creator=8534541&ctx=documentation).
+
+
+        #### Possible errors
+
+
+        - **201: Not found in the database**. This error occurs when the
+        specified `tracker_id` does not exist in the user account or on the
+        platform. For example, this can happen if you use a `hash` from another
+        account or if you enter the `tracker_id` with a mistake.
+      parameters:
+        - name: hash
+          in: query
+          schema:
+            type: string
+          example: '{{Hash}}'
+        - name: tracker_id
+          in: query
+          schema:
+            type: integer
+          example: '877766'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /tracker/get_last_gps_point:
+    get:
+      tags:
+        - User Interface API > Trackers > Last location and state info
+      summary: Last known GPS location of a tracker
+      description: >-
+        Retrieves the most recent valid GPS location of a tracker. This API call
+        will provide you with the most relevant GPS location received from the
+        device, even if it provides data from its buffer (history). GSM LBS
+        (Location Based Services) locations are not considered.
+
+
+        #### Request parameters
+
+
+        **hash:** user session hash or an API key hash.
+
+
+        **tracker_id:** an ID of a tracker for which you want to get the last
+        GPS location data.
+
+
+        #### Response parameters
+
+
+        value: the last location data object.
+
+
+        - **get_time:** string. The latest date and time of this GPS location
+        saved by the tracker according to its internal time.
+            
+        - **heading:** integer. A value that represents the direction in
+        degrees, with a range of 0 to 360. 0 corresponds to North.
+            
+        - **lat:** float. Represents location's latitude.
+            
+        - **lng:** float. Represents location's longitude.
+            
+        - **satellites:** integer. Shows the number of GPS satellites used to
+        determine this point.
+            
+        - **speed:** integer. Tracker speed when this point was determined.
+            
+        - **precision:** optional integer. A value indicating precision in
+        meters. Is shown for trackers which provide this information among with
+        the location data.
+            
+
+        #### Possible errors
+
+
+        - **201: Not found in the database**. This error occurs when the
+        specified `tracker_id` does not exist in the user account or on the
+        platform. For example, this can happen if you use a `hash` from another
+        account or if you enter the `tracker_id` with a mistake.
+            
+        - **208: Device blocked**. This error occurs if the tracker with the
+        specified `tracker_ID` exists but has been blocked due to its tariff
+        plan. For example, it may have been blocked because the user does not
+        have enough money to cover the plan's charge.
+      parameters:
+        - name: hash
+          in: query
+          schema:
+            type: string
+          example: '{{Hash}}'
+        - name: tracker_id
+          in: query
+          schema:
+            type: string
+          example: tracker_id
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /tracker/get_state:
+    get:
+      tags:
+        - User Interface API > Trackers > Last location and state info
+      summary: Last status of a tracker
+      description: >-
+        Provides the last received location and status information of a specific
+        tracker. Here, you can get movement status, last GPS and GSM update,
+        last speed, altitude and heading, outputs and inputs status, current
+        connection status, and so on.
+
+
+        It is useful for your dashboards and for checking last known tracker
+        information before sending any command to it.
+
+
+        #### Request parameters
+
+
+        **hash:** string. User session hash or an API key hash.
+
+
+        **tracker_id:** integer. An ID of a tracker for which you want to get
+        the status information.
+
+
+        #### Response parameters
+
+
+        **user_time:** string containing the date and time in the user's
+        timezone, representing the current time of the user account.
+
+
+        **state:** object containing the tracker's last status, including the
+        following properties:
+
+
+        - **source_id:** integer. The unique identifier of the tracker from
+        which data is being received by the platform.
+            
+        - **gps:** object containing the latest GPS data, including:
+            
+            - **updated:** string with date and time in the user's timezone, indicating when the GPS data was last updated by the tracker.
+                
+            - **signal_level:** integer, representing the GPS signal level in percent from the last updated data.
+                
+            - **location:** object containing the coordinates of the last updated GPS location, including:
+                
+                - **lat:** float representing the latitude of the location.
+                    
+                - **lng:** float representing the longitude of the location.
+                    
+            - **heading:** integer representing the direction in degrees, with a range of 0 to 360, where 0 corresponds to North.
+                
+            - **speed:** integer representing the speed registered in the last GPS update.
+                
+            - **alt:** integer representing the altitude registered in the last GPS update.
+                
+        - **connection_status:** string. string representing the device's
+        connection status based on the `last_update_time`, with possible values
+        including:
+            
+            - `Active` means the device is online;
+                
+            - `Idle` means the device updated last GPS data more than 5 minutes ago;
+                
+            - `Offline` means the device is not connected to the platform.
+                
+        - **movement_status:** string representing the movement status
+        registered by the platform in the last device packet, based on the
+        [parking detection
+        settings](https://www.navixy.com/docs/user/web-interface-docs/devices-doc/parking-detection/),
+        with possible values including:
+            
+            - `Moving` if the device's speed is greater than the idle speed in the parking detection settings.
+                
+            - `Stopped` if the speed is 0 km/h or the movement status reported by the tracker in its last message is 0.
+                
+            - `Parked` if the device's speed is less than the idle speed for more time than installed in the parking detection settings, with additional logic based on ignition and/or movement status if enabled for parking detection.
+                
+        - **last_update:** string containing the date and time in the user's
+        timezone when the tracker's status was last updated.
+            
+        - **gsm:** object containing information based on the last GSM status
+        reported by the tracker, including:
+            
+            - **updated:** string containing the date and time in the user's timezone when the device last reported GSM information to the platform. This value is null if the tracker does not provide such data or it is not supported by the platform for this device model.
+                
+            - **signal_level:** integer representing the GSM signal strength in percent, based on the last tracker packet.
+                
+            - **network_name:** string containing the name of the network operator. This value is null if the tracker does not provide such data or it is not supported by the platform for this device model.
+                
+            - **roaming:** boolean indicating whether the device was in roaming when the last point was received. This value is null if the tracker does not provide such data or it is not supported by the platform for this device model.
+                
+        - **battery_level:** integer representing the battery level in percent,
+        based on the tracker's values.
+            
+        - **battery_update:** string containing the date and time when the
+        battery information was last updated.
+            
+        - **inputs:** array of boolean values representing the state of the
+        inputs, starting from input 1. For example, \[true, false, false\]
+        indicates that the first input was on and the second and third inputs
+        were off when the last time reported by a tracker.
+            
+        - **inputs_update:** string containing the date and time when the
+        platform last received an update about the state of at least one input
+        from a tracker.
+            
+        - **outputs:** array of boolean values representing the state of the
+        outputs, starting from output 1. For example, \[true, false\] indicates
+        that the first output was on and the second output was off when the last
+        time reported by a tracker.
+            
+        - **outputs_update:** string containing the date and time when the
+        platform last received an update about the state of at least one output
+        from the tracker.
+            
+        - **additional:** optional object containing additional information,
+        usually represented as hardware key object or other state field sensors
+        such as error_code, moving, ble_magnet_state, etc. Each object contains
+        the following properties:
+            
+            - **value:** string containing the last received value.
+                
+            - **updated:** string containing the date and time when this value was last received from the tracker.
+                
+        - **actual_track_update:** string containing the date and time when the
+        tracker last moved for the platform, based on the [parking detection
+        settings](https://www.navixy.com/docs/user/web-interface-docs/devices-doc/parking-detection/).
+            
+
+        #### Possible errors
+
+
+        - **201: Not found in the database**. This error occurs when the
+        specified `tracker_id` does not exist in the user account or on the
+        platform. For example, this can happen if you use a `hash` from another
+        account or if you enter the `tracker_id` with a mistake.
+            
+        - **208: Device blocked**. This error occurs if the tracker with the
+        specified `tracker_ID` exists but has been blocked due to its tariff
+        plan. For example, it may have been blocked because the user does not
+        have enough money to cover the plan's charge.
+      parameters:
+        - name: hash
+          in: query
+          schema:
+            type: string
+          example: '{{Hash}}'
+        - name: tracker_id
+          in: query
+          schema:
+            type: integer
+          example: '877766'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /tracker/get_states:
+    get:
+      tags:
+        - User Interface API > Trackers > Last location and state info
+      summary: Last status of several trackers
+      description: >-
+        Provides the last received location and status information of several
+        trackers. Here, you can get movement status, last GPS and GSM update,
+        last speed, altitude and heading, outputs and inputs status, current
+        connection status, and so on.
+
+
+        It is useful for your dashboards or will be also useful in your own apps
+        to show the last known tracker's data.
+
+
+        #### Request parameters
+
+
+        **hash:** string. User session hash or an API key hash.
+
+
+        **trackers:** array with integers where IDs of all trackers are listed
+        for which you want to get the status information.
+
+
+        **list_bloced:** optional boolean. When set to `true`, the call will
+        return a list of blocked tracker IDs instead of error 208. This is
+        useful if at least one device from the list is blocked due to the
+        tracker's plan, and your app does not request the list of blocked
+        trackers before requesting the last state info. The default value is
+        `false`.
+
+
+        **allow_not_exist:** optional boolean. When set to `true`, the call will
+        return a list of nonexistent tracker IDs instead of errors 217 or 201.
+        This is useful if you have an approximate or not updated list of tracker
+        IDs, but are unsure if they belong to the user account or if some of
+        them have already been deleted. The default value is `false`.
+
+
+        #### Response parameters
+
+
+        **user_time:** string containing the date and time in the user's
+        timezone, representing the current time of the user account.
+
+
+        **states:** object containing the trackers' last status and starting
+        from tracker_id, including the following properties:
+
+
+        - **source_id:** integer. The unique identifier of the tracker from
+        which data is being received by the platform.
+            
+        - **gps:** object containing the latest GPS data, including:
+            
+            - **updated:** string with date and time in the user's timezone, indicating when the GPS data was last updated by the tracker.
+                
+            - **signal_level:** integer, representing the GPS signal level in percent from the last updated data.
+                
+            - **location:** object containing the coordinates of the last updated GPS location, including:
+                
+                - **lat:** float representing the latitude of the location.
+                    
+                - **lng:** float representing the longitude of the location.
+                    
+            - **heading:** integer representing the direction in degrees, with a range of 0 to 360, where 0 corresponds to North.
+                
+            - **speed:** integer representing the speed registered in the last GPS update.
+                
+            - **alt:** integer representing the altitude registered in the last GPS update.
+                
+        - **connection_status:** string. string representing the device's
+        connection status based on the `last_update_time`, with possible values
+        including:
+            
+            - `Active` means the device is online;
+                
+            - `Idle` means the device updated last GPS data more than 5 minutes ago;
+                
+            - `Offline` means the device is not connected to the platform.
+                
+        - **movement_status:** string representing the movement status
+        registered by the platform in the last device packet, based on the
+        [parking detection
+        settings](https://www.navixy.com/docs/user/web-interface-docs/devices-doc/parking-detection/),
+        with possible values including:
+            
+            - `Moving` if the device's speed is greater than the idle speed in the parking detection settings.
+                
+            - `Stopped` if the speed is 0 km/h or the movement status reported by the tracker in its last message is 0.
+                
+            - `Parked` if the device's speed is less than the idle speed for more time than installed in the parking detection settings, with additional logic based on ignition and/or movement status if enabled for parking detection.
+                
+        - **last_update:** string containing the date and time in the user's
+        timezone when the tracker's status was last updated.
+            
+        - **gsm:** object containing information based on the last GSM status
+        reported by the tracker, including:
+            
+            - **updated:** string containing the date and time in the user's timezone when the device last reported GSM information to the platform. This value is null if the tracker does not provide such data or it is not supported by the platform for this device model.
+                
+            - **signal_level:** integer representing the GSM signal strength in percent, based on the last tracker packet.
+                
+            - **network_name:** string containing the name of the network operator. This value is null if the tracker does not provide such data or it is not supported by the platform for this device model.
+                
+            - **roaming:** boolean indicating whether the device was in roaming when the last point was received. This value is null if the tracker does not provide such data or it is not supported by the platform for this device model.
+                
+        - **battery_level:** integer representing the battery level in percent,
+        based on the tracker's values.
+            
+        - **battery_update:** string containing the date and time when the
+        battery information was last updated.
+            
+        - **inputs:** array of boolean values representing the state of the
+        inputs, starting from input 1. For example, \[true, false, false\]
+        indicates that the first input was on and the second and third inputs
+        were off when the last time reported by a tracker.
+            
+        - **inputs_update:** string containing the date and time when the
+        platform last received an update about the state of at least one input
+        from a tracker.
+            
+        - **outputs:** array of boolean values representing the state of the
+        outputs, starting from output 1. For example, \[true, false\] indicates
+        that the first output was on and the second output was off when the last
+        time reported by a tracker.
+            
+        - **outputs_update:** string containing the date and time when the
+        platform last received an update about the state of at least one output
+        from the tracker.
+            
+        - **additional:** optional object containing additional information,
+        usually represented as hardware key object or other state field sensors
+        such as error_code, moving, ble_magnet_state, etc. Each object contains
+        the following properties:
+            
+            - **value:** string containing the last received value.
+                
+            - **updated:** string containing the date and time when this value was last received from the tracker.
+                
+        - **actual_track_update:** string containing the date and time when the
+        tracker last moved for the platform, based on the [parking detection
+        settings](https://www.navixy.com/docs/user/web-interface-docs/devices-doc/parking-detection/).
+            
+
+        **blocked:** array of integers representing the blocked tracker IDs from
+        the requested list, returned when the `list_blocked` parameter is set to
+        `true` in the state request.
+
+
+        **not_exist:** array of integers representing the non-existent tracker
+        IDs from the requested list, returned when the `allow_not_exist`
+        parameter is set to `false` in the state request.
+
+
+        #### Possible errors
+
+
+        - **201: Not found in the database**. This error occurs when the
+        specified `tracker_id` does not exist in the user account or on the
+        platform. For example, this can happen if you use a `hash` from another
+        account or if you enter the `tracker_id` with a mistake.
+            
+        - **208: Device blocked**. This error occurs when at least one tracker
+        from the specified list exists but has been blocked due to its tariff
+        plan, and the `list_blocked` parameter is set to `false`. This may be
+        because the user does not have enough funds to cover the plan's charge.
+        To resolve this error, try requesting the list of tracker IDs and
+        checking the `blocked` field value for each tracker ID, or set the
+        `list_blocked` parameter to `true`.
+            
+        - **217: Entinty not found.** This error occurs when the
+        `allow_not_exist` parameter is set to `false` and there are trackers in
+        the requested list which aren't belong to an authorized user. To avoid
+        this error, try setting the `allow_not_exist` parameter to `true` or
+        requesting the list of trackers and getting IDs from it and add these
+        IDs to the requst list.
+      parameters:
+        - name: hash
+          in: query
+          schema:
+            type: string
+          example: '{{Hash}}'
+        - name: trackers
+          in: query
+          schema:
+            type: string
+          example: '[tracker_id_1,tracker_id_2,tracker_id_n]'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /tracker/counter/value/set:
+    post:
+      tags:
+        - User Interface API > Trackers > Counters > Create counter
+      summary: Setting counter
+      description: >-
+        This API call allows you to create a new counter of a specified type or
+        update its value for a particular tracker.
+
+
+        #### Request parameters
+
+
+        **hash:** user session hash or an API key hash.
+
+
+        **tracker_id:** integer representing the ID of the tracker for which you
+        want to create a new counter or update the counter's value.
+
+
+        **type:** string representing the type of counter you want to set or
+        update its value. Accepted values are `odometer` or `engine_hours`.
+
+
+        **value:** float representing the new counter value from which it should
+        start counting changes.
+
+
+        #### Response parameters
+
+
+        The platform will respond with a success message if the new counter or
+        value is successfully set.
+
+
+        #### Possible errors
+
+
+        - **8: Queue service error**. The counter value could not be set. Try
+        again later, after a while.
+            
+        - **204: Entity not found**. The specified tracker ID does not belong to
+        the authorized user. Verify the tracker ID and ensure that it belongs to
+        the user associated with the provided hash or API key. You can utilize
+        the
+        [tracker/list](https://www.postman.com/navixyapisandbox/workspace/navixy-api-sandbox/request/8534541-96d2c4c8-517f-46e1-9fa0-79f2bc499716?action=share&source=copy-link&creator=8534541&ctx=documentation)
+        request to confirm this.
+            
+        - **208: Device blocked**. This error occurs if the tracker with the
+        specified tracker_ID exists but has been blocked due to its tariff plan.
+        For example, it may have been blocked because the user does not have
+        enough money to cover the plan's charge.
+            
+        - **219: Not allowed for clones of the device**. The specified tracker
+        is a clone. To resolve this, locate the original tracker in the admin
+        panel using the tracker's source ID or IMEI and update the counter value
+        for the original tracker.
+      requestBody:
+        content: {}
+      parameters:
+        - name: hash
+          in: query
+          schema:
+            type: string
+          example: '{{Hash}}'
+        - name: tracker_id
+          in: query
+          schema:
+            type: string
+          example: tracker_id
+        - name: type
+          in: query
+          schema:
+            type: string
+          example: odometer_or_engine_hours
+        - name: value
+          in: query
+          schema:
+            type: string
+          example: initial_counter's_value
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /tracker/counter/update:
+    post:
+      tags:
+        - User Interface API > Trackers > Counters > Create counter
+      summary: Updating counter
+      description: >-
+        The API request updates the counter of the specified type. This is most
+        commonly used for updating the odometer counter's multiplier, as the
+        mileage on cars is not always accurate and certification companies allow
+        for some discrepancies between the actual mileage and the odometer
+        reading displayed in the car up to 10%. You can also set the counter's
+        source, as the platform may take into account different mileage sources
+        such as hardware mileage, GPS, CAN odometer, etc and CAN: Engine hours
+        readings for engine hours counter.
+
+
+        Note: This API request will not update the counter's value. To update
+        the counter's value, use the [set
+        counter](https://www.postman.com/navixyapisandbox/workspace/navixy-api-sandbox/request/8534541-fdb4f827-ff29-484a-b396-f3294c7f35df?action=share&source=copy-link&creator=8534541&ctx=documentation)
+        request.
+
+
+        #### Request parameters
+
+
+        **hash:** user session hash or an API key hash.
+
+
+        **type:** string representing the type of counter you want to update.
+        Possible values are `odometer` or `engine_hours`.
+
+
+        **multiplier:** float telling the platform the value by which the
+        device's mileage readings will be multiplied before being counted.
+
+
+        **sensor_id:** integer representing the sensor ID from this tracker,
+        which is responsible for the odometer and has the odometer sensor type
+        or CAN. For example, if you want to set CAN mileage as a source for
+        mileage counter on the platform, you need specify ID of this CAN mileage
+        sensor created on the tracker. To check the sensor ID you can use
+        [tracker/sensor/list](https://developers.navixy.com/backend-api/resources/tracking/tracker/sensor/#list)
+        API request. If you don't need to setup the sensor, this field must be
+        `null`.
+
+
+        #### Response parameters
+
+
+        The platform will report if the counter was successfully changed or if
+        there is an error.
+
+
+        #### Possible errors
+
+
+        - **8: Queue service error, try again later**. The platform cannot set
+        counter value for some reason. For example, there is an update in the
+        queue already. Just a service error, so try to set the counter after a
+        while.
+            
+        - **204: Entity not found**. The specified tracker ID does not belong to
+        the authorized user. Verify the tracker ID and ensure that it belongs to
+        the user associated with the provided hash or API key. You can utilize
+        the
+        [tracker/list](https://www.postman.com/navixyapisandbox/workspace/navixy-api-sandbox/request/8534541-96d2c4c8-517f-46e1-9fa0-79f2bc499716?action=share&source=copy-link&creator=8534541&ctx=documentation)
+        request to confirm this.
+            
+        - **208: Device blocked**. This error occurs if the tracker with the
+        specified tracker_ID exists but has been blocked due to its tariff plan.
+        For example, it may have been blocked because the user does not have
+        enough money to cover the plan's charge.
+            
+        - **219: Not allowed for clones of the device**. The specified tracker
+        is a clone. To resolve this, locate the original tracker in the admin
+        panel using the tracker's source ID or IMEI and update the counter value
+        for the original tracker.
+            
+        - **7: Invalid parameters**. There could be several potential reasons:
+            
+            - if `type` is not `odometer` and `sensor_id` is not null. Use sensor_id null for engine hours counter type.
+                
+            - if sensor with specified `sensor_id` is not a metering sensor. Check that this sensor is a metering sensor.
+                
+            - if sensor with specified `sensor_id` belongs to another tracker. Check that this sensor belongs to the specified tracker.
+                
+            - if `sensor_id` is negative.
+                
+            - if sensor with such a `sensor_id` doesn't exist. You need to create a metering sensor first, to assign it to the odometer counter.
+                
+            - if `type` value is not one of list above. Possible values are `odometer` or `engine_hours`.
+      requestBody:
+        content: {}
+      parameters:
+        - name: '{{Hash}}'
+          in: query
+          schema:
+            type: string
+        - name: type
+          in: query
+          schema:
+            type: string
+          example: odometer_or_engine_hours
+        - name: multiplier
+          in: query
+          schema:
+            type: string
+          example: multiplier_value
+        - name: sensor_id
+          in: query
+          schema:
+            type: string
+          example: null_or_mileage_type_sensor_id
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /tracker/get_counters:
+    get:
+      tags:
+        - User Interface API > Trackers > Counters > Reading counters data
+      summary: Last values of both counters
+      description: >-
+        You can request the latest readings from all the counters created on the
+        device. This may be useful for building a dashboard that displays the
+        current situation. Please note that the odometer readings are updated no
+        more frequently than once every three minutes, and the engine hours
+        counter readings are updated every three hours.
+
+
+        #### Possible parameters
+
+
+        **hash**: a string with the user's session hash or an API key.
+
+
+        **tracker_id**: an integer with the tracker ID for which you want to get
+        the last counter readings.
+
+
+        #### Response parameters
+
+
+        **user_time**: represents the current user time in the user's timezone.
+
+
+        **list**: an array of tracker's counter objects. It will contain
+        information from created counters only.
+
+
+        - **type**: a string representing the counter type (`odometer` or
+        `engine_hours`).
+            
+        - **value**: a float representing the counter last updated value.
+            
+        - **update_time**: a string with the date and time indicating when the
+        counter's value was last updated.
+            
+
+        #### Possible errors
+
+
+        - **204: Entity not found**. Appears if there is no tracker with such ID
+        belonging to the authorized user. Try to check that the `tracker_id`
+        belongs to the user with the hash you specified. Also, you can check the
+        currently available trackers in the user account with the
+        [tracker/list](https://www.postman.com/navixyapisandbox/workspace/88daa7aa-f426-4ac1-be59-10bb3877bd1b/request/8534541-e24c3909-ce8a-47b4-bdaf-fe1162f65b3c?action=share&source=copy-link&creator=8534541&ctx=documentation)
+        API request.
+            
+        - **208: Device blocked**. This error occurs if the tracker with the
+        specified `tracker_id` exists but has been blocked due to its tariff
+        plan. For example, it may have been blocked because the user does not
+        have enough money to cover the plan's charge.
+      parameters:
+        - name: hash
+          in: query
+          schema:
+            type: string
+          example: '{{Hash}}'
+        - name: tracker_id
+          in: query
+          schema:
+            type: string
+          example: tracker_id
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /tracker/counter/value/get:
+    get:
+      tags:
+        - User Interface API > Trackers > Counters > Reading counters data
+      summary: Last values of one counter of a tracker
+      description: >-
+        This request is similar to the previous one, with one key difference: it
+        allows you to request information for a single counter only, avoiding
+        the need to read unnecessary data from other counters and parse an array
+        of objects. This is useful if your integration requires information from
+        only one counter of a tracker and nothing else.
+
+
+        #### Possible parameters
+
+
+        **hash**: a string with user hash or an API key.
+
+
+        **tracker_id**: an integer that specifies the tracker from which you
+        want to get the last counter's data.
+
+
+        **type**: a string that specifies the counter from which you want to
+        request the last values (e.g., "odometer" or "engine_hours").
+
+
+        #### Response parameters
+
+
+        **value**: a float representing the last known value of the requested
+        counter.
+
+
+        #### Possible errors
+
+
+        - **204: Entity not found**. It occurs if the tracker ID doesn't belong
+        to the user or the requested counter type wasn't created for the
+        requested `tracker_id`. Use
+        [tracker/counter/set](https://www.postman.com/navixyapisandbox/workspace/navixy-api-sandbox/request/8534541-c576f1dc-8788-4692-a279-4c6bd9772855?action=share&source=copy-link&creator=8534541&ctx=documentation)
+        to create new counter (if not exist) and save some value.
+            
+        - **208: Device blocked**. This error occurs if the tracker with the
+        specified `tracker_id` exists but has been blocked due to its tariff
+        plan. For example, it may have been blocked because the user does not
+        have enough money to cover the plan's charge.
+      parameters:
+        - name: hash
+          in: query
+          schema:
+            type: string
+          example: '{{Hash}}'
+        - name: tracker_id
+          in: query
+          schema:
+            type: string
+          example: tracker_id
+        - name: type
+          in: query
+          schema:
+            type: string
+          example: odometer_or_engine_hours
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /tracker/counter/value/list:
+    get:
+      tags:
+        - User Interface API > Trackers > Counters > Reading counters data
+      summary: Last values of one counter of several trackers
+      description: >-
+        This API call is similar to the previous one, however it will provided
+        you with values from specific counter of several trackers at once. It is
+        mostly used for custom reports, dashboards and ERPs, when it is
+        necessary to get information about current mileage only or about egnine
+        hours on all or a group of vehicles. To ease up parsing of this response
+        the platform returns you values in form: tracker_id: counter's value.
+
+
+        Possible parameters
+
+
+        **hash**: a string with user hash or an API key.
+
+
+        **trackers**: an array with tracker_ids belonging to the user.
+
+
+        **type**: a string that specifies the counter from which you want to
+        request the last values (e.g., "odometer" or "engine_hours").
+
+
+        #### Response parameters
+
+
+        **value**: an object with counters' values for requested trackers in the
+        next format: "tracker_id": counter value. If some of listed trackers
+        doesn't have counter of requested type - it won't be shown in values
+        object.
+
+
+        - **tracker_id**: there will be ID of a tracker from which you get the
+        counter value on the left.
+            
+        - **its value**: there will be the counter's value on the right.
+            
+
+        #### Possible errors
+
+
+        **217: List contains nonexistent entities**. It appears in case at least
+        one of the specified trackers does not exist or is blocked under the
+        authorized user account. You can check available trackers with
+        [tracker/list](https://www.postman.com/navixyapisandbox/workspace/navixy-api-sandbox/request/8534541-96d2c4c8-517f-46e1-9fa0-79f2bc499716?action=share&source=copy-link&creator=8534541&ctx=documentation)
+        API request.
+      parameters:
+        - name: hash
+          in: query
+          schema:
+            type: string
+          example: '{{Hash}}'
+        - name: trackers
+          in: query
+          schema:
+            type: string
+          example: '[tracker_id_1,tracker_id_2,tracker_id_n]'
+        - name: type
+          in: query
+          schema:
+            type: string
+          example: odometer_or_engine_hours
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /tracker/counter/data/read:
+    get:
+      tags:
+        - User Interface API > Trackers > Counters > Reading counters data
+      summary: History of counter readings per period
+      description: >-
+        This API call will be useful if you are building custom reports that
+        need to include information about meter readings for a specific period.
+        It is also useful if you are creating waybills for logistics and
+        government companies. For example, you can request the counter value for
+        a specific date and time range, such as from August 10th at 12:00 to
+        14:00.
+
+
+        This API request allows you to retrieve this information for a single
+        tracker and a specific counter type.
+
+
+        #### Request parameters
+
+
+        **tracker_id**: an integer representing the tracker ID for which you
+        want to request the history of counter readings.
+
+
+        **type**: a string specifying the type of counter. It can be `odometer`,
+        `engine_hours` or `fuel_consumed` for flow meter sensors.
+
+
+        **from**: a string with the date and time representing start of the
+        period for which you need the counter values.
+
+
+        **to**: a string with the date and time representing the end of the
+        period for which you need the counter values. This cannot be after the
+        `from` time.
+
+
+        #### Response parameters
+
+
+        **list**: the response will contain an array of objects with values and
+        their update times.
+
+
+        - **value**: a float representing the historical odometer value.
+            
+        - **update_time**: a string with the date and time in user timezone when
+        this historical value was updated.
+            
+
+        #### Possible errors
+
+
+        - **204: Entity not found**. If the authorized user does not have the
+        tracker ID specified in the `tracker_id` parameter. You can check the
+        possible trackers using the
+        [tracker/list](https://www.postman.com/navixyapisandbox/workspace/navixy-api-sandbox/request/8534541-96d2c4c8-517f-46e1-9fa0-79f2bc499716?action=share&source=copy-link&creator=8534541&ctx=documentation)
+        API request.
+            
+        - **211: Requested time span is too big**. This error will appear if the
+        interval between `from` and `to` is too large. The maximum allowed time
+        span is 31 days. If you need more, make separate requests for the
+        readings history.
+            
+        - **208: Device blocked**. This error occurs if the tracker with the
+        specified `tracker_id` exists but has been blocked due to its tariff
+        plan. For example, it may have been blocked because the user does not
+        have enough money to cover the plan's charge.
+            
+        - **7: Invalid parameters.**
+            
+            - if `from` is after `to`;
+                
+            - If one of the requested parameters has an incorrect value type. For example, a string instead of an integer in the `tracker_id` parameter.
+      parameters:
+        - name: hash
+          in: query
+          schema:
+            type: string
+          example: '{{Hash}}'
+        - name: tracker_id
+          in: query
+          schema:
+            type: string
+          example: tracker_id
+        - name: type
+          in: query
+          schema:
+            type: string
+          example: odometer_or_engine_hours
+        - name: from
+          in: query
+          schema:
+            type: string
+          example: YYYY-MM-DD hh:mm:ss
+        - name: to
+          in: query
+          schema:
+            type: string
+          example: YYYY-MM-DD hh:mm:ss
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /tracker/stats/mileage/read:
+    get:
+      tags:
+        - User Interface API > Trackers > Counters > Reading counters data
+      summary: Counted mileage per period
+      parameters:
+        - name: hash
+          in: query
+          schema:
+            type: string
+          example: '{{Hash}}'
+        - name: trackers
+          in: query
+          schema:
+            type: string
+          example: '[tracker_id_1,tracker_id_2,tracker_id_n]'
+        - name: from
+          in: query
+          schema:
+            type: string
+          example: YYYY-MM-DD hh:mm:ss
+        - name: to
+          in: query
+          schema:
+            type: string
+          example: YYYY-MM-DD hh:mm:ss
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /tracker/stats/engine_hours/read:
+    get:
+      tags:
+        - User Interface API > Trackers > Counters > Reading counters data
+      summary: Counted engine hours per period
+      parameters:
+        - name: hash
+          in: query
+          schema:
+            type: string
+          example: '{{Hash}}'
+        - name: tracker_id
+          in: query
+          schema:
+            type: string
+          example: tracker_id
+        - name: from
+          in: query
+          schema:
+            type: string
+          example: YYYY-MM-DD hh:mm:ss
+        - name: to
+          in: query
+          schema:
+            type: string
+          example: YYYY-MM-DD hh:mm:ss
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /tracker/sensor/create:
+    post:
+      tags:
+        - >-
+          User Interface API > Trackers > Sensors > Creating sensors > Virtual
+          sensors
+      summary: Updating virtual ignition
+      requestBody:
+        content: {}
+      parameters:
+        - name: hash
+          in: query
+          schema:
+            type: string
+          example: '{{Hash}}'
+        - name: tracker_id
+          in: query
+          schema:
+            type: string
+          example: tracker_id
+        - name: sensor
+          in: query
+          schema:
+            type: string
+          example: >-
+            {"id":123456,
+            "parameters":{"calc_method":"in_range","range_from":12.3,"value_titles":[{"value":"1","title":"Engine
+            on"},{"value":"0","title":"Engine
+            off"}],"range_to":null,"bit_index":null},"type":"virtual","name":"Virtual
+            ignition","input_name":"board_voltage","sensor_type":"virtual_ignition"}
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /tracker/sensor/calibration_data/update:
+    post:
+      tags:
+        - >-
+          User Interface API > Trackers > Sensors > Creating sensors > Metering
+          sensors > Fuel level sensor
+      summary: Updating fuel calibration table
+      requestBody:
+        content: {}
+      parameters:
+        - name: hash
+          in: query
+          schema:
+            type: string
+          example: '{{Hash}}'
+        - name: sensor_id
+          in: query
+          schema:
+            type: string
+          example: sensor_id
+        - name: tracker_id
+          in: query
+          schema:
+            type: string
+          example: tracker_id
+        - name: data
+          in: query
+          schema:
+            type: string
+          example: >-
+            [{"in":0,"out":0},{"in":10,"out":6},{"in":20,"out":12},{"in":30,"out":18},{"in":40,"out":24},{"in":50,"out":30},{"in":60,"out":36},{"in":70,"out":42},{"in":80,"out":48},{"in":90,"out":54},{"in":100,"out":60}]
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /tracker/sensor/update:
+    post:
+      tags:
+        - >-
+          User Interface API > Trackers > Sensors > Creating sensors > Discrete
+          inputs
+      summary: Updating discrete input
+      requestBody:
+        content: {}
+      parameters:
+        - name: hash
+          in: query
+          schema:
+            type: string
+          example: '{{Hash}}'
+        - name: tracker_id
+          in: query
+          schema:
+            type: string
+          example: tracker_id
+        - name: sensor
+          in: query
+          schema:
+            type: string
+          example: >-
+            {"id":123456,
+            "type":"discrete","name":"Ignition","sensor_type":"ignition","input_number":2}
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /sensor/create:
+    post:
+      tags:
+        - >-
+          User Interface API > Trackers > Sensors > Creating sensors > Metering
+          sensors > Composite sensors
+      summary: Creating composite sensor
+      requestBody:
+        content: {}
+      parameters:
+        - name: hash
+          in: query
+          schema:
+            type: string
+          example: '{{Hash}}'
+        - name: tracker_id
+          in: query
+          schema:
+            type: string
+          example: tracker_id
+        - name: sensor
+          in: query
+          schema:
+            type: string
+          example: >-
+            {"type":"metering","name":"Fuel","sensor_type":"fuel","input_name":"composite","group_type":"sum","parameters":{"parent_ids":[3058031,3058028],"volume":120,"ignore_drains_in_move":false,"ignore_refuels_in_move":true,"refuel_gap_minutes":5},"accuracy":5,"units":"L","units_type":"litre"}
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /sensor/update:
+    post:
+      tags:
+        - >-
+          User Interface API > Trackers > Sensors > Creating sensors > Metering
+          sensors > Composite sensors
+      summary: Updating composite sensor
+      requestBody:
+        content: {}
+      parameters:
+        - name: hash
+          in: query
+          schema:
+            type: string
+          example: '{{Hash}}'
+        - name: tracker_id
+          in: query
+          schema:
+            type: string
+          example: tracker_id
+        - name: sensor
+          in: query
+          schema:
+            type: string
+          example: >-
+            {"sensor_id":123456,"type":"metering","name":"Fuel","sensor_type":"fuel","input_name":"composite","group_type":"sum","parameters":{"parent_ids":[3058031,3058028],"volume":120,"ignore_drains_in_move":false,"ignore_refuels_in_move":true,"refuel_gap_minutes":5},"accuracy":5,"units":"L","units_type":"litre"}
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /tracker/get_diagnostics:
+    get:
+      tags:
+        - User Interface API > Trackers > Sensors > Reading sensors data
+      summary: Last readings from CAN/OBD sensors
+      parameters:
+        - name: hash
+          in: query
+          schema:
+            type: string
+          example: '{{Hash}}'
+        - name: tracker_id
+          in: query
+          schema:
+            type: integer
+          example: '123456'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /tracker/get_fuel:
+    get:
+      tags:
+        - User Interface API > Trackers > Sensors > Reading sensors data
+      summary: Last readings from fuel sensors
+      parameters:
+        - name: hash
+          in: query
+          schema:
+            type: string
+          example: '{{Hash}}'
+        - name: tracker_id
+          in: query
+          schema:
+            type: integer
+          example: '123456'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /tracker/get_inputs:
+    get:
+      tags:
+        - User Interface API > Trackers > Sensors > Reading sensors data
+      summary: Last discrete input states
+      parameters:
+        - name: hash
+          in: query
+          schema:
+            type: string
+          example: '{{Hash}}'
+        - name: tracker_id
+          in: query
+          schema:
+            type: integer
+          example: '123456'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /readings/list:
+    get:
+      tags:
+        - User Interface API > Trackers > Sensors > Reading sensors data
+      summary: Last readings from all sensors on one tracker
+      parameters:
+        - name: hash
+          in: query
+          schema:
+            type: string
+          example: '{{Hash}}'
+        - name: tracker_id
+          in: query
+          schema:
+            type: integer
+          example: '123456'
+        - name: sensor_type
+          in: query
+          schema:
+            type: string
+          example: specific sensor type
+        - name: include_components
+          in: query
+          schema:
+            type: boolean
+          example: 'false'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /readings/batch_list:
+    get:
+      tags:
+        - User Interface API > Trackers > Sensors > Reading sensors data
+      summary: Last readings from all sensors on several trackers
+      parameters:
+        - name: hash
+          in: query
+          schema:
+            type: string
+          example: '{{Hash}}'
+        - name: tracker_id
+          in: query
+          schema:
+            type: integer
+          example: '123456'
+        - name: sensor_type
+          in: query
+          schema:
+            type: string
+          example: specific sensor type
+        - name: include_components
+          in: query
+          schema:
+            type: boolean
+          example: 'false'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /tracker/snsor/data/read:
+    get:
+      tags:
+        - User Interface API > Trackers > Sensors > Reading sensors data
+      summary: History of sensor readings
+      parameters:
+        - name: hash
+          in: query
+          schema:
+            type: string
+          example: '{{Hash}}'
+        - name: tracker_id
+          in: query
+          schema:
+            type: integer
+          example: '123456'
+        - name: sensor_id
+          in: query
+          schema:
+            type: integer
+          example: '123456'
+        - name: from
+          in: query
+          schema:
+            type: string
+          example: '2024-05-20 00:00:00'
+        - name: to
+          in: query
+          schema:
+            type: string
+          example: '2024-05-20 23:59:59'
+        - name: raw_data
+          in: query
+          schema:
+            type: boolean
+          example: 'false'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
