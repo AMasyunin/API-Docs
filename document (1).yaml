@@ -1,0 +1,880 @@
+openapi: 3.1.0
+x-stoplight:
+  id: rckyv6d8ta6d1
+info:
+  title: Navixy API
+  description: |
+    Navixy is a comprehensive GPS / Vehicle telematics platform developed by SquareGPS.
+    This documentation provides detailed information on integrating third-party solutions with the Navixy platform,
+    including API and technical documentation tailored for developers and partners.
+  version: 2.0.0
+security:
+  - API Key: []
+servers:
+  - url: 'https://api.navixy.dev'
+externalDocs:
+  url: 'https://docs-dev.sg.squaregps.com/'
+  description: Navixy Developer Hub.
+tags:
+  - name: Add-ons
+  - name: Users
+paths:
+  /user/get_info:
+    get:
+      tags:
+        - Users
+      description: Gets user information and some settings.
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UserResponse'
+      x-stoplight:
+        id: 6b3br86ymvu40
+  /addon/list:
+    get:
+      tags:
+        - Add-ons
+      description: Lists all user's add-ons.
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                allOf:
+                  - $ref: '#/components/schemas/SuccessResponse'
+                  - type: object
+                    properties:
+                      list:
+                        type: array
+                        items:
+                          $ref: '#/components/schemas/Addon'
+                    required:
+                      - list
+      x-stoplight:
+        id: 99c4ekbljlwsr
+  /addon/create:
+    post:
+      tags:
+        - Add-ons
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                label:
+                  type: string
+                  minLength: 1
+                  example: BI Dashboard
+                  description: Addon's name.
+                url_template:
+                  type: string
+                  format: uri-template
+                  title: Application URL
+                  example: 'https://domain.example/{locale}/application?user_id={user_id}&tz={timezone}'
+                  description: |
+                    URL template that will be called when the addon is opened.
+                    The following variables are available:
+                    - user_id - id of the user opening the application;
+                    - locale - [language tag](https://en.wikipedia.org/wiki/IETF_language_tag) of the user (example: en);
+                    - timezone - time-zone ID of the user (example: Europe/Berlin);
+                authorization:
+                  $ref: '#/components/schemas/AddonAuthorization'
+                display_method:
+                  type: string
+                  enum:
+                    - new_tab
+                    - embedded
+                  description: Determines how the addon will be opened.
+                icon:
+                  type: string
+                  format: uri-reference
+                  example: dashboard
+                  description: Identifier of the addon's icon.
+                description:
+                  type: string
+                  default: ''
+                  example: Supercharge your fleet analytics with BI dashboards to make data-driven decisions.
+                  description: Detailed description of the addon.
+              required:
+                - label
+                - url_template
+                - authorization
+                - display_method
+                - icon
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                allOf:
+                  - $ref: '#/components/schemas/SuccessResponse'
+                  - type: object
+                    properties:
+                      id:
+                        type: integer
+                        minimum: 1
+                        description: Created addon's ID.
+        '400':
+          description: Invalid parameters
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+      x-stoplight:
+        id: zc89b3ufq1t37
+  /addon/update:
+    post:
+      tags:
+        - Add-ons
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Addon'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SuccessResponse'
+        '400':
+          description: Invalid parameters
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+      x-stoplight:
+        id: 6t81civdhzqhm
+  /addon/delete:
+    post:
+      tags:
+        - Add-ons
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                addon_id:
+                  type: integer
+                  minimum: 1
+                  description: Addon's ID to delete.
+              required:
+                - addon_id
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SuccessResponse'
+        '400':
+          description: Invalid parameters
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+      x-stoplight:
+        id: osdwhppqs8nvd
+  /addon/enabled/set:
+    post:
+      tags:
+        - Add-ons
+      description: Updates the side menu visibility state of the given addon
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                addon_id:
+                  type: integer
+                  minimum: 1
+                  description: Addon's ID to delete.
+                enabled:
+                  type: boolean
+                  description: The state to set.
+              required:
+                - addon_id
+                - enabled
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SuccessResponse'
+        '400':
+          description: Invalid parameters
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+      x-stoplight:
+        id: 9j3cu4aocsyye
+components:
+  schemas:
+    UserResponse:
+      type: object
+      properties:
+        success:
+          type: boolean
+          const: true
+        paas_id:
+          type: integer
+        paas_settings:
+          type: object
+        user_info:
+          $ref: '#/components/schemas/User'
+        user_menu:
+          $ref: '#/components/schemas/UserMenu'
+      required:
+        - success
+        - paas_id
+        - paas_settings
+        - user_info
+        - user_menu
+      example:
+        paas_id: 7
+        paas_settings: <paas_settings>
+        user_info:
+          id: 43568
+          login: demo@navixy.com
+          title: John Smith
+          phone: '79123456789'
+          creation_date: '2016-05-20 01:10:34'
+          balance: 74.31
+          bonus: 0
+          locale: en_US
+          demo: true
+          verified: true
+          legal_type: individual
+          default_geocoder: google
+          route_provider: google
+          time_zone: America/New_York
+          measurement_system: metric
+          date_format: ddMMyyyy_dots
+          hour_mode: TWENTY_FOUR_HOURS
+          tin: '2345678239'
+          iec: ''
+          post_country: USA
+          post_region: NY
+          post_index: '10120'
+          post_city: New York
+          post_street_address: '1556 Broadway, suite 416'
+          registered_country: USA
+          registered_region: NY
+          registered_index: '10120'
+          registered_city: New York
+          registered_street_address: '1556 Broadway, suite 416'
+          first_name: John
+          middle_name: Walker
+          last_name: Smith
+          legal_name: QWER Inc.
+        master:
+          id: 1234
+          demo: false
+          legal_type: individual
+          first_name: David
+          middle_name: Middle
+          last_name: Blane
+          legal_name: Blah LLC
+          title: David Blane
+          balance: 0
+          bonus: 89.78
+        tariff_restrictions:
+          allowed_maps:
+            - roadmap
+            - osm
+        premium_gis: true
+        features:
+          - branding_web
+        privileges:
+          rights:
+            - tag_update
+        user_menu:
+          title: menu-editor.default-preset
+          account:
+            - title: common.menu.user_account
+              icon: account_circle
+              tabs:
+                - title: common.menu.user_account
+                  destination: user_account
+            - title: common.menu.user_balance
+              icon: account_balance_wallet
+              tabs:
+                - title: common.menu.user_balance
+                  destination: user_balance
+            - title: common.menu.user_access
+              icon: supervisor_account
+              tabs:
+                - title: common.menu.subusers
+                  destination: subusers
+                - title: common.menu.subuser_roles
+                  destination: subuser_roles
+            - title: common.menu.auth_journal
+              icon: manage_search
+              tabs:
+                - title: common.menu.auth_journal
+                  destination: auth_journal
+            - title: common.menu.user_tags
+              icon: tag
+              tabs:
+                - title: common.menu.user_tags
+                  destination: user_tags
+            - title: common.menu.entities
+              icon: rule
+              tabs:
+                - title: common.menu.entities
+                  destination: entities
+            - title: common.menu.menu_editor
+              icon: menu_editor
+              tabs:
+                - title: common.menu.menu_editor
+                  destination: menu_editor
+            - title: common.menu.help
+              icon: help_outline
+              tabs:
+                - title: common.menu.help
+                  destination: feedback
+          main:
+            - title: null
+              items:
+                - title: common.menu.dashboard
+                  icon: dashboard
+                  tabs:
+                    - title: common.menu.dashboard
+                      destination: dashboard
+            - title: null
+              items:
+                - title: common.menu.tracking
+                  icon: map
+                  tabs:
+                    - title: common.menu.tracking
+                      destination: tracking
+                - title: common.menu.location-sharing
+                  icon: share
+                  tabs:
+                    - title: common.menu.location-sharing
+                      destination: location_links
+            - title: null
+              items:
+                - title: common.menu.reports
+                  icon: assessment
+                  tabs:
+                    - title: common.menu.reports
+                      destination: reports
+                    - title: common.menu.schedule
+                      destination: report_schedules
+            - title: null
+              items:
+                - title: common.menu.fleet
+                  icon: directions_car
+                  tabs:
+                    - title: common.menu.vehicles
+                      destination: fleet
+                    - title: common.menu.garages
+                      destination: garages
+                    - title: common.menu.drivers
+                      destination: drivers
+                    - title: common.menu.departments
+                      destination: driver_departments
+                    - title: common.menu.driver_journal
+                      destination: driver_journal
+                    - title: common.menu.driver_skills
+                      destination: driver_skills
+                    - title: common.menu.service_tasks
+                      destination: service_tasks
+                - title: common.menu.field_service
+                  icon: groups
+                  tabs:
+                    - title: common.menu.staff
+                      destination: staff
+                    - title: common.menu.tasks
+                      destination: tasks
+                    - title: common.menu.templates
+                      destination: task_schedules
+                    - title: common.menu.forms
+                      destination: forms
+                    - title: common.menu.task_courier
+                      destination: task_courier
+                    - title: common.menu.departments
+                      destination: departments
+                    - title: common.menu.places
+                      destination: places
+          addons: []
+          footer:
+            title: null
+            items:
+              - title: common.menu.notifications
+                icon: notifications
+                tabs:
+                  - title: common.menu.notifications
+                    destination: notifications
+              - title: common.menu.chat
+                icon: textsms
+                tabs:
+                  - title: common.menu.chat
+                    destination: chat
+              - title: common.menu.device_activation
+                icon: custom-icon-add_device
+                tabs:
+                  - title: common.menu.device_activation
+                    destination: device_activation
+              - title: common.menu.device_settings
+                icon: settings
+                tabs:
+                  - title: common.menu.device_settings
+                    destination: device_settings
+              - title: common.menu.help
+                icon: help_outline
+                tabs:
+                  - title: common.menu.help
+                    destination: feedback
+      x-stoplight:
+        id: 44umsu33n0tyt
+    User:
+      type: object
+      description: Info about user.
+      properties:
+        id:
+          type: integer
+          description: User ID.
+        login:
+          type: string
+          description: User's login (in most cases it's an email address).
+        title:
+          type: string
+          description: User first and last name or organization title.
+        phone:
+          type: string
+          description: User phone (if not empty).
+        creation_date:
+          type: string
+          format: date-time
+          description: User registration date/time.
+        balance:
+          type: number
+          description: 'User balance, max. 2 digits after dot. For sub-users, this field should be ignored.'
+        bonus:
+          type: number
+          description: 'User bonus, max. 2 digits after dot. For sub-users, this field should be ignored.'
+        locale:
+          type: string
+          description: User locale.
+          example: en_EN
+        demo:
+          type: boolean
+          description: 'true if this is a demo user, false otherwise.'
+        verified:
+          type: boolean
+          description: true if user email already verified.
+        legal_type:
+          type: string
+          enum:
+            - legal_entity
+            - individual
+            - sole_trader
+        default_geocoder:
+          type: string
+          enum:
+            - google
+            - yandex
+            - progorod
+            - osm
+            - locationiq
+          description: User's default geocoder.
+        route_provider:
+          type: string
+          enum:
+            - progorod
+            - google
+            - osrm
+          description: User's route provider.
+        time_zone:
+          type: string
+          description: User timezone name.
+        measurement_system:
+          type: string
+          enum:
+            - metric
+            - imperial
+            - us
+            - metric_gal_us
+            - nautical
+          description: User's measurement system.
+        date_format:
+          type: string
+          enum:
+            - ddMMyyyy_dots
+            - ddMMyyyy_slashes
+            - MMddyyyy_hyphens
+            - yyyyMMdd_hyphens
+            - dMMMy
+            - dMMMMy
+          description: Date representation.
+        hour_mode:
+          type: string
+          enum:
+            - TWENTY_FOUR_HOURS
+            - TWELVE_HOURS
+          description: Time representation.
+        tin:
+          type: string
+          description: Taxpayer identification number aka "VATIN" or "INN".
+        iec:
+          type: string
+          description: Industrial Enterprises Classifier aka "KPP". Used in Russia for legal entities.
+        post_country:
+          type: string
+          description: Country part of user's post address.
+        post_index:
+          type: string
+          description: Post index or ZIP code.
+        post_region:
+          type: string
+          description: 'Region part of post address (oblast, state, etc.).'
+        post_city:
+          type: string
+          description: City from postal address.
+        post_street_address:
+          type: string
+          description: Street address.
+        registered_country:
+          type: string
+          description: Country part of user's registered address.
+        registered_index:
+          type: string
+          description: Index part of user's registered address.
+        registered_region:
+          type: string
+          description: Region part of user's registered address.
+        registered_city:
+          type: string
+          description: City from registered address.
+        registered_street_address:
+          type: string
+          description: User's registered address.
+        first_name:
+          type: string
+          description: User's or contact person first name.
+        middle_name:
+          type: string
+          description: User's or contact person middle name.
+        last_name:
+          type: string
+          description: User's or contact person last name.
+        legal_name:
+          type: string
+          required: false
+          description: A juridical name.
+        master:
+          $ref: '#/components/schemas/User'
+          description: 'Returned only if current user is sub-user. All fields have same meaning as in "user_info", but for master user''s account.'
+        tariff_restrictions:
+          type: object
+        premium_gis:
+          type: boolean
+          description: true if a dealer has premium GIS tariff.
+        features:
+          type: array
+          items:
+            type: string
+          description: Set of allowed Dealer features.
+        privileges:
+          type: object
+          description: Describes effective sub-user privileges.
+        rights:
+          type: array
+          items:
+            type: string
+          description: A set of rights granted to sub-user. Described in security group rights.
+      required:
+        - id
+        - login
+        - title
+        - phone
+        - creation_date
+        - balance
+        - bonus
+        - locale
+        - demo
+        - verified
+        - legal_type
+        - default_geocoder
+        - route_provider
+        - time_zone
+        - measurement_system
+        - tin
+        - post_country
+        - post_index
+        - post_region
+        - post_city
+        - post_street_address
+        - registered_country
+        - registered_index
+        - registered_region
+        - registered_city
+        - registered_street_address
+        - first_name
+        - middle_name
+        - last_name
+        - legal_name
+        - tariff_restrictions
+        - premium_gis
+        - features
+        - privileges
+        - rights
+      x-stoplight:
+        id: eun7abu8hd12s
+    UserMenu:
+      type: object
+      properties:
+        title:
+          type: string
+          description: The title of the preset in the editor.
+        account:
+          type: array
+          items:
+            $ref: '#/components/schemas/UserMenuItem'
+          description: Menu items for account management.
+        main:
+          type: array
+          items:
+            $ref: '#/components/schemas/UserMenuGroup'
+          description: A list of item groups in the sidebar.
+        addons:
+          type: array
+          items:
+            $ref: '#/components/schemas/UserMenuItem'
+          default: []
+        footer:
+          $ref: '#/components/schemas/UserMenuGroup'
+          description: A list of items in the sidebar's footer.
+      required:
+        - title
+        - account
+        - main
+        - footer
+      title: User Menu
+      description: User's sidebar menu structure.
+      x-stoplight:
+        id: kuo0lx8k8uszh
+    UserMenuGroup:
+      type: object
+      properties:
+        title:
+          type: string
+          default: null
+          example: Fleet
+          description: The title of the group.
+        items:
+          type: array
+          items:
+            type:
+              $ref: '#/components/schemas/UserMenuItem'
+          description: A list of the menu items.
+      required:
+        - items
+      title: User Menu Group
+      description: 'A collection of menu items, optionally titled, that are grouped together within the sidebar.'
+      x-stoplight:
+        id: r72l3q4ida332
+    UserMenuItem:
+      type: object
+      properties:
+        title:
+          type: string
+          example: Monitoring
+          description: The title of the menu item.
+        icon:
+          type: string
+          format: uri-reference
+          default: null
+          example: dashboard
+          description: The icon of the menu item.
+        tabs:
+          type: array
+          items:
+            $ref: '#/components/schemas/MenuTab'
+          description: A list of tabs in this item.
+      required:
+        - title
+        - tabs
+      title: User Menu Item
+      description: 'An individual item in the sidebar, which can include an icon and a list of tabs.'
+      x-stoplight:
+        id: cfvcq0iy5zgt7
+    MenuTab:
+      type: object
+      properties:
+        title:
+          type: string
+          example: Monitoring
+          description: The title of the tab.
+        destination:
+          type: string
+          format: uri-reference
+          example: dashboard
+          description: The destination of the tab.
+      title: Menu Tab
+      description: 'A subitem within a menu item, providing additional navigation to specific sections or functionalities.'
+      x-stoplight:
+        id: o95j6p8hbwa09
+    Addon:
+      type: object
+      properties:
+        id:
+          type: integer
+          minimum: 1
+          description: Unique ID.
+        label:
+          type: string
+          minLength: 1
+          example: BI Dashboard
+          description: Addon's name.
+        url_template:
+          type: string
+          format: uri-template
+          title: Application URL
+          example: 'https://domain.example/{locale}/application?user_id={user_id}&tz={timezone}'
+          description: |
+            URL template that will be called when the addon is opened.
+            The following variables are available:
+            - user_id - id of the user opening the application;
+            - locale - [language tag](https://en.wikipedia.org/wiki/IETF_language_tag) of the user (example: en);
+            - timezone - time-zone ID of the user (example: Europe/Berlin);
+        authorization:
+          $ref: '#/components/schemas/AddonAuthorization'
+          description: Authorization that will be used while accessing the URL.
+        display_method:
+          type: string
+          enum:
+            - new_tab
+            - embedded
+          description: Determines how the addon will be opened.
+        enabled:
+          type: boolean
+          default: true
+          description: Determines visibility in the users' side menu.
+        icon:
+          type: string
+          format: uri-reference
+          description: Identifier of the addon's icon.
+          example: dashboard
+        description:
+          type: string
+          default: ''
+          example: Supercharge your fleet analytics with BI dashboards to make data-driven decisions.
+          description: Detailed description of the addon.
+      required:
+        - id
+        - label
+        - url_template
+        - authorization
+        - display_method
+        - enabled
+        - icon
+      title: Addon
+      x-stoplight:
+        id: aqlniv7bjrh39
+    AddonAuthorization:
+      oneOf:
+        - type: object
+          properties:
+            type:
+              type: string
+              const: api_key
+            id:
+              type: integer
+              description: API Key ID
+          required:
+            - type
+            - id
+          title: API Key
+          description: Add-on will use the given API key to authenticate requests.
+        - type: object
+          properties:
+            type:
+              type: string
+              const: user_session
+          required:
+            - type
+          title: User's Session
+          description: Add-on will use user's session to authenticate requests.
+      example:
+        type: api_key
+        id: 7
+      x-stoplight:
+        id: cln556qn38n5q
+    SuccessResponse:
+      type: object
+      properties:
+        success:
+          type: boolean
+          const: true
+      required:
+        - success
+      example:
+        success: true
+      x-stoplight:
+        id: 8m7cjeoxma8wc
+    ErrorResponse:
+      type: object
+      properties:
+        success:
+          type: boolean
+          const: false
+        status:
+          type: object
+          properties:
+            code:
+              $ref: '#/components/schemas/ErrorCode'
+              title: Error code
+            description:
+              type: string
+          required:
+            - code
+            - description
+      required:
+        - success
+        - status
+      example:
+        success: false
+        status:
+          code: 201
+          description: Not found in database
+      x-stoplight:
+        id: c997gmavmvklx
+    ErrorCode:
+      oneOf:
+        - const: 6
+          title: 6
+          description: Unexpected error
+        - const: 7
+          title: 7
+          description: Invalid parameters
+        - const: 201
+          title: 201
+          description: Not found in database
+      x-stoplight:
+        id: 2r7i2ewi29uu0
+  securitySchemes:
+    API Key:
+      type: apiKey
+      name: Authorization
+      in: header
+      description: |
+        An API Key, also known as a "Hash" is a randomly generated string used to verify and authenticate actions.
+        The hash of the API key must be included in most API calls as an Authorization HTTP header.
+
+        Example: `Authorization: NVX 2e44b73d6140ce55ed43fa43ba087212`
+
+        TODO: hide non-configurable standard documentation below.
