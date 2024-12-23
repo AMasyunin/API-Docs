@@ -51,6 +51,15 @@ plugins:
       collapse_single_pages: false
       strict: true
   - macros
+  - exporter:
+      formats:
+        pdf:
+          enabled: true
+          concurrency: 16
+          aggregator:
+            enabled: true
+            output: Navixy API documentation.pdf
+            covers: none
 
 extra:
   #manifest: manifest.webmanifest todo
