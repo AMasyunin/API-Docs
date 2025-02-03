@@ -264,3 +264,4 @@
       * [Login redirect](user-api/frontend/extensions/login-redirect.md)
       * [mobile-tracker](user-api/frontend/extensions/mobile-tracker.md)
       * [User apps](user-api/frontend/extensions/user-applications.md)
+* [IoT Logic API](iot-logic-api.md)

@@ -1,0 +1,434 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "Navixy IoT Gateway API",
+    "version": "1.0.0",
+    "contact": {
+      "name": "Navixy support",
+      "email": "support@navixy.com",
+      "url": "https://www.navixy.com/contact/"
+    },
+    "license": {
+      "name": "Apache 2.0",
+      "identifier": "Apache-2.0"
+    }
+  },
+  "externalDocs": {
+    "description": "Find more info here",
+    "url": "https://developers.navixy.com/"
+  },
+  "servers": [
+    {
+      "url": "https://api.eu.navixy.com/",
+      "description": "Navixy production server on European platform"
+    },
+    {
+      "url": "https://api.us.navixy.com/",
+      "description": "Navixy production server on American platform"
+    }
+  ],
+  "security": [
+    {
+      "api_key": []
+    }
+  ],
+  "tags": [],
+  "paths": {
+    "/iot/logic/flow/create": {
+      "post": {
+        "description": "Create a new flowchart",
+        "operationId": "flowCreate",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "properties": {
+                  "flow": {
+                    "$ref": "#/components/schemas/FlowDraft"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/OK"
+          },
+          "default": {
+            "$ref": "#/components/responses/ResponseError"
+          }
+        }
+      }
+    },
+    "/iot/logic/flow/read": {
+      "get": {
+        "description": "Read a flowchart",
+        "operationId": "flowRead",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "required": [
+                  "flow_id"
+                ],
+                "properties": {
+                  "flow_id": {
+                    "type": "integer",
+                    "description": "Flow ID",
+                    "example": 12
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "success": {
+                      "type": "boolean",
+                      "readOnly": true,
+                      "description": "`true` if request finished successfully.",
+                      "example": "true"
+                    },
+                    "value": {
+                      "$ref": "#/components/schemas/Flow"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "default": {
+            "$ref": "#/components/responses/ResponseError"
+          }
+        }
+      }
+    },
+    "/iot/logic/flow/update": {
+      "post": {
+        "description": "Update a flowchart",
+        "operationId": "flowUpdate",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Flow"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/OK"
+          },
+          "default": {
+            "$ref": "#/components/responses/ResponseError"
+          }
+        }
+      }
+    },
+    "/iot/logic/flow/delete": {
+      "post": {
+        "description": "Delete a flowchart",
+        "operationId": "flowDelete",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "required": [
+                  "flow_id"
+                ],
+                "properties": {
+                  "flow_id": {
+                    "type": "integer",
+                    "description": "Flow ID",
+                    "example": 12
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Success"
+                }
+              }
+            }
+          },
+          "default": {
+            "$ref": "#/components/responses/ResponseError"
+          }
+        }
+      }
+    },
+    "/iot/logic/flow/list": {
+      "get": {
+        "description": "Get list of flows",
+        "operationId": "flowList",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "success": {
+                      "type": "boolean",
+                      "readOnly": true,
+                      "description": "`true` if request finished successfully",
+                      "example": true
+                    },
+                    "list": {
+                      "type": "array",
+                      "readOnly": true,
+                      "description": "List of user's scripts",
+                      "items": {
+                        "type": "object",
+                        "readOnly": true,
+                        "properties": {
+                          "id": {
+                            "type": "integer",
+                            "readOnly": true,
+                            "description": "Flow ID",
+                            "example": 1234
+                          },
+                          "title": {
+                            "type": "string",
+                            "readOnly": true,
+                            "description": "Flow name",
+                            "example": "Super flow"
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "default": {
+            "$ref": "#/components/responses/ResponseError"
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "securitySchemes": {
+      "api_key": {
+        "description": "Enter an API key with the \"NVX: \" prefix, e.g. \"NVX 123456abcdefg\"",
+        "example": "NVX 123456abcdefg",
+        "type": "apiKey",
+        "name": "Authorization",
+        "in": "header",
+        "bearerFormat": "NVX "
+      }
+    },
+    "schemas": {
+      "Success": {
+        "type": "object",
+        "properties": {
+          "success": {
+            "type": "boolean",
+            "readOnly": true,
+            "description": "`true` if request finished successfully, otherwise `false`",
+            "example": true
+          }
+        }
+      },
+      "Id": {
+        "type": "object",
+        "required": [
+          "id"
+        ],
+        "properties": {
+          "id": {
+            "readonly": true,
+            "type": "integer",
+            "description": "Flow ID",
+            "example": 543
+          }
+        }
+      },
+      "Edge": {
+        "description": "Edge between two Nodes",
+        "type": "object",
+        "properties": {
+          "from_node_id": {
+            "type": "integer",
+            "example": 1
+          },
+          "to_node_id": {
+            "type": "integer",
+            "example": 2
+          }
+        }
+      },
+      "NodeRename": {
+        "description": "Node: rename fields",
+        "type": "object",
+        "required": [
+          "title",
+          "items"
+        ],
+        "properties": {
+          "title": {
+            "type": "string",
+            "example": "Rename fields",
+          },
+          "items": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "oldName": {
+                  "type": "string",
+                  "example": "analog_1"
+                },
+                "newName": {
+                  "type": "string",
+                  "example": "board_voltage"
+                }
+              }
+            }
+          }
+        }
+      },
+      "NodeExclude": {
+        "description": "Node: fields",
+        "type": "object",
+        "required": [
+          "title",
+          "items"
+        ],
+        "properties": {
+          "title": {
+            "type": "string",
+            "example": "Exclude some fields"
+          },
+          "items": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "example": ["analog_1", "analog_2", "movement"]
+          }
+        }
+      },
+      "Node": {
+        "description": "Flowchart Node",
+        "type": "object",
+        "oneOf": [
+          {
+            "$ref": "#/components/schemas/NodeRename"
+          },
+          {
+            "$ref": "#/components/schemas/NodeExclude"
+          }
+        ]
+      },
+      "FlowDraft": {
+        "description": "Flowchart object without ID",
+        "type": "object",
+        "required": [
+          "title"
+        ],
+        "properties": {
+          "title": {
+            "type": "string",
+            "description": "Flow name",
+            "example": "Super flow"
+          },
+          "enabled": {
+            "type": "boolean",
+            "description": "Enable/disable flag",
+            "example": true
+          },
+          "nodes": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Node"
+            }
+          },
+          "edges": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Edge"
+            }
+          }
+        }
+      },
+      "Flow": {
+        "description": "Flowchart object",
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/Id"
+          },
+          {
+            "$ref": "#/components/schemas/FlowDraft"
+          }
+        ]
+      }
+    },
+    "responses": {
+      "OK": {
+        "description": "Successful response",
+        "content": {
+          "application/json": {
+            "schema": {
+              "properties": {
+                "success": {
+                  "type": "boolean",
+                  "readOnly": true,
+                  "description": "`true` if request finished successfully.",
+                  "example": "true"
+                }
+              }
+            }
+          }
+        }
+      },
+      "ResponseError": {
+        "description": "Error response object",
+        "type": "object",
+        "content": {
+          "application/json": {
+            "schema": {
+              "properties": {
+                "success": {
+                  "type": "boolean",
+                  "description": "Always false.",
+                  "example": "false"
+                },
+                "status": {
+                  "description": "Error status. It only presence when an error occurred.",
+                  "type": "object",
+                  "properties": {
+                    "code": {
+                      "description": "An error code in this API (not a HTTP code)",
+                      "type": "integer",
+                      "example": "1"
+                    },
+                    "description": {
+                      "description": "An error description",
+                      "type": "string",
+                      "example": "Database error"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
