@@ -1,0 +1,68 @@
+{
+  "collapseTableOfContents": true,
+  "items": [
+    {
+      "type": "item",
+      "title": "Overview",
+      "uri": "/docs/Overview.md"
+    },
+    {
+      "type": "item",
+      "title": "Technical Details",
+      "uri": "/docs/Technical-details.md"
+    },
+    {
+      "type": "group",
+      "title": "Flow schemas",
+      "uri": "/docs/Flow schemas/Flow-schema-structure.md",
+      "items": [
+        {
+          "type": "item",
+          "title": "JSON-schema template",
+          "uri": "IoT Logic.json/components/schemas/Flow"
+        },
+        {
+          "type": "item",
+          "title": "JSON-schema example",
+          "uri": "/docs/Flow schemas/General-JSON-schema-example.md"
+        }
+      ]
+    },
+    {
+      "type": "group",
+      "title": "Guides",
+      "uri": "/docs/Guides/navixy-iot-guide.md",
+      "items": [
+        {
+          "type": "item",
+          "title": "Sending device data to an external MQTT system",
+          "uri": "/docs/Guides/scenario1.md"
+        },
+        {
+          "type": "item",
+          "title": "Managing your flows and endpoints",
+          "uri": "/docs/Guides/scenario2.md"
+        },
+        {
+        "type": "item",
+        "title": "Advanced configurations",
+        "uri": "/docs/Guides/Advanced-configurations.md"
+        }
+      ]
+    },
+    {
+      "type": "item",
+      "title": "Websocket access for Data Stream Analyzer",
+      "uri": "docs/Websocket-access-for-DSA.md"
+    },
+    {
+      "type": "divider",
+      "title": "Resources"
+    },
+    {
+      "type": "item",
+      "title": "Navixy IoT Logic API",
+      "uri": "/IoT Logic.json"
+    }
+  ]
+}
