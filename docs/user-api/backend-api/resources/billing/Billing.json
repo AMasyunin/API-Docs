@@ -4,18 +4,19 @@
     "id": "g774cqrfiruyl"
   },
   "info": {
-    "title": "{API_TITLE}",
+    "title": "Billing",
     "description": "API specification generated from markdown documentation",
     "version": "1.0.0",
     "contact": {
-      "name": "API Support",
+      "name": "Support",
       "email": "support@navixy.com",
       "url": "https://www.navixy.com/contact/"
     },
     "license": {
       "name": "Apache 2.0",
       "identifier": "Apache-2.0"
-    }
+    },
+    "summary": "API calls for Navixy's billing functionality"
   },
   "externalDocs": {
     "description": "Find more info here",
@@ -64,7 +65,7 @@
         "tags": [
           "bill"
         ],
-        "summary": "Creates a new bill for the user. ",
+        "summary": "Creates a new bill for the user.",
         "description": "Creates a new bill for the user. \n\n**required sub-user rights**: `payment_create`.",
         "operationId": "bill_bill_create_post",
         "parameters": [
