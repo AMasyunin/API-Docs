@@ -1,0 +1,1388 @@
+{
+  "collapseTableOfContents": false,
+  "items": [
+    {
+      "type": "item",
+      "title": "Index",
+      "uri": "/docs/index.md"
+    },
+    {
+      "type": "divider",
+      "title": "general"
+    },
+    {
+      "type": "item",
+      "title": "Contact Us",
+      "uri": "/docs/general/contacts.md"
+    },
+    {
+      "type": "group",
+      "title": "contribute",
+      "items": [
+        {
+          "type": "item",
+          "title": "Get involved",
+          "uri": "/docs/general/contribute/dev-docs.md"
+        },
+        {
+          "type": "item",
+          "title": "Translate Navixy",
+          "uri": "/docs/general/contribute/translation.md"
+        }
+      ]
+    },
+    {
+      "type": "item",
+      "title": "Getting Started",
+      "uri": "/docs/general/getting-started.md"
+    },
+    {
+      "type": "item",
+      "title": "Postman",
+      "uri": "/docs/general/postman.md"
+    },
+    {
+      "type": "item",
+      "title": "Automation with Zapier",
+      "uri": "/docs/general/zapier.md"
+    },
+    {
+      "type": "divider",
+      "title": "panel-api"
+    },
+    {
+      "type": "item",
+      "title": "Getting Started",
+      "uri": "/docs/panel-api/getting-started.md"
+    },
+    {
+      "type": "group",
+      "title": "resources",
+      "items": [
+        {
+          "type": "item",
+          "title": "Account",
+          "uri": "/docs/panel-api/resources/account.md"
+        },
+        {
+          "type": "group",
+          "title": "dealer",
+          "items": [
+            {
+              "type": "item",
+              "title": "Activation code",
+              "uri": "/docs/panel-api/resources/dealer/activation_code.md"
+            },
+            {
+              "type": "item",
+              "title": "Dealer get info",
+              "uri": "/docs/panel-api/resources/dealer/index.md"
+            },
+            {
+              "type": "item",
+              "title": "Update password",
+              "uri": "/docs/panel-api/resources/dealer/password.md"
+            },
+            {
+              "type": "group",
+              "title": "settings",
+              "items": [
+                {
+                  "type": "item",
+                  "title": "Image",
+                  "uri": "/docs/panel-api/resources/dealer/settings/image.md"
+                },
+                {
+                  "type": "item",
+                  "title": "Notification",
+                  "uri": "/docs/panel-api/resources/dealer/settings/notification.md"
+                },
+                {
+                  "type": "item",
+                  "title": "Service",
+                  "uri": "/docs/panel-api/resources/dealer/settings/service.md"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "item",
+          "title": "Equipment",
+          "uri": "/docs/panel-api/resources/equipment.md"
+        },
+        {
+          "type": "item",
+          "title": "Gateways",
+          "uri": "/docs/panel-api/resources/gateways.md"
+        },
+        {
+          "type": "item",
+          "title": "Order",
+          "uri": "/docs/panel-api/resources/order.md"
+        },
+        {
+          "type": "group",
+          "title": "subpaas",
+          "items": [
+            {
+              "type": "item",
+              "title": "Subdealer actions",
+              "uri": "/docs/panel-api/resources/subpaas/index.md"
+            },
+            {
+              "type": "item",
+              "title": "Password",
+              "uri": "/docs/panel-api/resources/subpaas/password.md"
+            },
+            {
+              "type": "item",
+              "title": "Session",
+              "uri": "/docs/panel-api/resources/subpaas/session.md"
+            }
+          ]
+        },
+        {
+          "type": "item",
+          "title": "Plan",
+          "uri": "/docs/panel-api/resources/tariff.md"
+        },
+        {
+          "type": "item",
+          "title": "Timezone",
+          "uri": "/docs/panel-api/resources/timezone.md"
+        },
+        {
+          "type": "item",
+          "title": "Tracker",
+          "uri": "/docs/panel-api/resources/tracker.md"
+        },
+        {
+          "type": "group",
+          "title": "user",
+          "items": [
+            {
+              "type": "item",
+              "title": "User actions",
+              "uri": "/docs/panel-api/resources/user/index.md"
+            },
+            {
+              "type": "group",
+              "title": "menu",
+              "items": [
+                {
+                  "type": "item",
+                  "title": "Menu preset",
+                  "uri": "/docs/panel-api/resources/user/menu/preset.md"
+                }
+              ]
+            },
+            {
+              "type": "group",
+              "title": "mfa",
+              "items": [
+                {
+                  "type": "item",
+                  "title": "Multi-factor authentication settings",
+                  "uri": "/docs/panel-api/resources/user/mfa/settings.md"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "divider",
+      "title": "user-api"
+    },
+    {
+      "type": "group",
+      "title": "backend-api",
+      "items": [
+        {
+          "type": "group",
+          "title": "getting-started",
+          "items": [
+            {
+              "type": "item",
+              "title": "API Keys Advantages",
+              "uri": "/docs/user-api/backend-api/getting-started/authentication.md"
+            },
+            {
+              "type": "item",
+              "title": "Errors",
+              "uri": "/docs/user-api/backend-api/getting-started/errors.md"
+            },
+            {
+              "type": "item",
+              "title": "Introduction",
+              "uri": "/docs/user-api/backend-api/getting-started/introduction.md"
+            }
+          ]
+        },
+        {
+          "type": "group",
+          "title": "guides",
+          "items": [
+            {
+              "type": "group",
+              "title": "data-retrieval",
+              "items": [
+                {
+                  "type": "item",
+                  "title": "Getting Track Points",
+                  "uri": "/docs/user-api/backend-api/guides/data-retrieval/get-track-points.md"
+                },
+                {
+                  "type": "item",
+                  "title": "Getting List of GPS Trackers",
+                  "uri": "/docs/user-api/backend-api/guides/data-retrieval/get-tracker-list.md"
+                },
+                {
+                  "type": "item",
+                  "title": "Generate Report",
+                  "uri": "/docs/user-api/backend-api/guides/data-retrieval/obtain-reports.md"
+                },
+                {
+                  "type": "item",
+                  "title": "Retrieving Sensor and Counter Data",
+                  "uri": "/docs/user-api/backend-api/guides/data-retrieval/sensor-data.md"
+                }
+              ]
+            },
+            {
+              "type": "group",
+              "title": "device-management",
+              "items": [
+                {
+                  "type": "item",
+                  "title": "Step 1: Verify device model support",
+                  "uri": "/docs/user-api/backend-api/guides/device-management/activate-device.md"
+                },
+                {
+                  "type": "item",
+                  "title": "Tracking Stationary Objects with BLE Tags",
+                  "uri": "/docs/user-api/backend-api/guides/device-management/ble-beacons.md"
+                },
+                {
+                  "type": "item",
+                  "title": "Sending Commands to a GPS Tracker via IP protocol (OTA)",
+                  "uri": "/docs/user-api/backend-api/guides/device-management/send-commands.md"
+                }
+              ]
+            },
+            {
+              "type": "group",
+              "title": "field-service-management",
+              "items": [
+                {
+                  "type": "item",
+                  "title": "Changing Employee Statuses",
+                  "uri": "/docs/user-api/backend-api/guides/field-service-management/change-task-statuses.md"
+                },
+                {
+                  "type": "item",
+                  "title": "Working with Check-ins",
+                  "uri": "/docs/user-api/backend-api/guides/field-service-management/check-ins.md"
+                },
+                {
+                  "type": "item",
+                  "title": "Using Task Forms",
+                  "uri": "/docs/user-api/backend-api/guides/field-service-management/create-forms.md"
+                },
+                {
+                  "type": "item",
+                  "title": "How to Create and Assign Tasks",
+                  "uri": "/docs/user-api/backend-api/guides/field-service-management/manage-tasks.md"
+                }
+              ]
+            },
+            {
+              "type": "group",
+              "title": "fleet-management",
+              "items": [
+                {
+                  "type": "item",
+                  "title": "Using Driver Journals",
+                  "uri": "/docs/user-api/backend-api/guides/fleet-management/driver-journals.md"
+                },
+                {
+                  "type": "item",
+                  "title": "Managing Vehicles and Service Works",
+                  "uri": "/docs/user-api/backend-api/guides/fleet-management/service-works.md"
+                },
+                {
+                  "type": "item",
+                  "title": "Using Tags",
+                  "uri": "/docs/user-api/backend-api/guides/fleet-management/use-tags.md"
+                }
+              ]
+            },
+            {
+              "type": "item",
+              "title": "Guides and Examples",
+              "uri": "/docs/user-api/backend-api/guides/index.md"
+            },
+            {
+              "type": "group",
+              "title": "places",
+              "items": [
+                {
+                  "type": "item",
+                  "title": "Managing Geofences",
+                  "uri": "/docs/user-api/backend-api/guides/places/manage-geofences.md"
+                },
+                {
+                  "type": "item",
+                  "title": "Managing POIs",
+                  "uri": "/docs/user-api/backend-api/guides/places/manage-pois.md"
+                }
+              ]
+            },
+            {
+              "type": "group",
+              "title": "rules-notifications",
+              "items": [
+                {
+                  "type": "item",
+                  "title": "Receiving Push Notifications in Your App",
+                  "uri": "/docs/user-api/backend-api/guides/rules-notifications/get-push-notifications.md"
+                },
+                {
+                  "type": "item",
+                  "title": "Using Rules",
+                  "uri": "/docs/user-api/backend-api/guides/rules-notifications/use-rules.md"
+                },
+                {
+                  "type": "item",
+                  "title": "Working with Notifications",
+                  "uri": "/docs/user-api/backend-api/guides/rules-notifications/work-with-notifications.md"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "group",
+          "title": "resources",
+          "items": [
+            {
+              "type": "group",
+              "title": "billing",
+              "uri": "/docs/user-api/backend-api/resources/billing/Billing-resources.md",
+              "items": [
+                {
+                  "type": "item",
+                  "title": "Billing API",
+                  "uri": "docs/user-api/backend-api/resources/billing/Billing.json"
+                }
+              ]
+            },
+            {
+              "type": "group",
+              "title": "commons",
+              "items": [
+                {
+                  "type": "item",
+                  "title": "API Keys",
+                  "uri": "/docs/user-api/backend-api/resources/commons/api-keys.md"
+                },
+                {
+                  "type": "item",
+                  "title": "Base",
+                  "uri": "/docs/user-api/backend-api/resources/commons/base.md"
+                },
+                {
+                  "type": "item",
+                  "title": "Data",
+                  "uri": "/docs/user-api/backend-api/resources/commons/data.md"
+                },
+                {
+                  "type": "item",
+                  "title": "Dealer",
+                  "uri": "/docs/user-api/backend-api/resources/commons/dealer.md"
+                },
+                {
+                  "type": "group",
+                  "title": "entity",
+                  "items": [
+                    {
+                      "type": "item",
+                      "title": "Entity fields",
+                      "uri": "/docs/user-api/backend-api/resources/commons/entity/fields.md"
+                    },
+                    {
+                      "type": "item",
+                      "title": "Entity",
+                      "uri": "/docs/user-api/backend-api/resources/commons/entity/index.md"
+                    },
+                    {
+                      "type": "item",
+                      "title": "Entity search conditions",
+                      "uri": "/docs/user-api/backend-api/resources/commons/entity/search_conditions.md"
+                    }
+                  ]
+                },
+                {
+                  "type": "item",
+                  "title": "Feedback",
+                  "uri": "/docs/user-api/backend-api/resources/commons/feedback.md"
+                },
+                {
+                  "type": "item",
+                  "title": "File",
+                  "uri": "/docs/user-api/backend-api/resources/commons/file.md"
+                },
+                {
+                  "type": "group",
+                  "title": "history",
+                  "items": [
+                    {
+                      "type": "item",
+                      "title": "Tracker events",
+                      "uri": "/docs/user-api/backend-api/resources/commons/history/history_tracker.md"
+                    },
+                    {
+                      "type": "item",
+                      "title": "Event type",
+                      "uri": "/docs/user-api/backend-api/resources/commons/history/history_type.md"
+                    },
+                    {
+                      "type": "item",
+                      "title": "Unread events",
+                      "uri": "/docs/user-api/backend-api/resources/commons/history/history_unread.md"
+                    },
+                    {
+                      "type": "item",
+                      "title": "User events",
+                      "uri": "/docs/user-api/backend-api/resources/commons/history/history_user.md"
+                    },
+                    {
+                      "type": "item",
+                      "title": "Events history",
+                      "uri": "/docs/user-api/backend-api/resources/commons/history/index.md"
+                    }
+                  ]
+                },
+                {
+                  "type": "item",
+                  "title": "Notification",
+                  "uri": "/docs/user-api/backend-api/resources/commons/notification.md"
+                },
+                {
+                  "type": "group",
+                  "title": "plugin",
+                  "items": [
+                    {
+                      "type": "item",
+                      "title": "Plugin",
+                      "uri": "/docs/user-api/backend-api/resources/commons/plugin/index.md"
+                    },
+                    {
+                      "type": "item",
+                      "title": "Report plugins",
+                      "uri": "/docs/user-api/backend-api/resources/commons/plugin/report_plugins.md"
+                    }
+                  ]
+                },
+                {
+                  "type": "group",
+                  "title": "report",
+                  "items": [
+                    {
+                      "type": "item",
+                      "title": "Report schedule",
+                      "uri": "/docs/user-api/backend-api/resources/commons/report/report_schedule.md"
+                    },
+                    {
+                      "type": "item",
+                      "title": "Report tracker",
+                      "uri": "/docs/user-api/backend-api/resources/commons/report/report_tracker.md"
+                    }
+                  ]
+                },
+                {
+                  "type": "group",
+                  "title": "subuser",
+                  "items": [
+                    {
+                      "type": "item",
+                      "title": "Subuser",
+                      "uri": "/docs/user-api/backend-api/resources/commons/subuser/index.md"
+                    },
+                    {
+                      "type": "item",
+                      "title": "Subuser places",
+                      "uri": "/docs/user-api/backend-api/resources/commons/subuser/places.md"
+                    },
+                    {
+                      "type": "item",
+                      "title": "Sub-user security group",
+                      "uri": "/docs/user-api/backend-api/resources/commons/subuser/security_group.md"
+                    },
+                    {
+                      "type": "item",
+                      "title": "Subuser session",
+                      "uri": "/docs/user-api/backend-api/resources/commons/subuser/session.md"
+                    },
+                    {
+                      "type": "item",
+                      "title": "Subuser tracker",
+                      "uri": "/docs/user-api/backend-api/resources/commons/subuser/tracker.md"
+                    },
+                    {
+                      "type": "item",
+                      "title": "Subuser geofences",
+                      "uri": "/docs/user-api/backend-api/resources/commons/subuser/zones.md"
+                    }
+                  ]
+                },
+                {
+                  "type": "group",
+                  "title": "tag",
+                  "items": [
+                    {
+                      "type": "item",
+                      "title": "Tag",
+                      "uri": "/docs/user-api/backend-api/resources/commons/tag/index.md"
+                    },
+                    {
+                      "type": "item",
+                      "title": "Tag avatar",
+                      "uri": "/docs/user-api/backend-api/resources/commons/tag/tag_avatar.md"
+                    }
+                  ]
+                },
+                {
+                  "type": "item",
+                  "title": "Timezone",
+                  "uri": "/docs/user-api/backend-api/resources/commons/timezone.md"
+                },
+                {
+                  "type": "group",
+                  "title": "user",
+                  "items": [
+                    {
+                      "type": "item",
+                      "title": "User Applications",
+                      "uri": "/docs/user-api/backend-api/resources/commons/user/applications.md"
+                    },
+                    {
+                      "type": "group",
+                      "title": "audit",
+                      "items": [
+                        {
+                          "type": "item",
+                          "title": "User audit log",
+                          "uri": "/docs/user-api/backend-api/resources/commons/user/audit/audit_log.md"
+                        },
+                        {
+                          "type": "item",
+                          "title": "User audit",
+                          "uri": "/docs/user-api/backend-api/resources/commons/user/audit/index.md"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "group",
+                      "title": "auth",
+                      "items": [
+                        {
+                          "type": "item",
+                          "title": "User authentication code",
+                          "uri": "/docs/user-api/backend-api/resources/commons/user/auth/code.md"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "item",
+                      "title": "User actions",
+                      "uri": "/docs/user-api/backend-api/resources/commons/user/index.md"
+                    },
+                    {
+                      "type": "item",
+                      "title": "User password",
+                      "uri": "/docs/user-api/backend-api/resources/commons/user/password.md"
+                    },
+                    {
+                      "type": "item",
+                      "title": "User personal info",
+                      "uri": "/docs/user-api/backend-api/resources/commons/user/personal_info.md"
+                    },
+                    {
+                      "type": "group",
+                      "title": "session",
+                      "items": [
+                        {
+                          "type": "item",
+                          "title": "Delivery",
+                          "uri": "/docs/user-api/backend-api/resources/commons/user/session/delivery.md"
+                        },
+                        {
+                          "type": "item",
+                          "title": "User session",
+                          "uri": "/docs/user-api/backend-api/resources/commons/user/session/index.md"
+                        },
+                        {
+                          "type": "item",
+                          "title": "Push token",
+                          "uri": "/docs/user-api/backend-api/resources/commons/user/session/push_token.md"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "group",
+                      "title": "settings",
+                      "items": [
+                        {
+                          "type": "item",
+                          "title": "User settings",
+                          "uri": "/docs/user-api/backend-api/resources/commons/user/settings/index.md"
+                        },
+                        {
+                          "type": "item",
+                          "title": "User UI settings",
+                          "uri": "/docs/user-api/backend-api/resources/commons/user/settings/ui.md"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "group",
+              "title": "field_service",
+              "items": [
+                {
+                  "type": "item",
+                  "title": "Check-ins",
+                  "uri": "/docs/user-api/backend-api/resources/field_service/checkin.md"
+                },
+                {
+                  "type": "item",
+                  "title": "Departments",
+                  "uri": "/docs/user-api/backend-api/resources/field_service/department.md"
+                },
+                {
+                  "type": "group",
+                  "title": "employee",
+                  "items": [
+                    {
+                      "type": "item",
+                      "title": "Changing avatar",
+                      "uri": "/docs/user-api/backend-api/resources/field_service/employee/avatar.md"
+                    },
+                    {
+                      "type": "item",
+                      "title": "Employee import",
+                      "uri": "/docs/user-api/backend-api/resources/field_service/employee/import.md"
+                    },
+                    {
+                      "type": "item",
+                      "title": "Working with employees and drivers",
+                      "uri": "/docs/user-api/backend-api/resources/field_service/employee/index.md"
+                    }
+                  ]
+                },
+                {
+                  "type": "group",
+                  "title": "form",
+                  "items": [
+                    {
+                      "type": "item",
+                      "title": "Form field types",
+                      "uri": "/docs/user-api/backend-api/resources/field_service/form/field-types.md"
+                    },
+                    {
+                      "type": "item",
+                      "title": "About forms",
+                      "uri": "/docs/user-api/backend-api/resources/field_service/form/index.md"
+                    },
+                    {
+                      "type": "item",
+                      "title": "Form templates",
+                      "uri": "/docs/user-api/backend-api/resources/field_service/form/template.md"
+                    }
+                  ]
+                },
+                {
+                  "type": "group",
+                  "title": "place",
+                  "items": [
+                    {
+                      "type": "item",
+                      "title": "Changing POI avatar",
+                      "uri": "/docs/user-api/backend-api/resources/field_service/place/avatar.md"
+                    },
+                    {
+                      "type": "item",
+                      "title": "Working with points of interest (POI)",
+                      "uri": "/docs/user-api/backend-api/resources/field_service/place/index.md"
+                    }
+                  ]
+                },
+                {
+                  "type": "group",
+                  "title": "task",
+                  "items": [
+                    {
+                      "type": "item",
+                      "title": "Checkpoints",
+                      "uri": "/docs/user-api/backend-api/resources/field_service/task/checkpoint.md"
+                    },
+                    {
+                      "type": "group",
+                      "title": "form",
+                      "items": [
+                        {
+                          "type": "item",
+                          "title": "Attaching files",
+                          "uri": "/docs/user-api/backend-api/resources/field_service/task/form/file.md"
+                        },
+                        {
+                          "type": "item",
+                          "title": "Task form actions",
+                          "uri": "/docs/user-api/backend-api/resources/field_service/task/form/index.md"
+                        },
+                        {
+                          "type": "item",
+                          "title": "Updating task form values",
+                          "uri": "/docs/user-api/backend-api/resources/field_service/task/form/values.md"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "item",
+                      "title": "Task history",
+                      "uri": "/docs/user-api/backend-api/resources/field_service/task/history.md"
+                    },
+                    {
+                      "type": "item",
+                      "title": "Working with tasks",
+                      "uri": "/docs/user-api/backend-api/resources/field_service/task/index.md"
+                    },
+                    {
+                      "type": "group",
+                      "title": "route",
+                      "items": [
+                        {
+                          "type": "item",
+                          "title": "Routes",
+                          "uri": "/docs/user-api/backend-api/resources/field_service/task/route/index.md"
+                        },
+                        {
+                          "type": "item",
+                          "title": "Optimizing routes",
+                          "uri": "/docs/user-api/backend-api/resources/field_service/task/route/optimize.md"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "group",
+                      "title": "schedule",
+                      "items": [
+                        {
+                          "type": "item",
+                          "title": "Checkpoints",
+                          "uri": "/docs/user-api/backend-api/resources/field_service/task/schedule/checkpoint.md"
+                        },
+                        {
+                          "type": "item",
+                          "title": "Recurring tasks",
+                          "uri": "/docs/user-api/backend-api/resources/field_service/task/schedule/index.md"
+                        },
+                        {
+                          "type": "item",
+                          "title": "Schedule proposals",
+                          "uri": "/docs/user-api/backend-api/resources/field_service/task/schedule/proposal.md"
+                        },
+                        {
+                          "type": "item",
+                          "title": "Scheduling routes",
+                          "uri": "/docs/user-api/backend-api/resources/field_service/task/schedule/route.md"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "group",
+              "title": "fleet",
+              "items": [
+                {
+                  "type": "group",
+                  "title": "driver_journal",
+                  "items": [
+                    {
+                      "type": "item",
+                      "title": "Driver journal entry",
+                      "uri": "/docs/user-api/backend-api/resources/fleet/driver_journal/entry.md"
+                    },
+                    {
+                      "type": "item",
+                      "title": "Trip proposal for driver journal",
+                      "uri": "/docs/user-api/backend-api/resources/fleet/driver_journal/proposal.md"
+                    }
+                  ]
+                },
+                {
+                  "type": "item",
+                  "title": "Depot",
+                  "uri": "/docs/user-api/backend-api/resources/fleet/garage.md"
+                },
+                {
+                  "type": "group",
+                  "title": "vehicle",
+                  "items": [
+                    {
+                      "type": "item",
+                      "title": "Vehicle avatar",
+                      "uri": "/docs/user-api/backend-api/resources/fleet/vehicle/avatar.md"
+                    },
+                    {
+                      "type": "item",
+                      "title": "Vehicle import",
+                      "uri": "/docs/user-api/backend-api/resources/fleet/vehicle/import.md"
+                    },
+                    {
+                      "type": "item",
+                      "title": "Vehicle",
+                      "uri": "/docs/user-api/backend-api/resources/fleet/vehicle/index.md"
+                    },
+                    {
+                      "type": "group",
+                      "title": "service_task",
+                      "items": [
+                        {
+                          "type": "item",
+                          "title": "Service work file",
+                          "uri": "/docs/user-api/backend-api/resources/fleet/vehicle/service_task/file.md"
+                        },
+                        {
+                          "type": "item",
+                          "title": "Service work",
+                          "uri": "/docs/user-api/backend-api/resources/fleet/vehicle/service_task/service_task.md"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "group",
+                      "title": "status_listing",
+                      "items": [
+                        {
+                          "type": "item",
+                          "title": "Status listing",
+                          "uri": "/docs/user-api/backend-api/resources/fleet/vehicle/status_listing/listing.md"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "item",
+              "title": "Resources Overview",
+              "uri": "/docs/user-api/backend-api/resources/index.md"
+            },
+            {
+              "type": "item",
+              "title": "Geo Links",
+              "uri": "/docs/user-api/backend-api/resources/location_link.md"
+            },
+            {
+              "type": "group",
+              "title": "tracking",
+              "items": [
+                {
+                  "type": "item",
+                  "title": "APN settings of tracker",
+                  "uri": "/docs/user-api/backend-api/resources/tracking/apn_settings.md"
+                },
+                {
+                  "type": "group",
+                  "title": "beacon",
+                  "items": [
+                    {
+                      "type": "item",
+                      "title": "BLE beacon data",
+                      "uri": "/docs/user-api/backend-api/resources/tracking/beacon/index.md"
+                    }
+                  ]
+                },
+                {
+                  "type": "item",
+                  "title": "Delivery info",
+                  "uri": "/docs/user-api/backend-api/resources/tracking/delivery.md"
+                },
+                {
+                  "type": "item",
+                  "title": "Geocoder",
+                  "uri": "/docs/user-api/backend-api/resources/tracking/geocoder.md"
+                },
+                {
+                  "type": "item",
+                  "title": "Map layer",
+                  "uri": "/docs/user-api/backend-api/resources/tracking/map_layer.md"
+                },
+                {
+                  "type": "item",
+                  "title": "Retranslator",
+                  "uri": "/docs/user-api/backend-api/resources/tracking/retranslator.md"
+                },
+                {
+                  "type": "group",
+                  "title": "route",
+                  "items": [
+                    {
+                      "type": "item",
+                      "title": "Getting route",
+                      "uri": "/docs/user-api/backend-api/resources/tracking/route/index.md"
+                    },
+                    {
+                      "type": "item",
+                      "title": "Getting the route with Google",
+                      "uri": "/docs/user-api/backend-api/resources/tracking/route/route_google.md"
+                    },
+                    {
+                      "type": "item",
+                      "title": "Getting route with OSRM",
+                      "uri": "/docs/user-api/backend-api/resources/tracking/route/route_osrm.md"
+                    },
+                    {
+                      "type": "item",
+                      "title": "Getting route with Progorod",
+                      "uri": "/docs/user-api/backend-api/resources/tracking/route/route_progorod.md"
+                    }
+                  ]
+                },
+                {
+                  "type": "group",
+                  "title": "status",
+                  "items": [
+                    {
+                      "type": "item",
+                      "title": "Working status",
+                      "uri": "/docs/user-api/backend-api/resources/tracking/status/index.md"
+                    },
+                    {
+                      "type": "group",
+                      "title": "listing",
+                      "items": [
+                        {
+                          "type": "item",
+                          "title": "Working status list",
+                          "uri": "/docs/user-api/backend-api/resources/tracking/status/listing/index.md"
+                        },
+                        {
+                          "type": "item",
+                          "title": "Tracker's working status list",
+                          "uri": "/docs/user-api/backend-api/resources/tracking/status/listing/tracker.md"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "item",
+                      "title": "Tracker's working status",
+                      "uri": "/docs/user-api/backend-api/resources/tracking/status/tracker.md"
+                    }
+                  ]
+                },
+                {
+                  "type": "group",
+                  "title": "track",
+                  "items": [
+                    {
+                      "type": "item",
+                      "title": "Track",
+                      "uri": "/docs/user-api/backend-api/resources/tracking/track/index.md"
+                    },
+                    {
+                      "type": "group",
+                      "title": "waybill",
+                      "items": [
+                        {
+                          "type": "item",
+                          "title": "Waybill",
+                          "uri": "/docs/user-api/backend-api/resources/tracking/track/waybill/index.md"
+                        },
+                        {
+                          "type": "item",
+                          "title": "Waybill settings",
+                          "uri": "/docs/user-api/backend-api/resources/tracking/track/waybill/settings.md"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "group",
+                  "title": "tracker",
+                  "items": [
+                    {
+                      "type": "item",
+                      "title": "Alarm mode",
+                      "uri": "/docs/user-api/backend-api/resources/tracking/tracker/alarm_mode.md"
+                    },
+                    {
+                      "type": "item",
+                      "title": "APN settings by tracker ID",
+                      "uri": "/docs/user-api/backend-api/resources/tracking/tracker/apn_settings.md"
+                    },
+                    {
+                      "type": "item",
+                      "title": "Avatar for the tracker",
+                      "uri": "/docs/user-api/backend-api/resources/tracking/tracker/avatar.md"
+                    },
+                    {
+                      "type": "item",
+                      "title": "Chat",
+                      "uri": "/docs/user-api/backend-api/resources/tracking/tracker/chat.md"
+                    },
+                    {
+                      "type": "group",
+                      "title": "command",
+                      "items": [
+                        {
+                          "type": "item",
+                          "title": "Unconfirmed commands",
+                          "uri": "/docs/user-api/backend-api/resources/tracking/tracker/command/unconfirmed.md"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "item",
+                      "title": "Contact",
+                      "uri": "/docs/user-api/backend-api/resources/tracking/tracker/contact.md"
+                    },
+                    {
+                      "type": "item",
+                      "title": "Counters",
+                      "uri": "/docs/user-api/backend-api/resources/tracking/tracker/counter.md"
+                    },
+                    {
+                      "type": "item",
+                      "title": "Datalogger",
+                      "uri": "/docs/user-api/backend-api/resources/tracking/tracker/datalogger.md"
+                    },
+                    {
+                      "type": "item",
+                      "title": "Assigning employee to tracker",
+                      "uri": "/docs/user-api/backend-api/resources/tracking/tracker/employee.md"
+                    },
+                    {
+                      "type": "item",
+                      "title": "Engine immobilizer",
+                      "uri": "/docs/user-api/backend-api/resources/tracking/tracker/engine_immobilizer.md"
+                    },
+                    {
+                      "type": "item",
+                      "title": "Group",
+                      "uri": "/docs/user-api/backend-api/resources/tracking/tracker/group.md"
+                    },
+                    {
+                      "type": "item",
+                      "title": "Working with trackers",
+                      "uri": "/docs/user-api/backend-api/resources/tracking/tracker/index.md"
+                    },
+                    {
+                      "type": "item",
+                      "title": "LED",
+                      "uri": "/docs/user-api/backend-api/resources/tracking/tracker/led.md"
+                    },
+                    {
+                      "type": "item",
+                      "title": "Mobile app register",
+                      "uri": "/docs/user-api/backend-api/resources/tracking/tracker/mobile.md"
+                    },
+                    {
+                      "type": "item",
+                      "title": "Output control",
+                      "uri": "/docs/user-api/backend-api/resources/tracking/tracker/output.md"
+                    },
+                    {
+                      "type": "item",
+                      "title": "Sensor readings",
+                      "uri": "/docs/user-api/backend-api/resources/tracking/tracker/readings.md"
+                    },
+                    {
+                      "type": "item",
+                      "title": "Retranslator",
+                      "uri": "/docs/user-api/backend-api/resources/tracking/tracker/retranslator.md"
+                    },
+                    {
+                      "type": "group",
+                      "title": "rules",
+                      "items": [
+                        {
+                          "type": "item",
+                          "title": "Rule types",
+                          "uri": "/docs/user-api/backend-api/resources/tracking/tracker/rules/rule_types.md"
+                        },
+                        {
+                          "type": "item",
+                          "title": "Rule",
+                          "uri": "/docs/user-api/backend-api/resources/tracking/tracker/rules/rule.md"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "group",
+                      "title": "sensor",
+                      "items": [
+                        {
+                          "type": "item",
+                          "title": "Sensor calibration data",
+                          "uri": "/docs/user-api/backend-api/resources/tracking/tracker/sensor/calibration_data.md"
+                        },
+                        {
+                          "type": "item",
+                          "title": "Sensor actions",
+                          "uri": "/docs/user-api/backend-api/resources/tracking/tracker/sensor/index.md"
+                        },
+                        {
+                          "type": "item",
+                          "title": "Sensor inputs",
+                          "uri": "/docs/user-api/backend-api/resources/tracking/tracker/sensor/input_name.md"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "group",
+                      "title": "settings",
+                      "items": [
+                        {
+                          "type": "item",
+                          "title": "Tracker label and group",
+                          "uri": "/docs/user-api/backend-api/resources/tracking/tracker/settings/index.md"
+                        },
+                        {
+                          "type": "item",
+                          "title": "LBS settings",
+                          "uri": "/docs/user-api/backend-api/resources/tracking/tracker/settings/lbs.md"
+                        },
+                        {
+                          "type": "group",
+                          "title": "special",
+                          "items": [
+                            {
+                              "type": "item",
+                              "title": "About special settings",
+                              "uri": "/docs/user-api/backend-api/resources/tracking/tracker/settings/special/index.md"
+                            },
+                            {
+                              "type": "item",
+                              "title": "Specific portlets",
+                              "uri": "/docs/user-api/backend-api/resources/tracking/tracker/settings/special/portlets.md"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "item",
+                          "title": "Tracking profiles",
+                          "uri": "/docs/user-api/backend-api/resources/tracking/tracker/settings/tracking_profiles.md"
+                        },
+                        {
+                          "type": "item",
+                          "title": "Tracking mode",
+                          "uri": "/docs/user-api/backend-api/resources/tracking/tracker/settings/tracking.md"
+                        },
+                        {
+                          "type": "item",
+                          "title": "Parking detection",
+                          "uri": "/docs/user-api/backend-api/resources/tracking/tracker/settings/trip_detection.md"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "group",
+                      "title": "stats",
+                      "items": [
+                        {
+                          "type": "item",
+                          "title": "Engine hours",
+                          "uri": "/docs/user-api/backend-api/resources/tracking/tracker/stats/stats_engine_hours.md"
+                        },
+                        {
+                          "type": "item",
+                          "title": "Mileage",
+                          "uri": "/docs/user-api/backend-api/resources/tracking/tracker/stats/stats_mileage.md"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "item",
+                      "title": "Trusted number",
+                      "uri": "/docs/user-api/backend-api/resources/tracking/tracker/trusted_number.md"
+                    }
+                  ]
+                },
+                {
+                  "type": "group",
+                  "title": "zone",
+                  "items": [
+                    {
+                      "type": "item",
+                      "title": "Working with geofences",
+                      "uri": "/docs/user-api/backend-api/resources/tracking/zone/index.md"
+                    },
+                    {
+                      "type": "item",
+                      "title": "Geofence point",
+                      "uri": "/docs/user-api/backend-api/resources/tracking/zone/zone_point.md"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "group",
+          "title": "websocket",
+          "items": [
+            {
+              "type": "item",
+              "title": "WebSocket Events",
+              "uri": "/docs/user-api/backend-api/websocket/events.md"
+            },
+            {
+              "type": "item",
+              "title": "WebSocket API",
+              "uri": "/docs/user-api/backend-api/websocket/index.md"
+            },
+            {
+              "type": "item",
+              "title": "WebSocket Subscription",
+              "uri": "/docs/user-api/backend-api/websocket/subscription.md"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "group",
+      "title": "data-warehouse-api",
+      "items": [
+        {
+          "type": "item",
+          "title": "Getting Started",
+          "uri": "/docs/user-api/data-warehouse-api/getting-started.md"
+        },
+        {
+          "type": "group",
+          "title": "guides",
+          "items": [
+            {
+              "type": "item",
+              "title": "Requesting raw data",
+              "uri": "/docs/user-api/data-warehouse-api/guides/raw-data.md"
+            }
+          ]
+        },
+        {
+          "type": "group",
+          "title": "resources",
+          "items": [
+            {
+              "type": "group",
+              "title": "tracker",
+              "items": [
+                {
+                  "type": "item",
+                  "title": "Raw IoT Data",
+                  "uri": "/docs/user-api/data-warehouse-api/resources/tracker/raw_data.md"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "group",
+      "title": "eco-fleet-api",
+      "items": [
+        {
+          "type": "item",
+          "title": "Getting Started",
+          "uri": "/docs/user-api/eco-fleet-api/getting-started.md"
+        },
+        {
+          "type": "group",
+          "title": "resources",
+          "items": [
+            {
+              "type": "group",
+              "title": "trackers",
+              "items": [
+                {
+                  "type": "item",
+                  "title": "Fuel data resampling",
+                  "uri": "/docs/user-api/eco-fleet-api/resources/trackers/resampling.md"
+                },
+                {
+                  "type": "group",
+                  "title": "sensors",
+                  "items": [
+                    {
+                      "type": "item",
+                      "title": "Fuel Sensor Quality Index",
+                      "uri": "/docs/user-api/eco-fleet-api/resources/trackers/sensors/quality.md"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "group",
+      "title": "frontend",
+      "items": [
+        {
+          "type": "group",
+          "title": "extensions",
+          "items": [
+            {
+              "type": "item",
+              "title": "Application 'Courier on the map'",
+              "uri": "/docs/user-api/frontend/extensions/delivery-app.md"
+            },
+            {
+              "type": "item",
+              "title": "Login redirect",
+              "uri": "/docs/user-api/frontend/extensions/login-redirect.md"
+            },
+            {
+              "type": "item",
+              "title": "Mobile Tracker",
+              "uri": "/docs/user-api/frontend/extensions/mobile-tracker.md"
+            },
+            {
+              "type": "item",
+              "title": "UI plugins",
+              "uri": "/docs/user-api/frontend/extensions/ui-plugins.md"
+            },
+            {
+              "type": "item",
+              "title": "User applications",
+              "uri": "/docs/user-api/frontend/extensions/user-applications.md"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "item",
+      "title": "Getting Started",
+      "uri": "/docs/user-api/getting-started.md"
+    }
+  ]
+}
