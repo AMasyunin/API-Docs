@@ -1,0 +1,1045 @@
+{
+  "openapi": "3.1.0",
+  "x-stoplight": {
+    "id": "g774cqrfiruyl"
+  },
+  "info": {
+    "title": "{API_TITLE}",
+    "description": "API specification generated from markdown documentation",
+    "version": "1.0.0",
+    "contact": {
+      "name": "API Support",
+      "email": "support@navixy.com",
+      "url": "https://www.navixy.com/contact/"
+    },
+    "license": {
+      "name": "Apache 2.0",
+      "identifier": "Apache-2.0"
+    }
+  },
+  "externalDocs": {
+    "description": "Find more info here",
+    "url": "https://example.com/docs"
+  },
+  "servers": [
+    {
+      "url": "https://api.eu.navixy.com/v2",
+      "description": "Navixy production server on European platform"
+    },
+    {
+      "url": "https://api.us.navixy.com/v2",
+      "description": "Navixy production server on American platform"
+    }
+  ],
+  "security": [
+    {
+      "api_key": []
+    }
+  ],
+  "tags": [
+    {
+      "name": "bill",
+      "description": "API for bill"
+    },
+    {
+      "name": "payment_system",
+      "description": "API for payment_system"
+    },
+    {
+      "name": "subscription",
+      "description": "API for subscription"
+    },
+    {
+      "name": "transaction",
+      "description": "API for transaction"
+    },
+    {
+      "name": "tariff",
+      "description": "API for tariff"
+    }
+  ],
+  "paths": {
+    "/bill/create": {
+      "post": {
+        "tags": [
+          "bill"
+        ],
+        "summary": "Creates a new bill for the user. ",
+        "description": "Creates a new bill for the user. \n\n**required sub-user rights**: `payment_create`.",
+        "operationId": "bill_bill_create_post",
+        "parameters": [
+          {
+            "name": "payer",
+            "in": "query",
+            "description": "payer",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "sum",
+            "in": "query",
+            "description": "sum",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "payer": {
+                    "type": "string",
+                    "description": "payer"
+                  },
+                  "sum": {
+                    "type": "string",
+                    "description": "sum"
+                  }
+                }
+              },
+              "example": {
+                "value": "curl -X POST '{{ extra.api_example_url }}/bill/create' \\\n        -H 'Content-Type: application/json' \\\n        -d '{\"hash\": \"22eac1c27af4be7b9d04da2ce1af111b\", \"payer\": \"Jon Doe\", \"sum\": 100.0}'"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "success": {
+                      "type": "boolean",
+                      "description": "Operation success status"
+                    }
+                  },
+                  "example": {
+                    "success": true,
+                    "value": 6421
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Plugin not found - when plugin **29** not available for user.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "success": {
+                      "type": "boolean",
+                      "example": false
+                    },
+                    "error": {
+                      "type": "object",
+                      "properties": {
+                        "code": {
+                          "type": "integer",
+                          "example": 222,
+                          "description": "Internal error code"
+                        },
+                        "message": {
+                          "type": "string",
+                          "example": "Plugin not found - when plugin **29** not available for user."
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "x-stoplight": {
+          "id": "85jzpn7p0ecm7"
+        }
+      }
+    },
+    "/bill/list": {
+      "post": {
+        "tags": [
+          "bill"
+        ],
+        "summary": "Shows list of bills with their parameters in array. ",
+        "description": "Shows list of bills with their parameters in array. \n\n**required sub-user rights**: `payment_create`.",
+        "operationId": "bill_bill_list_post",
+        "parameters": [
+          {
+            "name": "limit",
+            "in": "query",
+            "description": "limit",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "offset",
+            "in": "query",
+            "description": "offset",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "limit": {
+                    "type": "string",
+                    "description": "limit"
+                  },
+                  "offset": {
+                    "type": "string",
+                    "description": "offset"
+                  }
+                }
+              },
+              "example": {
+                "value": "curl -X POST '{{ extra.api_example_url }}/bill/list' \\\n        -H 'Content-Type: application/json' \\\n        -d '{\"hash\": \"22eac1c27af4be7b9d04da2ce1af111b\"}'"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "success": {
+                      "type": "boolean",
+                      "description": "Operation success status"
+                    }
+                  },
+                  "example": {
+                    "success": true,
+                    "count": 7,
+                    "bills": [
+                      {
+                        "order_id": 63602,
+                        "created": "2012-03-05 11:55:03",
+                        "sum": 150,
+                        "status": "created",
+                        "positions": [
+                          "The subscription fee for the services of Account W3"
+                        ],
+                        "link": "http://bill.navixy.com/xK1QEYK"
+                      }
+                    ]
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Plugin not found - when plugin **29** not available for user.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "success": {
+                      "type": "boolean",
+                      "example": false
+                    },
+                    "error": {
+                      "type": "object",
+                      "properties": {
+                        "code": {
+                          "type": "integer",
+                          "example": 222,
+                          "description": "Internal error code"
+                        },
+                        "message": {
+                          "type": "string",
+                          "example": "Plugin not found - when plugin **29** not available for user."
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "x-stoplight": {
+          "id": "sq2xj5gi8hx49"
+        }
+      }
+    },
+    "/payment_system/list": {
+      "post": {
+        "tags": [
+          "payment_system"
+        ],
+        "summary": "Returns list of payment systems available for specified user.",
+        "description": "Returns list of payment systems available for specified user.\n\n**required sub-user rights:** `payment_create`.",
+        "operationId": "payment_system_payment_system_list_post",
+        "parameters": [],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {}
+              },
+              "example": {
+                "value": "curl -X POST '{{ extra.api_example_url }}/payment_system/list' \\\n        -H 'Content-Type: application/json' \\\n        -d '{\"hash\": \"22eac1c27af4be7b9d04da2ce1af111b\"}'"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "success": {
+                      "type": "boolean",
+                      "description": "Operation success status"
+                    }
+                  },
+                  "example": {
+                    "success": true,
+                    "list": [
+                      {
+                        "type": "bill"
+                      }
+                    ]
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Not found in the database.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "success": {
+                      "type": "boolean",
+                      "example": false
+                    },
+                    "error": {
+                      "type": "object",
+                      "properties": {
+                        "code": {
+                          "type": "integer",
+                          "example": 201,
+                          "description": "Internal error code"
+                        },
+                        "message": {
+                          "type": "string",
+                          "example": "Not found in the database."
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "x-stoplight": {
+          "id": "6zp2204yyq4c4"
+        }
+      }
+    },
+    "/payment_system/estimate/get": {
+      "post": {
+        "tags": [
+          "payment_system"
+        ],
+        "summary": "Returns the estimate of the monthly payment amount",
+        "description": "Returns the estimate of the monthly payment amount\n\n**required sub-user rights**: `payment_create`.",
+        "operationId": "payment_system_payment_system_estimate_get_post",
+        "parameters": [],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {}
+              },
+              "example": {
+                "value": "curl -X POST '{{ extra.api_example_url }}/payment_system/estimate/get' \\\n        -H 'Content-Type: application/json' \\\n        -d '{\"hash\": \"22eac1c27af4be7b9d04da2ce1af111b\"}'"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "success": {
+                      "type": "boolean",
+                      "description": "Operation success status"
+                    }
+                  },
+                  "example": {
+                    "success": true,
+                    "value": 400
+                  }
+                }
+              }
+            }
+          }
+        },
+        "x-stoplight": {
+          "id": "sp74e9fpzup5e"
+        }
+      }
+    },
+    "/subscription/avangate/cancel": {
+      "post": {
+        "tags": [
+          "subscription"
+        ],
+        "summary": "Unsubscribe from auto-renewal by reference.",
+        "description": "Unsubscribe from auto-renewal by reference.\n\n**required sub-user rights:** `payment_create`.",
+        "operationId": "subscription_subscription_cancel_post",
+        "parameters": [
+          {
+            "name": "reference",
+            "in": "query",
+            "description": "reference",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "reference": {
+                    "type": "string",
+                    "description": "reference"
+                  }
+                }
+              },
+              "example": {
+                "value": "curl -X POST '{{ extra.api_example_url }}/subscription/avangate/cancel' \\\n        -H 'Content-Type: application/json' \\\n        -d '{\"hash\": \"22eac1c27af4be7b9d04da2ce1af111b\", \"reference\": \"5EAD4B0B2F\"}'"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "success": {
+                      "type": "boolean",
+                      "description": "Operation success status"
+                    }
+                  },
+                  "example": {
+                    "success": true
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "External service error.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "success": {
+                      "type": "boolean",
+                      "example": false
+                    },
+                    "error": {
+                      "type": "object",
+                      "properties": {
+                        "code": {
+                          "type": "integer",
+                          "example": 215,
+                          "description": "Internal error code"
+                        },
+                        "message": {
+                          "type": "string",
+                          "example": "External service error."
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "x-stoplight": {
+          "id": "vaayp11v1msod"
+        }
+      }
+    },
+    "/subscription/avangate/list": {
+      "post": {
+        "tags": [
+          "subscription"
+        ],
+        "summary": "List active [2Checkout](https://www.2checkout.com) [formerly Avangate](http://www.avangate.com) subscriptions (renewals).",
+        "description": "List active [2Checkout](https://www.2checkout.com) [formerly Avangate](http://www.avangate.com) subscriptions (renewals).\n\n**required sub-user rights:** `payment_create`.",
+        "operationId": "subscription_subscription_list_post",
+        "parameters": [],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {}
+              },
+              "example": {
+                "value": "curl -X POST '{{ extra.api_example_url }}/subscription/avangate/list' \\\n        -H 'Content-Type: application/json' \\\n        -d '{\"hash\": \"22eac1c27af4be7b9d04da2ce1af111b\"}'"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "success": {
+                      "type": "boolean",
+                      "description": "Operation success status"
+                    }
+                  },
+                  "example": {
+                    "success": true,
+                    "list": [
+                      {
+                        "reference": "5EAD4B0B2F",
+                        "code": "4679109",
+                        "quantity": 123,
+                        "expiration_date": "2021-01-28 13:32:11"
+                      }
+                    ]
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "External service error.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "success": {
+                      "type": "boolean",
+                      "example": false
+                    },
+                    "error": {
+                      "type": "object",
+                      "properties": {
+                        "code": {
+                          "type": "integer",
+                          "example": 215,
+                          "description": "Internal error code"
+                        },
+                        "message": {
+                          "type": "string",
+                          "example": "External service error."
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "x-stoplight": {
+          "id": "27sa1fjlxrvzy"
+        }
+      }
+    },
+    "/transaction/list": {
+      "post": {
+        "tags": [
+          "transaction"
+        ],
+        "summary": "Gets list of user's billing transactions for the specified period.",
+        "description": "Gets list of user's billing transactions for the specified period.\n\n**required sub-user rights**: `payment_create`.",
+        "operationId": "transaction_transaction_list_post",
+        "parameters": [
+          {
+            "name": "from",
+            "in": "query",
+            "description": "from",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "to",
+            "in": "query",
+            "description": "to",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "description": "limit",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "from": {
+                    "type": "string",
+                    "description": "from"
+                  },
+                  "to": {
+                    "type": "string",
+                    "description": "to"
+                  },
+                  "limit": {
+                    "type": "string",
+                    "description": "limit"
+                  }
+                }
+              },
+              "example": {
+                "value": "curl -X POST '{{ extra.api_example_url }}/transaction/list' \\\n        -H 'Content-Type: application/json' \\\n        -d '{\"hash\": \"22eac1c27af4be7b9d04da2ce1af111b\", \"from\": \"2021-01-20 08:16:40\", \"to\": \"2021-01-28 08:16:40\"}'"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "success": {
+                      "type": "boolean",
+                      "description": "Operation success status"
+                    }
+                  },
+                  "example": {
+                    "success": true,
+                    "list": [
+                      {
+                        "description": "Recharge bonus balance during tracker registration",
+                        "type": "bonus_charge",
+                        "subtype": "register",
+                        "timestamp": "2021-01-28 08:16:40",
+                        "user_id": 12203,
+                        "dealer_id": 5001,
+                        "tracker_id": 303126,
+                        "amount": -10,
+                        "new_balance": 800,
+                        "old_balance": 810,
+                        "bonus_amount": 10,
+                        "new_bonus": 10,
+                        "old_bonus": 0
+                      }
+                    ]
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Requested time span is too big - more than [report.maxTimeSpan](../commons/dealer.md).",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "success": {
+                      "type": "boolean",
+                      "example": false
+                    },
+                    "error": {
+                      "type": "object",
+                      "properties": {
+                        "code": {
+                          "type": "integer",
+                          "example": 211,
+                          "description": "Internal error code"
+                        },
+                        "message": {
+                          "type": "string",
+                          "example": "Requested time span is too big - more than [report.maxTimeSpan](../commons/dealer.md)."
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "x-stoplight": {
+          "id": "0xrqaetmbqo24"
+        }
+      }
+    },
+    "/tariff/list": {
+      "post": {
+        "tags": [
+          "tariff"
+        ],
+        "summary": "Gets list of device's plans available to user.<br>",
+        "description": "Gets list of device's plans available to user.<br>\nIf user's dealer is **default dealer** or **paas** then listed tariffs of that dealer, else listed plans of parent dealer.<br>\nListed only plans available for user's legal type.",
+        "operationId": "tariff_index_list_post",
+        "parameters": [],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {}
+              },
+              "example": {
+                "value": "curl -X POST '{{ extra.api_example_url }}/tariff/list' \\\n        -H 'Content-Type: application/json' \\\n        -d '{\"hash\": \"22eac1c27af4be7b9d04da2ce1af111b\"}'"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "success": {
+                      "type": "boolean",
+                      "description": "Operation success status"
+                    }
+                  },
+                  "example": {
+                    "success": true,
+                    "list": [
+                      {
+                        "id": 10,
+                        "name": "Business",
+                        "group_id": 2,
+                        "active": true,
+                        "type": "monthly",
+                        "price": 13,
+                        "early_change_price": 23,
+                        "device_limit": 1000,
+                        "has_reports": true,
+                        "paas_free": false,
+                        "store_period": "12m",
+                        "features": [
+                          "map_layers"
+                        ],
+                        "map_filter": {
+                          "exclusion": true,
+                          "values": []
+                        }
+                      }
+                    ]
+                  }
+                }
+              }
+            }
+          }
+        },
+        "x-stoplight": {
+          "id": "yksl2ifu707dy"
+        }
+      }
+    },
+    "/tariff/tracker/change": {
+      "post": {
+        "tags": [
+          "tariff"
+        ],
+        "summary": "Changes plan of tracker (with `tracker_id`) to new plan (with `tariff_id`).",
+        "description": "Changes plan of tracker (with `tracker_id`) to new plan (with `tariff_id`).\n\n**required sub-user rights**: `admin` (available only to master users).\n\n| name       | description                                                                                    | type |\n|:-----------|:-----------------------------------------------------------------------------------------------|:-----|\n| tracker_id | ID of a tracking device (aka \"object_id\"). The tracking device must belong to authorized user. | int  |\n| tariff_id  | If of the new plan.                                                                            | int  |",
+        "operationId": "tariff_tariff_tracker_change_post",
+        "parameters": [],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {}
+              },
+              "example": {
+                "value": "curl -X POST '{{ extra.api_example_url }}/tariff/tracker/change' \\\n        -H 'Content-Type: application/json' \\\n        -d '{\"hash\": \"22eac1c27af4be7b9d04da2ce1af111b\", \"tracker_id\": 345215, \"tariff_id\": 12}'"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "success": {
+                      "type": "boolean",
+                      "description": "Operation success status"
+                    }
+                  },
+                  "example": {
+                    "success": true
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Not allowed changing plan too frequently – plan last changed less or equal to 30 days (**tariff.freeze.period** config option).",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "success": {
+                      "type": "boolean",
+                      "example": false
+                    },
+                    "error": {
+                      "type": "object",
+                      "properties": {
+                        "code": {
+                          "type": "integer",
+                          "example": 240,
+                          "description": "Internal error code"
+                        },
+                        "message": {
+                          "type": "string",
+                          "example": "Not allowed changing plan too frequently – plan last changed less or equal to 30 days (**tariff.freeze.period** config option)."
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "x-stoplight": {
+          "id": "meulldyy2zh1e"
+        }
+      }
+    },
+    "/tariff/tracker/list": {
+      "post": {
+        "tags": [
+          "tariff"
+        ],
+        "summary": "List plans on which user can switch the passed tracker (even when tariff last changed less or equal than **tariff.freeze.period** time ago).",
+        "description": "List plans on which user can switch the passed tracker (even when tariff last changed less or equal than **tariff.freeze.period** time ago).",
+        "operationId": "tariff_tariff_tracker_list_post",
+        "parameters": [
+          {
+            "name": "tracker_id",
+            "in": "query",
+            "description": "tracker_id",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "tracker_id": {
+                    "type": "string",
+                    "description": "tracker_id"
+                  }
+                }
+              },
+              "example": {
+                "value": "curl -X POST '{{ extra.api_example_url }}/tariff/tracker/list' \\\n        -H 'Content-Type: application/json' \\\n        -d '{\"hash\": \"22eac1c27af4be7b9d04da2ce1af111b\", \"tracker_id\": 345215}'"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "success": {
+                      "type": "boolean",
+                      "description": "Operation success status"
+                    }
+                  },
+                  "example": {
+                    "success": true,
+                    "list": [
+                      {
+                        "id": 10,
+                        "name": "Business",
+                        "group_id": 2,
+                        "active": true,
+                        "type": "monthly",
+                        "price": 13,
+                        "early_change_price": 23,
+                        "device_limit": 1000,
+                        "has_reports": true,
+                        "paas_free": false,
+                        "store_period": "12m",
+                        "features": [
+                          "map_layers"
+                        ],
+                        "map_filter": {
+                          "exclusion": true,
+                          "values": []
+                        }
+                      }
+                    ],
+                    "days_to_next_change": 11
+                  }
+                }
+              }
+            }
+          }
+        },
+        "x-stoplight": {
+          "id": "9932jw8nwnttq"
+        }
+      }
+    }
+  },
+  "components": {
+    "securitySchemes": {
+      "api_key": {
+        "type": "apiKey",
+        "name": "api_key",
+        "in": "header",
+        "description": "API key authentication"
+      }
+    },
+    "schemas": {
+      "Success": {
+        "type": "object",
+        "properties": {
+          "success": {
+            "type": "boolean",
+            "description": "Operation success status",
+            "example": true
+          }
+        },
+        "x-stoplight": {
+          "id": "os22uz4na8gro"
+        }
+      },
+      "Error": {
+        "type": "object",
+        "properties": {
+          "success": {
+            "type": "boolean",
+            "description": "Operation failed status",
+            "example": false
+          },
+          "status": {
+            "type": "object",
+            "properties": {
+              "code": {
+                "type": "integer",
+                "description": "Error code",
+                "example": 400
+              },
+              "description": {
+                "type": "string",
+                "description": "Error description",
+                "example": "Error message"
+              }
+            }
+          }
+        },
+        "x-stoplight": {
+          "id": "jfsj7h9wengb6"
+        }
+      }
+    },
+    "responses": {
+      "Success": {
+        "description": "Successful response",
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/Success"
+            }
+          }
+        }
+      },
+      "Error": {
+        "description": "Error response",
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/Error"
+            }
+          }
+        }
+      }
+    }
+  }
+}
