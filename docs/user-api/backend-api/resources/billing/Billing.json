@@ -1,22 +1,18 @@
 {
   "openapi": "3.1.0",
-  "x-stoplight": {
-    "id": "g774cqrfiruyl"
-  },
   "info": {
-    "title": "Billing",
+    "title": "{API_TITLE}",
     "description": "API specification generated from markdown documentation",
     "version": "1.0.0",
     "contact": {
-      "name": "Support",
+      "name": "API Support",
       "email": "support@navixy.com",
       "url": "https://www.navixy.com/contact/"
     },
     "license": {
       "name": "Apache 2.0",
       "identifier": "Apache-2.0"
-    },
-    "summary": "API calls for Navixy's billing functionality"
+    }
   },
   "externalDocs": {
     "description": "Find more info here",
@@ -65,7 +61,7 @@
         "tags": [
           "bill"
         ],
-        "summary": "Creates a new bill for the user.",
+        "summary": "Creates a new bill for the user. ",
         "description": "Creates a new bill for the user. \n\n**required sub-user rights**: `payment_create`.",
         "operationId": "bill_bill_create_post",
         "parameters": [
@@ -93,19 +89,17 @@
             "application/json": {
               "schema": {
                 "type": "object",
-                "properties": {
-                  "payer": {
-                    "type": "string",
-                    "description": "payer"
-                  },
-                  "sum": {
-                    "type": "string",
-                    "description": "sum"
+                "properties": {}
+              },
+              "examples": {
+                "curl": {
+                  "summary": "Example curl command",
+                  "value": {
+                    "hash": "22eac1c27af4be7b9d04da2ce1af111b",
+                    "payer": "Jon Doe",
+                    "sum": 100.0
                   }
                 }
-              },
-              "example": {
-                "value": "curl -X POST '{{ extra.api_example_url }}/bill/create' \\\n        -H 'Content-Type: application/json' \\\n        -d '{\"hash\": \"22eac1c27af4be7b9d04da2ce1af111b\", \"payer\": \"Jon Doe\", \"sum\": 100.0}'"
               }
             }
           }
@@ -122,10 +116,15 @@
                       "type": "boolean",
                       "description": "Operation success status"
                     }
-                  },
-                  "example": {
-                    "success": true,
-                    "value": 6421
+                  }
+                },
+                "examples": {
+                  "success": {
+                    "summary": "Successful response",
+                    "value": {
+                      "success": true,
+                      "value": 6421
+                    }
                   }
                 }
               }
@@ -157,13 +156,22 @@
                       }
                     }
                   }
+                },
+                "examples": {
+                  "error": {
+                    "summary": "Error response",
+                    "value": {
+                      "success": false,
+                      "error": {
+                        "code": 222,
+                        "message": "Plugin not found - when plugin **29** not available for user."
+                      }
+                    }
+                  }
                 }
               }
             }
           }
-        },
-        "x-stoplight": {
-          "id": "85jzpn7p0ecm7"
         }
       }
     },
@@ -200,19 +208,15 @@
             "application/json": {
               "schema": {
                 "type": "object",
-                "properties": {
-                  "limit": {
-                    "type": "string",
-                    "description": "limit"
-                  },
-                  "offset": {
-                    "type": "string",
-                    "description": "offset"
+                "properties": {}
+              },
+              "examples": {
+                "curl": {
+                  "summary": "Example curl command",
+                  "value": {
+                    "hash": "22eac1c27af4be7b9d04da2ce1af111b"
                   }
                 }
-              },
-              "example": {
-                "value": "curl -X POST '{{ extra.api_example_url }}/bill/list' \\\n        -H 'Content-Type: application/json' \\\n        -d '{\"hash\": \"22eac1c27af4be7b9d04da2ce1af111b\"}'"
               }
             }
           }
@@ -229,22 +233,27 @@
                       "type": "boolean",
                       "description": "Operation success status"
                     }
-                  },
-                  "example": {
-                    "success": true,
-                    "count": 7,
-                    "bills": [
-                      {
-                        "order_id": 63602,
-                        "created": "2012-03-05 11:55:03",
-                        "sum": 150,
-                        "status": "created",
-                        "positions": [
-                          "The subscription fee for the services of Account W3"
-                        ],
-                        "link": "http://bill.navixy.com/xK1QEYK"
-                      }
-                    ]
+                  }
+                },
+                "examples": {
+                  "success": {
+                    "summary": "Successful response",
+                    "value": {
+                      "success": true,
+                      "count": 7,
+                      "bills": [
+                        {
+                          "order_id": 63602,
+                          "created": "2012-03-05 11:55:03",
+                          "sum": 150.0,
+                          "status": "created",
+                          "positions": [
+                            "The subscription fee for the services of Account W3"
+                          ],
+                          "link": "http://bill.navixy.com/xK1QEYK"
+                        }
+                      ]
+                    }
                   }
                 }
               }
@@ -276,13 +285,22 @@
                       }
                     }
                   }
+                },
+                "examples": {
+                  "error": {
+                    "summary": "Error response",
+                    "value": {
+                      "success": false,
+                      "error": {
+                        "code": 222,
+                        "message": "Plugin not found - when plugin **29** not available for user."
+                      }
+                    }
+                  }
                 }
               }
             }
           }
-        },
-        "x-stoplight": {
-          "id": "sq2xj5gi8hx49"
         }
       }
     },
@@ -302,8 +320,13 @@
                 "type": "object",
                 "properties": {}
               },
-              "example": {
-                "value": "curl -X POST '{{ extra.api_example_url }}/payment_system/list' \\\n        -H 'Content-Type: application/json' \\\n        -d '{\"hash\": \"22eac1c27af4be7b9d04da2ce1af111b\"}'"
+              "examples": {
+                "curl": {
+                  "summary": "Example curl command",
+                  "value": {
+                    "hash": "22eac1c27af4be7b9d04da2ce1af111b"
+                  }
+                }
               }
             }
           }
@@ -320,14 +343,19 @@
                       "type": "boolean",
                       "description": "Operation success status"
                     }
-                  },
-                  "example": {
-                    "success": true,
-                    "list": [
-                      {
-                        "type": "bill"
-                      }
-                    ]
+                  }
+                },
+                "examples": {
+                  "success": {
+                    "summary": "Successful response",
+                    "value": {
+                      "success": true,
+                      "list": [
+                        {
+                          "type": "bill"
+                        }
+                      ]
+                    }
                   }
                 }
               }
@@ -359,13 +387,22 @@
                       }
                     }
                   }
+                },
+                "examples": {
+                  "error": {
+                    "summary": "Error response",
+                    "value": {
+                      "success": false,
+                      "error": {
+                        "code": 201,
+                        "message": "Not found in the database."
+                      }
+                    }
+                  }
                 }
               }
             }
           }
-        },
-        "x-stoplight": {
-          "id": "6zp2204yyq4c4"
         }
       }
     },
@@ -385,8 +422,13 @@
                 "type": "object",
                 "properties": {}
               },
-              "example": {
-                "value": "curl -X POST '{{ extra.api_example_url }}/payment_system/estimate/get' \\\n        -H 'Content-Type: application/json' \\\n        -d '{\"hash\": \"22eac1c27af4be7b9d04da2ce1af111b\"}'"
+              "examples": {
+                "curl": {
+                  "summary": "Example curl command",
+                  "value": {
+                    "hash": "22eac1c27af4be7b9d04da2ce1af111b"
+                  }
+                }
               }
             }
           }
@@ -403,18 +445,20 @@
                       "type": "boolean",
                       "description": "Operation success status"
                     }
-                  },
-                  "example": {
-                    "success": true,
-                    "value": 400
+                  }
+                },
+                "examples": {
+                  "success": {
+                    "summary": "Successful response",
+                    "value": {
+                      "success": true,
+                      "value": 400.0
+                    }
                   }
                 }
               }
             }
           }
-        },
-        "x-stoplight": {
-          "id": "sp74e9fpzup5e"
         }
       }
     },
@@ -442,15 +486,16 @@
             "application/json": {
               "schema": {
                 "type": "object",
-                "properties": {
-                  "reference": {
-                    "type": "string",
-                    "description": "reference"
+                "properties": {}
+              },
+              "examples": {
+                "curl": {
+                  "summary": "Example curl command",
+                  "value": {
+                    "hash": "22eac1c27af4be7b9d04da2ce1af111b",
+                    "reference": "5EAD4B0B2F"
                   }
                 }
-              },
-              "example": {
-                "value": "curl -X POST '{{ extra.api_example_url }}/subscription/avangate/cancel' \\\n        -H 'Content-Type: application/json' \\\n        -d '{\"hash\": \"22eac1c27af4be7b9d04da2ce1af111b\", \"reference\": \"5EAD4B0B2F\"}'"
               }
             }
           }
@@ -467,9 +512,14 @@
                       "type": "boolean",
                       "description": "Operation success status"
                     }
-                  },
-                  "example": {
-                    "success": true
+                  }
+                },
+                "examples": {
+                  "success": {
+                    "summary": "Successful response",
+                    "value": {
+                      "success": true
+                    }
                   }
                 }
               }
@@ -501,13 +551,22 @@
                       }
                     }
                   }
+                },
+                "examples": {
+                  "error": {
+                    "summary": "Error response",
+                    "value": {
+                      "success": false,
+                      "error": {
+                        "code": 215,
+                        "message": "External service error."
+                      }
+                    }
+                  }
                 }
               }
             }
           }
-        },
-        "x-stoplight": {
-          "id": "vaayp11v1msod"
         }
       }
     },
@@ -527,8 +586,13 @@
                 "type": "object",
                 "properties": {}
               },
-              "example": {
-                "value": "curl -X POST '{{ extra.api_example_url }}/subscription/avangate/list' \\\n        -H 'Content-Type: application/json' \\\n        -d '{\"hash\": \"22eac1c27af4be7b9d04da2ce1af111b\"}'"
+              "examples": {
+                "curl": {
+                  "summary": "Example curl command",
+                  "value": {
+                    "hash": "22eac1c27af4be7b9d04da2ce1af111b"
+                  }
+                }
               }
             }
           }
@@ -545,17 +609,22 @@
                       "type": "boolean",
                       "description": "Operation success status"
                     }
-                  },
-                  "example": {
-                    "success": true,
-                    "list": [
-                      {
-                        "reference": "5EAD4B0B2F",
-                        "code": "4679109",
-                        "quantity": 123,
-                        "expiration_date": "2021-01-28 13:32:11"
-                      }
-                    ]
+                  }
+                },
+                "examples": {
+                  "success": {
+                    "summary": "Successful response",
+                    "value": {
+                      "success": true,
+                      "list": [
+                        {
+                          "reference": "5EAD4B0B2F",
+                          "code": "4679109",
+                          "quantity": 123,
+                          "expiration_date": "2021-01-28 13:32:11"
+                        }
+                      ]
+                    }
                   }
                 }
               }
@@ -587,13 +656,22 @@
                       }
                     }
                   }
+                },
+                "examples": {
+                  "error": {
+                    "summary": "Error response",
+                    "value": {
+                      "success": false,
+                      "error": {
+                        "code": 215,
+                        "message": "External service error."
+                      }
+                    }
+                  }
                 }
               }
             }
           }
-        },
-        "x-stoplight": {
-          "id": "27sa1fjlxrvzy"
         }
       }
     },
@@ -639,23 +717,17 @@
             "application/json": {
               "schema": {
                 "type": "object",
-                "properties": {
-                  "from": {
-                    "type": "string",
-                    "description": "from"
-                  },
-                  "to": {
-                    "type": "string",
-                    "description": "to"
-                  },
-                  "limit": {
-                    "type": "string",
-                    "description": "limit"
+                "properties": {}
+              },
+              "examples": {
+                "curl": {
+                  "summary": "Example curl command",
+                  "value": {
+                    "hash": "22eac1c27af4be7b9d04da2ce1af111b",
+                    "from": "2021-01-20 08:16:40",
+                    "to": "2021-01-28 08:16:40"
                   }
                 }
-              },
-              "example": {
-                "value": "curl -X POST '{{ extra.api_example_url }}/transaction/list' \\\n        -H 'Content-Type: application/json' \\\n        -d '{\"hash\": \"22eac1c27af4be7b9d04da2ce1af111b\", \"from\": \"2021-01-20 08:16:40\", \"to\": \"2021-01-28 08:16:40\"}'"
               }
             }
           }
@@ -672,26 +744,31 @@
                       "type": "boolean",
                       "description": "Operation success status"
                     }
-                  },
-                  "example": {
-                    "success": true,
-                    "list": [
-                      {
-                        "description": "Recharge bonus balance during tracker registration",
-                        "type": "bonus_charge",
-                        "subtype": "register",
-                        "timestamp": "2021-01-28 08:16:40",
-                        "user_id": 12203,
-                        "dealer_id": 5001,
-                        "tracker_id": 303126,
-                        "amount": -10,
-                        "new_balance": 800,
-                        "old_balance": 810,
-                        "bonus_amount": 10,
-                        "new_bonus": 10,
-                        "old_bonus": 0
-                      }
-                    ]
+                  }
+                },
+                "examples": {
+                  "success": {
+                    "summary": "Successful response",
+                    "value": {
+                      "success": true,
+                      "list": [
+                        {
+                          "description": "Recharge bonus balance during tracker registration",
+                          "type": "bonus_charge",
+                          "subtype": "register",
+                          "timestamp": "2021-01-28 08:16:40",
+                          "user_id": 12203,
+                          "dealer_id": 5001,
+                          "tracker_id": 303126,
+                          "amount": -10.0,
+                          "new_balance": 800.0,
+                          "old_balance": 810.0,
+                          "bonus_amount": 10.0,
+                          "new_bonus": 10.0,
+                          "old_bonus": 0.0
+                        }
+                      ]
+                    }
                   }
                 }
               }
@@ -723,13 +800,22 @@
                       }
                     }
                   }
+                },
+                "examples": {
+                  "error": {
+                    "summary": "Error response",
+                    "value": {
+                      "success": false,
+                      "error": {
+                        "code": 211,
+                        "message": "Requested time span is too big - more than [report.maxTimeSpan](../commons/dealer.md)."
+                      }
+                    }
+                  }
                 }
               }
             }
           }
-        },
-        "x-stoplight": {
-          "id": "0xrqaetmbqo24"
         }
       }
     },
@@ -749,8 +835,13 @@
                 "type": "object",
                 "properties": {}
               },
-              "example": {
-                "value": "curl -X POST '{{ extra.api_example_url }}/tariff/list' \\\n        -H 'Content-Type: application/json' \\\n        -d '{\"hash\": \"22eac1c27af4be7b9d04da2ce1af111b\"}'"
+              "examples": {
+                "curl": {
+                  "summary": "Example curl command",
+                  "value": {
+                    "hash": "22eac1c27af4be7b9d04da2ce1af111b"
+                  }
+                }
               }
             }
           }
@@ -767,39 +858,41 @@
                       "type": "boolean",
                       "description": "Operation success status"
                     }
-                  },
-                  "example": {
-                    "success": true,
-                    "list": [
-                      {
-                        "id": 10,
-                        "name": "Business",
-                        "group_id": 2,
-                        "active": true,
-                        "type": "monthly",
-                        "price": 13,
-                        "early_change_price": 23,
-                        "device_limit": 1000,
-                        "has_reports": true,
-                        "paas_free": false,
-                        "store_period": "12m",
-                        "features": [
-                          "map_layers"
-                        ],
-                        "map_filter": {
-                          "exclusion": true,
-                          "values": []
+                  }
+                },
+                "examples": {
+                  "success": {
+                    "summary": "Successful response",
+                    "value": {
+                      "success": true,
+                      "list": [
+                        {
+                          "id": 10,
+                          "name": "Business",
+                          "group_id": 2,
+                          "active": true,
+                          "type": "monthly",
+                          "price": 13.0,
+                          "early_change_price": 23.0,
+                          "device_limit": 1000,
+                          "has_reports": true,
+                          "paas_free": false,
+                          "store_period": "12m",
+                          "features": [
+                            "map_layers"
+                          ],
+                          "map_filter": {
+                            "exclusion": true,
+                            "values": []
+                          }
                         }
-                      }
-                    ]
+                      ]
+                    }
                   }
                 }
               }
             }
           }
-        },
-        "x-stoplight": {
-          "id": "yksl2ifu707dy"
         }
       }
     },
@@ -819,8 +912,15 @@
                 "type": "object",
                 "properties": {}
               },
-              "example": {
-                "value": "curl -X POST '{{ extra.api_example_url }}/tariff/tracker/change' \\\n        -H 'Content-Type: application/json' \\\n        -d '{\"hash\": \"22eac1c27af4be7b9d04da2ce1af111b\", \"tracker_id\": 345215, \"tariff_id\": 12}'"
+              "examples": {
+                "curl": {
+                  "summary": "Example curl command",
+                  "value": {
+                    "hash": "22eac1c27af4be7b9d04da2ce1af111b",
+                    "tracker_id": 345215,
+                    "tariff_id": 12
+                  }
+                }
               }
             }
           }
@@ -837,9 +937,14 @@
                       "type": "boolean",
                       "description": "Operation success status"
                     }
-                  },
-                  "example": {
-                    "success": true
+                  }
+                },
+                "examples": {
+                  "success": {
+                    "summary": "Successful response",
+                    "value": {
+                      "success": true
+                    }
                   }
                 }
               }
@@ -871,13 +976,22 @@
                       }
                     }
                   }
+                },
+                "examples": {
+                  "error": {
+                    "summary": "Error response",
+                    "value": {
+                      "success": false,
+                      "error": {
+                        "code": 240,
+                        "message": "Not allowed changing plan too frequently – plan last changed less or equal to 30 days (**tariff.freeze.period** config option)."
+                      }
+                    }
+                  }
                 }
               }
             }
           }
-        },
-        "x-stoplight": {
-          "id": "meulldyy2zh1e"
         }
       }
     },
@@ -905,15 +1019,16 @@
             "application/json": {
               "schema": {
                 "type": "object",
-                "properties": {
-                  "tracker_id": {
-                    "type": "string",
-                    "description": "tracker_id"
+                "properties": {}
+              },
+              "examples": {
+                "curl": {
+                  "summary": "Example curl command",
+                  "value": {
+                    "hash": "22eac1c27af4be7b9d04da2ce1af111b",
+                    "tracker_id": 345215
                   }
                 }
-              },
-              "example": {
-                "value": "curl -X POST '{{ extra.api_example_url }}/tariff/tracker/list' \\\n        -H 'Content-Type: application/json' \\\n        -d '{\"hash\": \"22eac1c27af4be7b9d04da2ce1af111b\", \"tracker_id\": 345215}'"
               }
             }
           }
@@ -930,40 +1045,42 @@
                       "type": "boolean",
                       "description": "Operation success status"
                     }
-                  },
-                  "example": {
-                    "success": true,
-                    "list": [
-                      {
-                        "id": 10,
-                        "name": "Business",
-                        "group_id": 2,
-                        "active": true,
-                        "type": "monthly",
-                        "price": 13,
-                        "early_change_price": 23,
-                        "device_limit": 1000,
-                        "has_reports": true,
-                        "paas_free": false,
-                        "store_period": "12m",
-                        "features": [
-                          "map_layers"
-                        ],
-                        "map_filter": {
-                          "exclusion": true,
-                          "values": []
+                  }
+                },
+                "examples": {
+                  "success": {
+                    "summary": "Successful response",
+                    "value": {
+                      "success": true,
+                      "list": [
+                        {
+                          "id": 10,
+                          "name": "Business",
+                          "group_id": 2,
+                          "active": true,
+                          "type": "monthly",
+                          "price": 13.0,
+                          "early_change_price": 23.0,
+                          "device_limit": 1000,
+                          "has_reports": true,
+                          "paas_free": false,
+                          "store_period": "12m",
+                          "features": [
+                            "map_layers"
+                          ],
+                          "map_filter": {
+                            "exclusion": true,
+                            "values": []
+                          }
                         }
-                      }
-                    ],
-                    "days_to_next_change": 11
+                      ],
+                      "days_to_next_change": 11
+                    }
                   }
                 }
               }
             }
           }
-        },
-        "x-stoplight": {
-          "id": "9932jw8nwnttq"
         }
       }
     }
@@ -986,9 +1103,6 @@
             "description": "Operation success status",
             "example": true
           }
-        },
-        "x-stoplight": {
-          "id": "os22uz4na8gro"
         }
       },
       "Error": {
@@ -1014,9 +1128,6 @@
               }
             }
           }
-        },
-        "x-stoplight": {
-          "id": "jfsj7h9wengb6"
         }
       }
     },
