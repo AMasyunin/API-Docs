@@ -1,7 +1,6 @@
 # Table of contents
 
-* [panel-api](README.md)
-* [Navixy Admin Panel API](getting-started.md)
+* [Navixy Admin Panel API](README.md)
 * [Resources](resources/README.md)
   * [Account](resources/account.md)
   * [Equipment](resources/equipment.md)
