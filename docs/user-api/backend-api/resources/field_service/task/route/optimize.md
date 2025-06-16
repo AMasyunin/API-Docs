@@ -1,12 +1,14 @@
 ---
 title: Optimizing routes
-description: API call to get optimized order of route checkpoints. To minimize transit time and costs, it may be beneficial to reorder route checkpoints so total travel time between them  is minimal. Our platform provides a way to perform such optimization. You don't even need to create route and checkpoints, you just provide data required to optimize and algorithm returns order in which points should be visited.
+description: >-
+  API call to get optimized order of route checkpoints. To minimize transit time
+  and costs, it may be beneficial to reorder route checkpoints so total travel
+  time between them  is minimal. Our platform
 ---
 
 # Optimizing routes
 
 To reduce transit time and costs, it may be helpful to rearrange route checkpoints so that the total travel time between them is minimized. Our platform offers a way to perform this optimization. You don't even need to create a route and checkpoints; you simply provide the necessary data for optimization, and the algorithm returns the order in which the points should be visited.
-
 
 ## API actions
 
@@ -20,9 +22,8 @@ The suggested order for the given route points will correspond to the time windo
 
 #### Parameters
 
-* **start_point** - (object) the coordinates of the location from where the performer will depart. The departure time is optional parameter. 
+* **start\_point** - (object) the coordinates of the location from where the performer will depart. The departure time is optional parameter.
 
-  
 ```json
 {
   "lat": 15.233,
@@ -31,7 +32,7 @@ The suggested order for the given route points will correspond to the time windo
 }
 ```
 
-* **route_points** - (array of objects) the points that the performer must visit, and the count of points must be within the range of 2 to 49. For example:
+* **route\_points** - (array of objects) the points that the performer must visit, and the count of points must be within the range of 2 to 49. For example:
 
 ```json
 [
@@ -64,7 +65,7 @@ If for route points:
 ]
 ```
 
-this action returns: ```[2, 0, 1]```
+this action returns: `[2, 0, 1]`
 
 it means "change points order as following":
 
@@ -88,13 +89,15 @@ or with a more tangible example with 5 points. You have the next points to be re
 
 The API request will be
 
-=== "cURL"
+\=== "cURL"
 
-    ```shell
-    curl -X POST '{{ extra.api_example_url }}/task/route/points/optimize' \
-        -H 'Content-Type: application/json' \
-        -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "start_point": {"lat": 38.81476676765485,  "lng": -77.1608018875122}, "route_points": [{"location": {"lat": 38.81673961922754,"lng": -77.15569496154785}, "from": "2024-03-19 00:00:00", "to": "2024-03-19 23:59:00"}, {"location": {"lat": 38.82767290746902,"lng": -77.1445369720459}, "from": "2024-03-19 00:00:00", "to": "2024-03-19 23:59:00"}, {"location": {"lat": 38.834760258479704,"lng": -77.14093208312988}, "from": "2024-03-19 00:00:00", "to": "2024-03-19 23:59:00"}, {"location": {"lat": 38.81583679562883,"lng": -77.14814186096191}, "from": "2024-03-19 00:00:00", "to": "2024-03-19 23:59:00"}, {"location": {"lat": 38.81031929163279,"lng":7.15582370758057}, "from": "2024-03-19 00:00:00", "to": "2024-03-19 23:59:00"}]}'
-    ```
+````
+```shell
+curl -X POST '{{ extra.api_example_url }}/task/route/points/optimize' \
+    -H 'Content-Type: application/json' \
+    -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "start_point": {"lat": 38.81476676765485,  "lng": -77.1608018875122}, "route_points": [{"location": {"lat": 38.81673961922754,"lng": -77.15569496154785}, "from": "2024-03-19 00:00:00", "to": "2024-03-19 23:59:00"}, {"location": {"lat": 38.82767290746902,"lng": -77.1445369720459}, "from": "2024-03-19 00:00:00", "to": "2024-03-19 23:59:00"}, {"location": {"lat": 38.834760258479704,"lng": -77.14093208312988}, "from": "2024-03-19 00:00:00", "to": "2024-03-19 23:59:00"}, {"location": {"lat": 38.81583679562883,"lng": -77.14814186096191}, "from": "2024-03-19 00:00:00", "to": "2024-03-19 23:59:00"}, {"location": {"lat": 38.81031929163279,"lng":7.15582370758057}, "from": "2024-03-19 00:00:00", "to": "2024-03-19 23:59:00"}]}'
+```
+````
 
 The platform will reply to you with:
 
@@ -122,4 +125,3 @@ So the optimized route with start point from "lat": 38.81476676765485, "lng": -7
 * 7 - Invalid parameters.
 * 210 - Path distance exceeds the max distance limit - if the overal route distance is more than 5000 km.
 * 264 - Timeout not reached - too high api call rate.
-

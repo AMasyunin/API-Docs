@@ -1,18 +1,21 @@
 ---
 title: About forms
-description: Forms used to provide additional information, such as user's name, phone, delivery date, etc. upon task completion or check-in from iOS/Android mobile tracker app. Forms can be attached to tasks. If form attached to task, this task cannot be completed without form submission.
+description: >-
+  Forms used to provide additional information, such as user's name, phone,
+  delivery date, etc. upon task completion or check-in from iOS/Android mobile
+  tracker app. Forms can be attached to tasks. If f
 ---
 
 # About forms
 
-Forms used to provide additional information, such as user's name, phone, delivery date, etc. upon task completion
-or check-in from iOS/Android mobile tracker app.
+Forms used to provide additional information, such as user's name, phone, delivery date, etc. upon task completion\
+or check-in from iOS/Android mobile tracker app.\
 Forms can be attached to tasks. If form attached to task, this task cannot be completed without form submission.
 
 * Each form must be created from template, read more at [Templates](template.md)
 * For description of `<form_field>` and `<field_value>`, see [Form fields and values](field-types.md)
-* Using web API, it's now possible to only attach/fill forms with tasks (checkin forms are created through 
-Android/iOS tracker applications). See [Task form actions](../task/form/index.md) to use forms with tasks.
+* Using web API, it's now possible to only attach/fill forms with tasks (checkin forms are created through\
+  Android/iOS tracker applications). See [Task form actions](../task/form/index.md) to use forms with tasks.
 
 Find comprehinsive information on forms usage in our [instructions](../../../guides/field-service-management/create-forms.md).
 
@@ -50,20 +53,19 @@ Find comprehinsive information on forms usage in our [instructions](../../../gui
       "address": "Wall Street, NY"
     }
 }
-```    
+```
 
 * `id` - int. Form unique ID.
 * `label` - string. User-defined form label, from 1 to 100 characters.
-* `fields` - array of multiple [form_field](field-types.md) objects. 
+* `fields` - array of multiple [form\_field](field-types.md) objects.
 * `created` - [date/time](../../../getting-started/introduction.md#data-types). Date when this form created (or attached to the task). The read-only field.
 * `submit_in_zone` - boolean. If `true`, form can be submitted only in task zone.
 * `task_id` - int. An ID of the task to which this form attached.
 * `template_id` - int. An ID of the form template on which this form based. Can be null if template deleted.
-* `values` - a map with field IDs as keys and [field_value](field-types.md) objects as values. Can be null if form not filled.
-    * `key` - string. Key used to link field and its corresponding value.
+* `values` - a map with field IDs as keys and [field\_value](field-types.md) objects as values. Can be null if form not filled.
+  * `key` - string. Key used to link field and its corresponding value.
 * `submitted` - [date/time](../../../getting-started/introduction.md#data-types). Date when form values last submitted.
 * `submit_location` - location at which form values last submitted.
-
 
 ## Form file object
 
@@ -91,9 +93,8 @@ Find comprehinsive information on forms usage in our [instructions](../../../gui
 * `name` - string. A filename.
 * `size` - int. Size in bytes. If file not uploaded, show maximum allowed size for the upload.
 * `metadata` - nullable metadata object.
-* `state` - [enum](../../../getting-started/introduction.md#data-types). Can be "created" | "in_progress" | "uploaded" | "deleted".
+* `state` - [enum](../../../getting-started/introduction.md#data-types). Can be "created" | "in\_progress" | "uploaded" | "deleted".
 * `download_url` - string. Actual URL at which file is available. Can be null if file not yet uploaded.
-
 
 ## API actions
 
@@ -105,25 +106,29 @@ Gets form by an ID.
 
 #### Parameters
 
-| name | description     | type  |
-|:-----|:----------------|:------|
-| id   | ID of the form. | int   |
+| name | description     | type |
+| ---- | --------------- | ---- |
+| id   | ID of the form. | int  |
 
 #### Examples
 
-=== "cURL"
+\=== "cURL"
 
-    ```shell
-    curl -X POST '{{ extra.api_example_url }}/form/read' \
-        -H 'Content-Type: application/json' \
-        -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "id": 2}'
-    ```
+````
+```shell
+curl -X POST '{{ extra.api_example_url }}/form/read' \
+    -H 'Content-Type: application/json' \
+    -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "id": 2}'
+```
+````
 
-=== "HTTP GET"
+\=== "HTTP GET"
 
-    ```
-    {{ extra.api_example_url }}/form/read?hash=a6aa75587e5c59c32d347da438505fc3&id=2
-    ```
+````
+```
+{{ extra.api_example_url }}/form/read?hash=a6aa75587e5c59c32d347da438505fc3&id=2
+```
+````
 
 #### Response
 
@@ -178,15 +183,14 @@ Gets form by an ID.
       "download_url": "https://static.navixy.com/file/dl/1/0/1g/01gw2j5q7nm4r92dytolzd6koxy9e38v.png/lala.jpg"
     }]
 }
-``` 
+```
 
-* `value` - A [form object](#form-object).
-* `files` - list of [form_file objects](#form-file-object). Files used in values of this form. Can be null or empty.
+* `value` - A [form object](index.md#form-object).
+* `files` - list of [form\_file objects](index.md#form-file-object). Files used in values of this form. Can be null or empty.
 
 #### Errors
 
 * 201 – Not found in the database - if there is no form with such an ID.
-
 
 ### `download`
 
@@ -194,30 +198,34 @@ Downloads form as a file by an ID.
 
 #### Parameters
 
-| name   | description                          | type                                           |
-|:-------|:-------------------------------------|:-----------------------------------------------|
-| id     | ID of the form.                      | int                                            |
+| name   | description                          | type                                                        |
+| ------ | ------------------------------------ | ----------------------------------------------------------- |
+| id     | ID of the form.                      | int                                                         |
 | format | File format. Can be "pdf" or "xlsx". | [enum](../../../getting-started/introduction.md#data-types) |
 
 #### Examples
 
-=== "cURL"
+\=== "cURL"
 
-    ```shell
-    curl -X POST '{{ extra.api_example_url }}/form/download' \
-        -H 'Content-Type: application/json' \
-        -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "id": 2, "format": "pdf"}'
-    ```
+````
+```shell
+curl -X POST '{{ extra.api_example_url }}/form/download' \
+    -H 'Content-Type: application/json' \
+    -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "id": 2, "format": "pdf"}'
+```
+````
 
-=== "HTTP GET"
+\=== "HTTP GET"
 
-    ```
-    {{ extra.api_example_url }}/form/download?hash=a6aa75587e5c59c32d347da438505fc3&id=2&format=pdf
-    ```
+````
+```
+{{ extra.api_example_url }}/form/download?hash=a6aa75587e5c59c32d347da438505fc3&id=2&format=pdf
+```
+````
 
 #### Response
 
-Regular file download, or JSON with an error.    
+Regular file download, or JSON with an error.
 
 #### Errors
 
