@@ -1,7 +1,6 @@
 # Table of contents
 
-* [user-api](README.md)
-* [Getting started](getting-started.md)
+* [Getting started](README.md)
 * [Platform API](backend-api/README.md)
   * [getting-started](backend-api/getting-started/README.md)
     * [authentication](backend-api/getting-started/authentication.md)
