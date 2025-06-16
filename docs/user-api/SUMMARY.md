@@ -80,7 +80,17 @@
         * [Tag](backend-api/resources/commons/tag/index.md)
         * [Tag avatar](backend-api/resources/commons/tag/tag_avatar.md)
       * [user](backend-api/resources/commons/user/README.md)
-        * [User Applications](backend-api/resources/commons/user/applications.md)
+        * [User Applications](backend-api/resources/commons/user/applications/README.md)
+          * ```yaml
+            type: builtin:openapi
+            props:
+              models: true
+            dependencies:
+              spec:
+                ref:
+                  kind: openapi
+                  spec: user-apps
+            ```
         * [User](backend-api/resources/commons/user/index.md)
         * [User password](backend-api/resources/commons/user/password.md)
         * [User personal info](backend-api/resources/commons/user/personal_info.md)
